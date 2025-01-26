@@ -9,6 +9,7 @@
     <ItemGroup>
         <PackageReference Include="CsvHelper" Version="33.0.1" />
         <PackageReference Include="JetBrains.Annotations" Version="2024.3.0" />
+        <PackageReference Include="Nager.Date" Version="2.7.5" />
         <PackageReference Include="NodaTime" Version="3.2.1" />
     </ItemGroup>
 
