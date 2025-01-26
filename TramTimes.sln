@@ -2,6 +2,12 @@
 
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TramTimes.AppHost", "TramTimes.AppHost\TramTimes.AppHost.csproj", "{B2616C3A-1C36-41F1-8811-1D4C1E284043}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionItems", "{07B03DDD-B84F-47DF-9F66-05FEC5382D09}"
+ProjectSection(SolutionItems) = preProject
+	    LICENSE = LICENSE
+		README.md = README.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
