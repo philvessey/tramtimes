@@ -22,7 +22,7 @@ public static class DateTimeTools
         return result;
     }
     
-    public static DateTime GetStartDate(DateTime result, DateTime now, int days)
+    public static DateTime GetStartDate(DateTime? startDate, DateTime scheduleDate, int days)
     {
         days = days switch
         {
@@ -30,11 +30,20 @@ public static class DateTimeTools
             > 28 => 27,
             _ => days - 1
         };
+        
+        if (!startDate.HasValue)
+        {
+            return scheduleDate;
+        }
+        
+        if (startDate.Value == DateTime.MinValue) return scheduleDate;
+        if (startDate.Value < scheduleDate) return scheduleDate;
+        if (startDate.Value == scheduleDate) return scheduleDate;
 
-        return result;
+        return startDate.Value.Subtract(scheduleDate).TotalDays < days ? startDate.Value : DateTime.MaxValue;
     }
     
-    public static DateTime GetEndDate(DateTime result, DateTime now, int days)
+    public static DateTime GetEndDate(DateTime? endDate, DateTime scheduleDate, int days)
     {
         days = days switch
         {
@@ -42,19 +51,16 @@ public static class DateTimeTools
             > 28 => 27,
             _ => days - 1
         };
-
-        return result;
-    }
-    
-    public static DateTime GetHolidayDate(DateTime result, DateTime now, int days)
-    {
-        days = days switch
+        
+        if (!endDate.HasValue)
         {
-            < 1 => 0,
-            > 28 => 27,
-            _ => days - 1
-        };
-
-        return result;
+            return scheduleDate.AddDays(days);
+        }
+        
+        if (endDate.Value == DateTime.MinValue) return scheduleDate.AddDays(days);
+        if (endDate.Value < scheduleDate) return DateTime.MinValue;
+        if (endDate.Value == scheduleDate) return scheduleDate;
+        
+        return endDate.Value.Subtract(scheduleDate).TotalDays > days ? scheduleDate.AddDays(days) : endDate.Value;
     }
 }

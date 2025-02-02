@@ -4,7 +4,7 @@ using JetBrains.Annotations;
 namespace TramTimes.Utilities.TransXChange.Models;
 
 [UsedImplicitly]
-[XmlRoot(ElementName = "StopPoints")]
+[XmlRoot(ElementName = "StopPoints", Namespace = "http://www.transxchange.org.uk/")]
 public class TransXChangeStopPoints
 {
     [UsedImplicitly]

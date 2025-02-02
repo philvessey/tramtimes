@@ -19,8 +19,7 @@ public abstract class Naptan
 
         foreach (var entry in archive.Entries)
         {
-            if (!entry.Name.Contains("stops", StringComparison.CurrentCultureIgnoreCase) ||
-                !entry.Name.EndsWith(".csv", StringComparison.CurrentCultureIgnoreCase)) continue;
+            if (!entry.Name.EndsWith("csv", StringComparison.CurrentCultureIgnoreCase)) continue;
                 
             using StreamReader reader = new(entry.Open());
             var records = new CsvReader(reader, CultureInfo.InvariantCulture).GetRecords<NaptanStop>();
@@ -44,8 +43,7 @@ public abstract class Naptan
 
         foreach (var entry in entries)
         {
-            if (!entry.Contains("stops", StringComparison.CurrentCultureIgnoreCase) ||
-                !entry.EndsWith(".csv", StringComparison.CurrentCultureIgnoreCase)) continue;
+            if (!entry.EndsWith("csv", StringComparison.CurrentCultureIgnoreCase)) continue;
                 
             using StreamReader reader = new(entry);
             var records = new CsvReader(reader, CultureInfo.InvariantCulture).GetRecords<NaptanStop>();

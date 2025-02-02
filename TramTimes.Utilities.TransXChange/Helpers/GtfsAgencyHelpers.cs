@@ -7,7 +7,7 @@ namespace TramTimes.Utilities.TransXChange.Helpers;
 
 public static class GtfsAgencyHelpers
 {
-    public static void Build(Dictionary<string, TransXChangeSchedule> schedules, string path)
+    public static string Build(Dictionary<string, TransXChangeSchedule> schedules, string path)
     {
         var results = ReturnAgenciesFromSchedules(schedules);
 
@@ -22,6 +22,8 @@ public static class GtfsAgencyHelpers
             csv.WriteRecord(value);
             csv.NextRecord();
         }
+        
+        return Path.Combine(path, "agency.txt");
     }
 
     private static Dictionary<string, GtfsAgency> ReturnAgenciesFromSchedules(Dictionary<string, TransXChangeSchedule> schedules)

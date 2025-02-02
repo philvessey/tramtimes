@@ -10,25 +10,25 @@ namespace TramTimes.Utilities.TransXChange;
 
 public abstract class TransXChange
 {
-    public static Dictionary<string, TransXChangeSchedule> Build(string path, Dictionary<string, NaptanStop> stops, string subdivision, string mode, IList<string> filters, int days, string date, string key)
+    public static Dictionary<string, TransXChangeSchedule> Build(string path, Dictionary<string, NaptanStop> stops, string subdivision, string mode, IList<string> filters, int days, string date, string? key)
     {
         DateTime? today = DateTime.Today;
 
         return path.EndsWith(".zip")
             ? ReturnSchedulesFromArchive(path, stops, subdivision, mode, filters, days,
-                DateTimeTools.GetScheduleDate(today.ToZonedDate("Europe/London").Date, date), key)
+                DateTimeTools.GetScheduleDate(today.ToZonedDate("Europe/London").Date, date), key ?? string.Empty)
             : ReturnSchedulesFromDirectory(path, stops, subdivision, mode, filters, days,
-                DateTimeTools.GetScheduleDate(today.ToZonedDate("Europe/London").Date, date), key);
+                DateTimeTools.GetScheduleDate(today.ToZonedDate("Europe/London").Date, date), key ?? string.Empty);
     }
 
-    private static Dictionary<string, TransXChangeSchedule> ReturnSchedulesFromArchive(string path, Dictionary<string, NaptanStop> stops, string subdivision, string mode, IList<string> filters, int days, DateTime scheduleDate, string key)
+    private static Dictionary<string, TransXChangeSchedule> ReturnSchedulesFromArchive(string path, Dictionary<string, NaptanStop> stops, string subdivision, string mode, IList<string> filters, int days, DateTime scheduleDate, string? key)
     {
         Dictionary<string, TransXChangeSchedule> results = [];
         using var archive = ZipFile.Open(path, ZipArchiveMode.Read);
 
         foreach (var entry in archive.Entries)
         {
-            if (!entry.Name.EndsWith(".xml")) continue;
+            if (!entry.Name.EndsWith(".xml", StringComparison.CurrentCultureIgnoreCase)) continue;
                 
             using StreamReader reader = new(entry.Open());
 
@@ -41,32 +41,17 @@ public abstract class TransXChange
                 
             foreach (var vehicleJourney in xml.VehicleJourneys.VehicleJourney)
             {
-                DateTime? startDate = null;
+                var startDate = DateTimeTools.GetStartDate(
+                    xml.Services?.Service?.OperatingPeriod?.StartDate.ToDate(),
+                    scheduleDate,
+                    days);
 
-                if (!string.IsNullOrEmpty(xml.Services?.Service?.OperatingPeriod?.StartDate))
-                {
-                    startDate = DateTimeTools.GetStartDate(
-                        xml.Services.Service.OperatingPeriod.StartDate.ToDate(),
-                        scheduleDate,
-                        days);
-                }
+                var endDate = DateTimeTools.GetEndDate(
+                    xml.Services?.Service?.OperatingPeriod?.EndDate.ToDate(),
+                    scheduleDate,
+                    days);
 
-                DateTime? endDate = null;
-
-                if (!string.IsNullOrEmpty(xml.Services?.Service?.OperatingPeriod?.EndDate))
-                {
-                    endDate = DateTimeTools.GetEndDate(
-                        xml.Services.Service.OperatingPeriod.EndDate.ToDate(),
-                        scheduleDate,
-                        days);
-                }
-
-                if (!startDate.HasValue || !endDate.HasValue)
-                {
-                    continue;
-                }
-
-                if (startDate.Value > endDate.Value || endDate.Value < startDate.Value)
+                if (startDate > endDate)
                 {
                     continue;
                 }
@@ -94,16 +79,16 @@ public abstract class TransXChange
                     continue;
                 }
 
-                var calendar = TransXChangeCalendarHelpers.Build(operatingProfile, startDate.Value, endDate.Value);
+                var calendar = TransXChangeCalendarHelpers.Build(operatingProfile, startDate, endDate);
 
                 if (operatingProfile.BankHolidayOperation != null)
                 {
                     if (operatingProfile.BankHolidayOperation.DaysOfOperation != null)
                     {
                         var holidays = TransXChangeDaysOfOperationHelpers.Build(
-                            operatingProfile.BankHolidayOperation.DaysOfOperation, calendar, key, subdivision);
+                            operatingProfile.BankHolidayOperation.DaysOfOperation, calendar, subdivision, key);
 
-                        foreach (var holidayDate in holidays.Select(holiday => DateTimeTools.GetHolidayDate(holiday.Date, scheduleDate, days)))
+                        foreach (var holidayDate in holidays.Where(h => h.Date >= startDate && h.Date <= endDate).Select(h => h.Date))
                         {
                             if (calendar is not { RunningDates: not null, SupplementRunningDates: not null }) continue;
                                 
@@ -117,9 +102,9 @@ public abstract class TransXChange
                     if (operatingProfile.BankHolidayOperation.DaysOfNonOperation != null)
                     {
                         var holidays = TransXChangeDaysOfNonOperationHelpers.Build(
-                            operatingProfile.BankHolidayOperation.DaysOfNonOperation, calendar, key, subdivision);
+                            operatingProfile.BankHolidayOperation.DaysOfNonOperation, calendar, subdivision, key);
 
-                        foreach (var holidayDate in holidays.Select(holiday => DateTimeTools.GetHolidayDate(holiday.Date, scheduleDate, days)))
+                        foreach (var holidayDate in holidays.Where(h => h.Date >= startDate && h.Date <= endDate).Select(h => h.Date))
                         {
                             if (calendar is not { RunningDates: not null, SupplementNonRunningDates: not null }) continue;
                                 
@@ -135,73 +120,53 @@ public abstract class TransXChange
                 {
                     if (operatingProfile.SpecialDaysOperation.DaysOfOperation?.DateRange != null)
                     {
-                        startDate = null;
+                        startDate = DateTimeTools.GetStartDate(
+                            operatingProfile.SpecialDaysOperation.DaysOfOperation.DateRange.StartDate.ToDate(),
+                            scheduleDate,
+                            days);
 
-                        if (!string.IsNullOrEmpty(operatingProfile.SpecialDaysOperation.DaysOfOperation.DateRange.StartDate))
+                        endDate = DateTimeTools.GetEndDate(
+                            operatingProfile.SpecialDaysOperation.DaysOfOperation.DateRange.EndDate.ToDate(),
+                            scheduleDate,
+                            days);
+
+                        while (startDate <= endDate)
                         {
-                            startDate = DateTimeTools.GetStartDate(
-                                operatingProfile.SpecialDaysOperation.DaysOfOperation.DateRange.StartDate.ToDate(),
-                                scheduleDate,
-                                days);
-                        }
-
-                        endDate = null;
-
-                        if (!string.IsNullOrEmpty(operatingProfile.SpecialDaysOperation.DaysOfOperation.DateRange.EndDate))
-                        {
-                            endDate = DateTimeTools.GetEndDate(
-                                operatingProfile.SpecialDaysOperation.DaysOfOperation.DateRange.EndDate.ToDate(),
-                                scheduleDate,
-                                days);
-                        }
-
-                        if (startDate.HasValue && endDate.HasValue && calendar is { RunningDates: not null, SupplementRunningDates: not null })
-                        {
-                            while (startDate.Value <= endDate.Value)
+                            if (calendar is { RunningDates: not null, SupplementRunningDates: not null })
                             {
-                                if (!calendar.RunningDates.Contains(startDate.Value))
+                                if (!calendar.RunningDates.Contains(startDate))
                                 {
-                                    calendar.SupplementRunningDates.Add(startDate.Value);
+                                    calendar.SupplementRunningDates.Add(startDate);
                                 }
-
-                                startDate = startDate.Value.AddDays(1);
                             }
+
+                            startDate = startDate.AddDays(1);
                         }
                     }
 
                     if (operatingProfile.SpecialDaysOperation.DaysOfNonOperation?.DateRange != null)
                     {
-                        startDate = null;
+                        startDate = DateTimeTools.GetStartDate(
+                            operatingProfile.SpecialDaysOperation.DaysOfNonOperation.DateRange.StartDate.ToDate(),
+                            scheduleDate,
+                            days);
 
-                        if (!string.IsNullOrEmpty(operatingProfile.SpecialDaysOperation.DaysOfNonOperation.DateRange.StartDate))
+                        endDate = DateTimeTools.GetEndDate(
+                            operatingProfile.SpecialDaysOperation.DaysOfNonOperation.DateRange.EndDate.ToDate(),
+                            scheduleDate,
+                            days);
+
+                        while (startDate <= endDate)
                         {
-                            startDate = DateTimeTools.GetStartDate(
-                                operatingProfile.SpecialDaysOperation.DaysOfNonOperation.DateRange.StartDate.ToDate(),
-                                scheduleDate,
-                                days);
-                        }
-
-                        endDate = null;
-
-                        if (!string.IsNullOrEmpty(operatingProfile.SpecialDaysOperation.DaysOfNonOperation.DateRange.EndDate))
-                        {
-                            endDate = DateTimeTools.GetEndDate(
-                                operatingProfile.SpecialDaysOperation.DaysOfNonOperation.DateRange.EndDate.ToDate(),
-                                scheduleDate,
-                                days);
-                        }
-
-                        if (startDate.HasValue && endDate.HasValue && calendar is { RunningDates: not null, SupplementNonRunningDates: not null })
-                        {
-                            while (startDate.Value <= endDate.Value)
+                            if (calendar is { RunningDates: not null, SupplementNonRunningDates: not null })
                             {
-                                if (calendar.RunningDates.Contains(startDate.Value))
+                                if (calendar.RunningDates.Contains(startDate))
                                 {
-                                    calendar.SupplementNonRunningDates.Add(startDate.Value);
+                                    calendar.SupplementNonRunningDates.Add(startDate);
                                 }
-
-                                startDate = startDate.Value.AddDays(1);
                             }
+
+                            startDate = startDate.AddDays(1);
                         }
                     }
                 }
@@ -372,14 +337,14 @@ public abstract class TransXChange
         return results;
     }
     
-    private static Dictionary<string, TransXChangeSchedule> ReturnSchedulesFromDirectory(string path, Dictionary<string, NaptanStop> stops, string subdivision, string mode, IList<string> filters, int days, DateTime scheduleDate, string key)
+    private static Dictionary<string, TransXChangeSchedule> ReturnSchedulesFromDirectory(string path, Dictionary<string, NaptanStop> stops, string subdivision, string mode, IList<string> filters, int days, DateTime scheduleDate, string? key)
     {
         Dictionary<string, TransXChangeSchedule> results = [];
         var entries = Directory.GetFiles(path);
 
         foreach (var entry in entries)
         {
-            if (!entry.EndsWith(".xml")) continue;
+            if (!entry.EndsWith(".xml", StringComparison.CurrentCultureIgnoreCase)) continue;
                 
             using StreamReader reader = new(entry);
 
@@ -392,32 +357,17 @@ public abstract class TransXChange
                 
             foreach (var vehicleJourney in xml.VehicleJourneys.VehicleJourney)
             {
-                DateTime? startDate = null;
+                var startDate = DateTimeTools.GetStartDate(
+                    xml.Services?.Service?.OperatingPeriod?.StartDate.ToDate(),
+                    scheduleDate,
+                    days);
 
-                if (!string.IsNullOrEmpty(xml.Services?.Service?.OperatingPeriod?.StartDate))
-                {
-                    startDate = DateTimeTools.GetStartDate(
-                        xml.Services.Service.OperatingPeriod.StartDate.ToDate(),
-                        scheduleDate,
-                        days);
-                }
+                var endDate = DateTimeTools.GetEndDate(
+                    xml.Services?.Service?.OperatingPeriod?.EndDate.ToDate(),
+                    scheduleDate,
+                    days);
 
-                DateTime? endDate = null;
-
-                if (!string.IsNullOrEmpty(xml.Services?.Service?.OperatingPeriod?.EndDate))
-                {
-                    endDate = DateTimeTools.GetEndDate(
-                        xml.Services.Service.OperatingPeriod.EndDate.ToDate(),
-                        scheduleDate,
-                        days);
-                }
-
-                if (!startDate.HasValue || !endDate.HasValue)
-                {
-                    continue;
-                }
-
-                if (startDate.Value > endDate.Value || endDate.Value < startDate.Value)
+                if (startDate > endDate)
                 {
                     continue;
                 }
@@ -445,16 +395,16 @@ public abstract class TransXChange
                     continue;
                 }
 
-                var calendar = TransXChangeCalendarHelpers.Build(operatingProfile, startDate.Value, endDate.Value);
+                var calendar = TransXChangeCalendarHelpers.Build(operatingProfile, startDate, endDate);
 
                 if (operatingProfile.BankHolidayOperation != null)
                 {
                     if (operatingProfile.BankHolidayOperation.DaysOfOperation != null)
                     {
                         var holidays = TransXChangeDaysOfOperationHelpers.Build(
-                            operatingProfile.BankHolidayOperation.DaysOfOperation, calendar, key, subdivision);
+                            operatingProfile.BankHolidayOperation.DaysOfOperation, calendar, subdivision, key);
 
-                        foreach (var holidayDate in holidays.Select(holiday => DateTimeTools.GetHolidayDate(holiday.Date, scheduleDate, days)))
+                        foreach (var holidayDate in holidays.Where(h => h.Date >= startDate && h.Date <= endDate).Select(h => h.Date))
                         {
                             if (calendar is not { RunningDates: not null, SupplementRunningDates: not null }) continue;
                                 
@@ -468,9 +418,9 @@ public abstract class TransXChange
                     if (operatingProfile.BankHolidayOperation.DaysOfNonOperation != null)
                     {
                         var holidays = TransXChangeDaysOfNonOperationHelpers.Build(
-                            operatingProfile.BankHolidayOperation.DaysOfNonOperation, calendar, key, subdivision);
+                            operatingProfile.BankHolidayOperation.DaysOfNonOperation, calendar, subdivision, key);
 
-                        foreach (var holidayDate in holidays.Select(holiday => DateTimeTools.GetHolidayDate(holiday.Date, scheduleDate, days)))
+                        foreach (var holidayDate in holidays.Where(h => h.Date >= startDate && h.Date <= endDate).Select(h => h.Date))
                         {
                             if (calendar is not { RunningDates: not null, SupplementNonRunningDates: not null }) continue;
                                 
@@ -486,73 +436,53 @@ public abstract class TransXChange
                 {
                     if (operatingProfile.SpecialDaysOperation.DaysOfOperation?.DateRange != null)
                     {
-                        startDate = null;
+                        startDate = DateTimeTools.GetStartDate(
+                            operatingProfile.SpecialDaysOperation.DaysOfOperation.DateRange.StartDate.ToDate(),
+                            scheduleDate,
+                            days);
 
-                        if (!string.IsNullOrEmpty(operatingProfile.SpecialDaysOperation.DaysOfOperation.DateRange.StartDate))
+                        endDate = DateTimeTools.GetEndDate(
+                            operatingProfile.SpecialDaysOperation.DaysOfOperation.DateRange.EndDate.ToDate(),
+                            scheduleDate,
+                            days);
+
+                        while (startDate <= endDate)
                         {
-                            startDate = DateTimeTools.GetStartDate(
-                                operatingProfile.SpecialDaysOperation.DaysOfOperation.DateRange.StartDate.ToDate(),
-                                scheduleDate,
-                                days);
-                        }
-
-                        endDate = null;
-
-                        if (!string.IsNullOrEmpty(operatingProfile.SpecialDaysOperation.DaysOfOperation.DateRange.EndDate))
-                        {
-                            endDate = DateTimeTools.GetEndDate(
-                                operatingProfile.SpecialDaysOperation.DaysOfOperation.DateRange.EndDate.ToDate(),
-                                scheduleDate,
-                                days);
-                        }
-
-                        if (startDate.HasValue && endDate.HasValue && calendar is { RunningDates: not null, SupplementRunningDates: not null })
-                        {
-                            while (startDate.Value <= endDate.Value)
+                            if (calendar is { RunningDates: not null, SupplementRunningDates: not null })
                             {
-                                if (!calendar.RunningDates.Contains(startDate.Value))
+                                if (!calendar.RunningDates.Contains(startDate))
                                 {
-                                    calendar.SupplementRunningDates.Add(startDate.Value);
+                                    calendar.SupplementRunningDates.Add(startDate);
                                 }
-
-                                startDate = startDate.Value.AddDays(1);
                             }
+
+                            startDate = startDate.AddDays(1);
                         }
                     }
 
                     if (operatingProfile.SpecialDaysOperation.DaysOfNonOperation?.DateRange != null)
                     {
-                        startDate = null;
+                        startDate = DateTimeTools.GetStartDate(
+                            operatingProfile.SpecialDaysOperation.DaysOfNonOperation.DateRange.StartDate.ToDate(),
+                            scheduleDate,
+                            days);
 
-                        if (!string.IsNullOrEmpty(operatingProfile.SpecialDaysOperation.DaysOfNonOperation.DateRange.StartDate))
+                        endDate = DateTimeTools.GetEndDate(
+                            operatingProfile.SpecialDaysOperation.DaysOfNonOperation.DateRange.EndDate.ToDate(),
+                            scheduleDate,
+                            days);
+
+                        while (startDate <= endDate)
                         {
-                            startDate = DateTimeTools.GetStartDate(
-                                operatingProfile.SpecialDaysOperation.DaysOfNonOperation.DateRange.StartDate.ToDate(),
-                                scheduleDate,
-                                days);
-                        }
-
-                        endDate = null;
-
-                        if (!string.IsNullOrEmpty(operatingProfile.SpecialDaysOperation.DaysOfNonOperation.DateRange.EndDate))
-                        {
-                            endDate = DateTimeTools.GetEndDate(
-                                operatingProfile.SpecialDaysOperation.DaysOfNonOperation.DateRange.EndDate.ToDate(),
-                                scheduleDate,
-                                days);
-                        }
-
-                        if (startDate.HasValue && endDate.HasValue && calendar is { RunningDates: not null, SupplementNonRunningDates: not null })
-                        {
-                            while (startDate.Value <= endDate.Value)
+                            if (calendar is { RunningDates: not null, SupplementNonRunningDates: not null })
                             {
-                                if (calendar.RunningDates.Contains(startDate.Value))
+                                if (calendar.RunningDates.Contains(startDate))
                                 {
-                                    calendar.SupplementNonRunningDates.Add(startDate.Value);
+                                    calendar.SupplementNonRunningDates.Add(startDate);
                                 }
-
-                                startDate = startDate.Value.AddDays(1);
                             }
+
+                            startDate = startDate.AddDays(1);
                         }
                     }
                 }

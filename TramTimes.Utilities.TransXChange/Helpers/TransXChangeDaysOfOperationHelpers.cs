@@ -7,7 +7,7 @@ namespace TramTimes.Utilities.TransXChange.Helpers;
 
 public static class TransXChangeDaysOfOperationHelpers
 {
-    public static List<Holiday> Build(TransXChangeDaysOfOperation daysOfOperation, TransXChangeCalendar calendar, string key, string subdivision)
+    public static List<Holiday> Build(TransXChangeDaysOfOperation daysOfOperation, TransXChangeCalendar calendar, string subdivision, string? key)
     {
         if (string.IsNullOrEmpty(HolidaySystem.LicenseKey)) { HolidaySystem.LicenseKey = key; }
 

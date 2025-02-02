@@ -7,7 +7,7 @@ namespace TramTimes.Utilities.TransXChange.Helpers;
 
 public static class GtfsTripHelpers
 {
-    public static void Build(Dictionary<string, TransXChangeSchedule> schedules, string path)
+    public static string Build(Dictionary<string, TransXChangeSchedule> schedules, string path)
     {
         var results = ReturnTripsFromSchedules(schedules);
 
@@ -22,6 +22,8 @@ public static class GtfsTripHelpers
             csv.WriteRecord(value);
             csv.NextRecord();
         }
+        
+        return Path.Combine(path, "trips.txt");
     }
 
     private static Dictionary<string, GtfsTrip> ReturnTripsFromSchedules(Dictionary<string, TransXChangeSchedule> schedules)
