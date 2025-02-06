@@ -61,7 +61,7 @@ public class Service(DocklandsFixture fixture)
     [InlineData("9400ZZDLMUD", "31/01/2025 15:00", new[] { "31/01/2025 15:00", "31/01/2025 15:10", "31/01/2025 15:20" })]
     [InlineData("9400ZZDLPOP", "01/02/2025 17:00", new[] { "01/02/2025 17:00", "01/02/2025 17:10", "01/02/2025 17:20" })]
     [InlineData("9400ZZDLSTD", "02/02/2025 19:00", new[] { "02/02/2025 19:00", "02/02/2025 19:10", "02/02/2025 19:20" })]
-    [InlineData("9400ZZDLWFE", "03/02/2025 21:00", new[] { "03/03/2025 21:00", "03/02/2025 21:10", "03/02/2025 21:20" })]
+    [InlineData("9400ZZDLWFE", "03/02/2025 21:00", new[] { "03/02/2025 21:00", "03/02/2025 21:10", "03/02/2025 21:20" })]
     public async Task Search_Feed_Pass(string id, string target, string[] expected)
     {
         var storage = Directory.CreateDirectory(Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString()));

@@ -35,8 +35,12 @@ public static class DateTimeTools
         {
             return scheduleDate;
         }
+
+        if (startDate.Value == DateTime.MinValue)
+        {
+            return scheduleDate;
+        }
         
-        if (startDate.Value == DateTime.MinValue) return scheduleDate;
         if (startDate.Value < scheduleDate) return scheduleDate;
         if (startDate.Value == scheduleDate) return scheduleDate;
 
@@ -56,8 +60,12 @@ public static class DateTimeTools
         {
             return scheduleDate.AddDays(days);
         }
+
+        if (endDate.Value == DateTime.MinValue)
+        {
+            return scheduleDate.AddDays(days);
+        }
         
-        if (endDate.Value == DateTime.MinValue) return scheduleDate.AddDays(days);
         if (endDate.Value < scheduleDate) return DateTime.MinValue;
         if (endDate.Value == scheduleDate) return scheduleDate;
         

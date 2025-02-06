@@ -240,14 +240,6 @@ public abstract class TransXChange
                         }
                     }
 
-                    if (!string.IsNullOrEmpty(patternTimings.ElementAtOrDefault(i - 1)?.RunTime))
-                    {
-                        if (XmlConvert.ToTimeSpan(patternTimings[i - 1].RunTime ?? string.Empty) == TimeSpan.Zero && waitTime == TimeSpan.Zero)
-                        {
-                            runTime = runTime.Add(TimeSpan.FromSeconds(30));
-                        }
-                    }
-
                     var arrivalTime = departureTime?.Add(runTime);
                     departureTime = arrivalTime?.Add(waitTime);
                         
@@ -553,14 +545,6 @@ public abstract class TransXChange
                             {
                                 waitTime = waitTime.Add(XmlConvert.ToTimeSpan(patternTimings[i].From?.WaitTime ?? string.Empty));
                             }
-                        }
-                    }
-
-                    if (!string.IsNullOrEmpty(patternTimings.ElementAtOrDefault(i - 1)?.RunTime))
-                    {
-                        if (XmlConvert.ToTimeSpan(patternTimings[i - 1].RunTime ?? string.Empty) == TimeSpan.Zero && waitTime == TimeSpan.Zero)
-                        {
-                            runTime = runTime.Add(TimeSpan.FromSeconds(30));
                         }
                     }
 
