@@ -13,6 +13,8 @@
         <PackageReference Include="Microsoft.Extensions.Configuration" Version="9.0.1" />
         <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="9.0.1" />
         <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.12.0" />
+        <PackageReference Include="NextDepartures.Standard" Version="3.6.3" />
+        <PackageReference Include="NextDepartures.Storage.GTFS" Version="3.6.3" />
         <PackageReference Include="xunit" Version="2.9.3" />
         <PackageReference Include="xunit.runner.visualstudio" Version="3.0.1" />
     </ItemGroup>
@@ -22,6 +24,36 @@
     </ItemGroup>
 
     <ItemGroup>
+        <None Update="Read\Blackpool\Data\feed.zip">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+        <None Update="Read\Docklands\Data\feed.zip">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+        <None Update="Read\Edinburgh\Data\feed.zip">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+        <None Update="Read\Glasgow\Data\feed.zip">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+        <None Update="Read\London\Data\feed.zip">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+        <None Update="Read\Manchester\Data\feed.zip">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+        <None Update="Read\Nottingham\Data\feed.zip">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+        <None Update="Read\SouthYorkshire\Data\feed.zip">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+        <None Update="Read\TyneWear\Data\feed.zip">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+        <None Update="Read\WestMidlands\Data\feed.zip">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
         <None Update="Write\Blackpool\Data\feed.zip">
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
         </None>
