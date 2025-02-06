@@ -11,7 +11,7 @@ public class BlackpoolFixture
     private static IConfiguration Configuration { get; } = new ConfigurationBuilder().AddUserSecrets(Assembly.GetExecutingAssembly(), true).Build();
     
     [UsedImplicitly]
-    public Dictionary<string, TransXChangeSchedule> Schedules { get; } = TransXChange.Build("Write/Blackpool/Data/feed.zip", Naptan.Build("Write/Blackpool/Data/feed.zip"), 
+    public Dictionary<string, TravelineSchedule> Schedules { get; } = TransXChange.Build("Write/Blackpool/Data/feed.zip", Naptan.Build("Write/Blackpool/Data/feed.zip"), 
         "GB-ENG", "all", ["all"], 7, "28/01/2025", Configuration["key"]);
 }
 
@@ -21,7 +21,7 @@ public class DocklandsFixture
     private static IConfiguration Configuration { get; } = new ConfigurationBuilder().AddUserSecrets(Assembly.GetExecutingAssembly(), true).Build();
     
     [UsedImplicitly]
-    public Dictionary<string, TransXChangeSchedule> Schedules { get; } = TransXChange.Build("Write/Docklands/Data/feed.zip", Naptan.Build("Write/Docklands/Data/feed.zip"), 
+    public Dictionary<string, TravelineSchedule> Schedules { get; } = TransXChange.Build("Write/Docklands/Data/feed.zip", Naptan.Build("Write/Docklands/Data/feed.zip"), 
         "GB-ENG", "all", ["all"], 7, "28/01/2025", Configuration["key"]);
 }
 
@@ -31,7 +31,7 @@ public class EdinburghFixture
     private static IConfiguration Configuration { get; } = new ConfigurationBuilder().AddUserSecrets(Assembly.GetExecutingAssembly(), true).Build();
     
     [UsedImplicitly]
-    public Dictionary<string, TransXChangeSchedule> Schedules { get; } = TransXChange.Build("Write/Edinburgh/Data/feed.zip", Naptan.Build("Write/Edinburgh/Data/feed.zip"), 
+    public Dictionary<string, TravelineSchedule> Schedules { get; } = TransXChange.Build("Write/Edinburgh/Data/feed.zip", Naptan.Build("Write/Edinburgh/Data/feed.zip"), 
         "GB-SCT", "all", ["all"], 7, "28/01/2025", Configuration["key"]);
 }
 
@@ -41,7 +41,7 @@ public class GlasgowFixture
     private static IConfiguration Configuration { get; } = new ConfigurationBuilder().AddUserSecrets(Assembly.GetExecutingAssembly(), true).Build();
     
     [UsedImplicitly]
-    public Dictionary<string, TransXChangeSchedule> Schedules { get; } = TransXChange.Build("Write/Glasgow/Data/feed.zip", Naptan.Build("Write/Glasgow/Data/feed.zip"), 
+    public Dictionary<string, TravelineSchedule> Schedules { get; } = TransXChange.Build("Write/Glasgow/Data/feed.zip", Naptan.Build("Write/Glasgow/Data/feed.zip"), 
         "GB-SCT", "all", ["all"], 7, "28/01/2025", Configuration["key"]);
 }
 
@@ -51,7 +51,7 @@ public class LondonFixture
     private static IConfiguration Configuration { get; } = new ConfigurationBuilder().AddUserSecrets(Assembly.GetExecutingAssembly(), true).Build();
     
     [UsedImplicitly]
-    public Dictionary<string, TransXChangeSchedule> Schedules { get; } = TransXChange.Build("Write/London/Data/feed.zip", Naptan.Build("Write/London/Data/feed.zip"), 
+    public Dictionary<string, TravelineSchedule> Schedules { get; } = TransXChange.Build("Write/London/Data/feed.zip", Naptan.Build("Write/London/Data/feed.zip"), 
         "GB-ENG", "all", ["all"], 7, "28/01/2025", Configuration["key"]);
 }
 
@@ -61,7 +61,7 @@ public class ManchesterFixture
     private static IConfiguration Configuration { get; } = new ConfigurationBuilder().AddUserSecrets(Assembly.GetExecutingAssembly(), true).Build();
     
     [UsedImplicitly]
-    public Dictionary<string, TransXChangeSchedule> Schedules { get; } = TransXChange.Build("Write/Manchester/Data/feed.zip", Naptan.Build("Write/Manchester/Data/feed.zip"), 
+    public Dictionary<string, TravelineSchedule> Schedules { get; } = TransXChange.Build("Write/Manchester/Data/feed.zip", Naptan.Build("Write/Manchester/Data/feed.zip"), 
         "GB-ENG", "all", ["all"], 7, "28/01/2025", Configuration["key"]);
 }
 
@@ -71,7 +71,7 @@ public class NottinghamFixture
     private static IConfiguration Configuration { get; } = new ConfigurationBuilder().AddUserSecrets(Assembly.GetExecutingAssembly(), true).Build();
     
     [UsedImplicitly]
-    public Dictionary<string, TransXChangeSchedule> Schedules { get; } = TransXChange.Build("Write/Nottingham/Data/feed.zip", Naptan.Build("Write/Nottingham/Data/feed.zip"), 
+    public Dictionary<string, TravelineSchedule> Schedules { get; } = TransXChange.Build("Write/Nottingham/Data/feed.zip", Naptan.Build("Write/Nottingham/Data/feed.zip"), 
         "GB-ENG", "all", ["all"], 7, "28/01/2025", Configuration["key"]);
 }
 
@@ -81,7 +81,7 @@ public class SouthYorkshireFixture
     private static IConfiguration Configuration { get; } = new ConfigurationBuilder().AddUserSecrets(Assembly.GetExecutingAssembly(), true).Build();
     
     [UsedImplicitly]
-    public Dictionary<string, TransXChangeSchedule> Schedules { get; } = TransXChange.Build("Write/SouthYorkshire/Data/feed.zip", Naptan.Build("Write/SouthYorkshire/Data/feed.zip"), 
+    public Dictionary<string, TravelineSchedule> Schedules { get; } = TransXChange.Build("Write/SouthYorkshire/Data/feed.zip", Naptan.Build("Write/SouthYorkshire/Data/feed.zip"), 
         "GB-ENG", "all", ["all"], 7, "28/01/2025", Configuration["key"]);
 }
 
@@ -91,7 +91,7 @@ public class TyneWearFixture
     private static IConfiguration Configuration { get; } = new ConfigurationBuilder().AddUserSecrets(Assembly.GetExecutingAssembly(), true).Build();
 
     [UsedImplicitly]
-    public Dictionary<string, TransXChangeSchedule> Schedules { get; } = TransXChange.Build("Write/TyneWear/Data/feed.zip", Naptan.Build("Write/TyneWear/Data/feed.zip"),
+    public Dictionary<string, TravelineSchedule> Schedules { get; } = TransXChange.Build("Write/TyneWear/Data/feed.zip", Naptan.Build("Write/TyneWear/Data/feed.zip"),
         "GB-ENG", "all", ["all"], 7, "28/01/2025", Configuration["key"]);
 }
 
@@ -101,6 +101,6 @@ public class WestMidlandsFixture
     private static IConfiguration Configuration { get; } = new ConfigurationBuilder().AddUserSecrets(Assembly.GetExecutingAssembly(), true).Build();
 
     [UsedImplicitly]
-    public Dictionary<string, TransXChangeSchedule> Schedules { get; } = TransXChange.Build("Write/WestMidlands/Data/feed.zip", Naptan.Build("Write/WestMidlands/Data/feed.zip"),
+    public Dictionary<string, TravelineSchedule> Schedules { get; } = TransXChange.Build("Write/WestMidlands/Data/feed.zip", Naptan.Build("Write/WestMidlands/Data/feed.zip"),
         "GB-ENG", "all", ["all"], 7, "28/01/2025", Configuration["key"]);
 }

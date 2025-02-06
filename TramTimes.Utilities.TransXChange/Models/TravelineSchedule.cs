@@ -2,7 +2,7 @@ using JetBrains.Annotations;
 
 namespace TramTimes.Utilities.TransXChange.Models;
 
-public class TransXChangeSchedule
+public class TravelineSchedule
 {
     [UsedImplicitly]
     public string? Id { get; set; }

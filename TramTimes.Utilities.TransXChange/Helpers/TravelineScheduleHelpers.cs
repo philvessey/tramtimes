@@ -2,11 +2,11 @@ using TramTimes.Utilities.TransXChange.Models;
 
 namespace TramTimes.Utilities.TransXChange.Helpers;
 
-public static class TransXChangeScheduleHelpers
+public static class TravelineScheduleHelpers
 {
-    public static TransXChangeSchedule Build(TransXChangeOperator @operator, TransXChangeService service, TransXChangeJourneyPattern journeyPattern, TravelineCalendar calendar)
+    public static TravelineSchedule Build(TransXChangeOperator @operator, TransXChangeService service, TransXChangeJourneyPattern journeyPattern, TravelineCalendar calendar)
     {
-        TransXChangeSchedule result = new()
+        TravelineSchedule result = new()
         {
             Id = Guid.NewGuid().ToString(),
             ServiceCode = service.ServiceCode,
@@ -75,7 +75,7 @@ public static class TransXChangeScheduleHelpers
         return result;
     }
 
-    public static bool ReturnRunningDateMatch(Dictionary<string, TransXChangeSchedule> schedules, TransXChangeSchedule schedule)
+    public static bool ReturnRunningDateMatch(Dictionary<string, TravelineSchedule> schedules, TravelineSchedule schedule)
     {
         if (schedule.Calendar is not { RunningDates: not null }) return false;
 
@@ -145,7 +145,7 @@ public static class TransXChangeScheduleHelpers
         return false;
     }
     
-    public static bool ReturnSupplementRunningDateMatch(Dictionary<string, TransXChangeSchedule> schedules, TransXChangeSchedule schedule)
+    public static bool ReturnSupplementRunningDateMatch(Dictionary<string, TravelineSchedule> schedules, TravelineSchedule schedule)
     {
         if (schedule.Calendar is not { SupplementRunningDates: not null }) return false;
 
@@ -215,7 +215,7 @@ public static class TransXChangeScheduleHelpers
         return false;
     }
     
-    public static bool ReturnSupplementNonRunningDateMatch(Dictionary<string, TransXChangeSchedule> schedules, TransXChangeSchedule schedule)
+    public static bool ReturnSupplementNonRunningDateMatch(Dictionary<string, TravelineSchedule> schedules, TravelineSchedule schedule)
     {
         if (schedule.Calendar is not { SupplementNonRunningDates: not null }) return false;
 

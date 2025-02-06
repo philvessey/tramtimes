@@ -7,7 +7,7 @@ namespace TramTimes.Utilities.TransXChange.Helpers;
 
 public static class GtfsCalendarDateHelpers
 {
-    public static string Build(Dictionary<string, TransXChangeSchedule> schedules, string path)
+    public static string Build(Dictionary<string, TravelineSchedule> schedules, string path)
     {
         var results = ReturnCalendarDatesFromSchedules(schedules);
 
@@ -26,7 +26,7 @@ public static class GtfsCalendarDateHelpers
         return Path.Combine(path, "calendar_dates.txt");
     }
 
-    private static Dictionary<string, GtfsCalendarDate> ReturnCalendarDatesFromSchedules(Dictionary<string, TransXChangeSchedule> schedules)
+    private static Dictionary<string, GtfsCalendarDate> ReturnCalendarDatesFromSchedules(Dictionary<string, TravelineSchedule> schedules)
     {
         var results = new Dictionary<string, GtfsCalendarDate>();
         

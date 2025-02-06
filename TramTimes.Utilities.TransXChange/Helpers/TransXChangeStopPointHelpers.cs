@@ -22,7 +22,7 @@ public static class TransXChangeStopPointHelpers
         };
     }
 
-    public static bool ReturnFilterMatch(IList<string> filters, TransXChangeSchedule schedule)
+    public static bool ReturnFilterMatch(IList<string> filters, TravelineSchedule schedule)
     {
         if (schedule.StopPoints == null) return false;
         
@@ -96,7 +96,7 @@ public static class TransXChangeStopPointHelpers
         return false;
     }
     
-    public static bool ReturnModeMatch(string mode, TransXChangeSchedule schedule)
+    public static bool ReturnModeMatch(string mode, TravelineSchedule schedule)
     {
         if (schedule.StopPoints == null) return false;
         

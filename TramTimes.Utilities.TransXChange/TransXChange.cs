@@ -10,7 +10,7 @@ namespace TramTimes.Utilities.TransXChange;
 
 public abstract class TransXChange
 {
-    public static Dictionary<string, TransXChangeSchedule> Build(string path, Dictionary<string, NaptanStop> stops, string subdivision, string mode, IList<string> filters, int days, string date, string? key)
+    public static Dictionary<string, TravelineSchedule> Build(string path, Dictionary<string, NaptanStop> stops, string subdivision, string mode, IList<string> filters, int days, string date, string? key)
     {
         DateTime? today = DateTime.Today;
 
@@ -21,9 +21,9 @@ public abstract class TransXChange
                 DateTimeTools.GetScheduleDate(today.ToZonedDate("Europe/London").Date, date), key ?? string.Empty);
     }
 
-    private static Dictionary<string, TransXChangeSchedule> ReturnSchedulesFromArchive(string path, Dictionary<string, NaptanStop> stops, string subdivision, string mode, IList<string> filters, int days, DateTime scheduleDate, string? key)
+    private static Dictionary<string, TravelineSchedule> ReturnSchedulesFromArchive(string path, Dictionary<string, NaptanStop> stops, string subdivision, string mode, IList<string> filters, int days, DateTime scheduleDate, string? key)
     {
-        Dictionary<string, TransXChangeSchedule> results = [];
+        Dictionary<string, TravelineSchedule> results = [];
         using var archive = ZipFile.Open(path, ZipArchiveMode.Read);
 
         foreach (var entry in archive.Entries)
@@ -186,11 +186,11 @@ public abstract class TransXChange
                     calendar.SupplementNonRunningDates = [.. calendar.SupplementNonRunningDates.Distinct().OrderBy(d => d)];
                 }
                     
-                TransXChangeSchedule? schedule = null;
+                TravelineSchedule? schedule = null;
 
                 if (xml.Operators?.Operator != null && xml.Services?.Service != null)
                 {
-                    schedule = TransXChangeScheduleHelpers.Build(xml.Operators.Operator, xml.Services.Service, journeyPattern, calendar);
+                    schedule = TravelineScheduleHelpers.Build(xml.Operators.Operator, xml.Services.Service, journeyPattern, calendar);
                 }
 
                 if (schedule == null)
@@ -294,17 +294,17 @@ public abstract class TransXChange
                     schedule.StopPoints?.Add(destinationPoint);
                 }
                 
-                if (schedule.StopPoints != null && TransXChangeScheduleHelpers.ReturnSupplementNonRunningDateMatch(results, schedule))
+                if (schedule.StopPoints != null && TravelineScheduleHelpers.ReturnSupplementNonRunningDateMatch(results, schedule))
                 {
                     continue;
                 }
                 
-                if (schedule.StopPoints != null && TransXChangeScheduleHelpers.ReturnSupplementRunningDateMatch(results, schedule))
+                if (schedule.StopPoints != null && TravelineScheduleHelpers.ReturnSupplementRunningDateMatch(results, schedule))
                 {
                     continue;
                 }
                     
-                if (schedule.StopPoints != null && TransXChangeScheduleHelpers.ReturnRunningDateMatch(results, schedule))
+                if (schedule.StopPoints != null && TravelineScheduleHelpers.ReturnRunningDateMatch(results, schedule))
                 {
                     continue;
                 }
@@ -329,9 +329,9 @@ public abstract class TransXChange
         return results;
     }
     
-    private static Dictionary<string, TransXChangeSchedule> ReturnSchedulesFromDirectory(string path, Dictionary<string, NaptanStop> stops, string subdivision, string mode, IList<string> filters, int days, DateTime scheduleDate, string? key)
+    private static Dictionary<string, TravelineSchedule> ReturnSchedulesFromDirectory(string path, Dictionary<string, NaptanStop> stops, string subdivision, string mode, IList<string> filters, int days, DateTime scheduleDate, string? key)
     {
-        Dictionary<string, TransXChangeSchedule> results = [];
+        Dictionary<string, TravelineSchedule> results = [];
         var entries = Directory.GetFiles(path);
 
         foreach (var entry in entries)
@@ -494,11 +494,11 @@ public abstract class TransXChange
                     calendar.SupplementNonRunningDates = [.. calendar.SupplementNonRunningDates.Distinct().OrderBy(d => d)];
                 }
                     
-                TransXChangeSchedule? schedule = null;
+                TravelineSchedule? schedule = null;
 
                 if (xml.Operators?.Operator != null && xml.Services?.Service != null)
                 {
-                    schedule = TransXChangeScheduleHelpers.Build(xml.Operators.Operator, xml.Services.Service, journeyPattern, calendar);
+                    schedule = TravelineScheduleHelpers.Build(xml.Operators.Operator, xml.Services.Service, journeyPattern, calendar);
                 }
 
                 if (schedule == null)
@@ -602,17 +602,17 @@ public abstract class TransXChange
                     schedule.StopPoints?.Add(destinationPoint);
                 }
                 
-                if (schedule.StopPoints != null && TransXChangeScheduleHelpers.ReturnSupplementNonRunningDateMatch(results, schedule))
+                if (schedule.StopPoints != null && TravelineScheduleHelpers.ReturnSupplementNonRunningDateMatch(results, schedule))
                 {
                     continue;
                 }
                 
-                if (schedule.StopPoints != null && TransXChangeScheduleHelpers.ReturnSupplementRunningDateMatch(results, schedule))
+                if (schedule.StopPoints != null && TravelineScheduleHelpers.ReturnSupplementRunningDateMatch(results, schedule))
                 {
                     continue;
                 }
                     
-                if (schedule.StopPoints != null && TransXChangeScheduleHelpers.ReturnRunningDateMatch(results, schedule))
+                if (schedule.StopPoints != null && TravelineScheduleHelpers.ReturnRunningDateMatch(results, schedule))
                 {
                     continue;
                 }

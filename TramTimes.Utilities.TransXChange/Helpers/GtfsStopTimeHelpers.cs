@@ -7,7 +7,7 @@ namespace TramTimes.Utilities.TransXChange.Helpers;
 
 public static class GtfsStopTimeHelpers
 {
-    public static string Build(Dictionary<string, TransXChangeSchedule> schedules, string path)
+    public static string Build(Dictionary<string, TravelineSchedule> schedules, string path)
     {
         var results = ReturnStopTimesFromSchedules(schedules);
 
@@ -26,7 +26,7 @@ public static class GtfsStopTimeHelpers
         return Path.Combine(path, "stop_times.txt");
     }
 
-    private static Dictionary<string, GtfsStopTime> ReturnStopTimesFromSchedules(Dictionary<string, TransXChangeSchedule> schedules)
+    private static Dictionary<string, GtfsStopTime> ReturnStopTimesFromSchedules(Dictionary<string, TravelineSchedule> schedules)
     {
         var results = new Dictionary<string, GtfsStopTime>();
         
