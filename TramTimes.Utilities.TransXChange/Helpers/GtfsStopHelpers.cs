@@ -81,11 +81,11 @@ public static class GtfsStopHelpers
                         stopId = value.StopPoints[i].NaptanStop?.AtcoCode ?? string.Empty;
                     }
                 }
-                else if (value.StopPoints[i].TransXChangeStop != null)
+                else if (value.StopPoints[i].TravelineStop != null)
                 {
-                    if (!string.IsNullOrEmpty(value.StopPoints[i].TransXChangeStop?.StopPointReference))
+                    if (!string.IsNullOrEmpty(value.StopPoints[i].TravelineStop?.StopPointReference))
                     {
-                        stopId = value.StopPoints[i].TransXChangeStop?.StopPointReference ?? string.Empty;
+                        stopId = value.StopPoints[i].TravelineStop?.StopPointReference ?? string.Empty;
                     }
                 }
 
@@ -108,11 +108,11 @@ public static class GtfsStopHelpers
                         stopName = value.StopPoints[i].NaptanStop?.CommonName ?? string.Empty;
                     }
                 }
-                else if (value.StopPoints[i].TransXChangeStop != null)
+                else if (value.StopPoints[i].TravelineStop != null)
                 {
-                    if (!string.IsNullOrEmpty(value.StopPoints[i].TransXChangeStop?.CommonName))
+                    if (!string.IsNullOrEmpty(value.StopPoints[i].TravelineStop?.CommonName))
                     {
-                        stopName = value.StopPoints[i].TransXChangeStop?.CommonName ?? string.Empty;
+                        stopName = value.StopPoints[i].TravelineStop?.CommonName ?? string.Empty;
                     }
                 }
 
@@ -125,11 +125,11 @@ public static class GtfsStopHelpers
                         stopDesc = value.StopPoints[i].NaptanStop?.LocalityName ?? string.Empty;
                     }
                 }
-                else if (value.StopPoints[i].TransXChangeStop != null)
+                else if (value.StopPoints[i].TravelineStop != null)
                 {
-                    if (!string.IsNullOrEmpty(value.StopPoints[i].TransXChangeStop?.LocalityName))
+                    if (!string.IsNullOrEmpty(value.StopPoints[i].TravelineStop?.LocalityName))
                     {
-                        stopDesc = value.StopPoints[i].TransXChangeStop?.LocalityName ?? string.Empty;
+                        stopDesc = value.StopPoints[i].TravelineStop?.LocalityName ?? string.Empty;
                     }
                 }
 

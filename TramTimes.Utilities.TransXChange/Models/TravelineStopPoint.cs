@@ -2,7 +2,7 @@ using JetBrains.Annotations;
 
 namespace TramTimes.Utilities.TransXChange.Models;
 
-public class TransXChangeStopPoint
+public class TravelineStopPoint
 {
     [UsedImplicitly]
     public string? AtcoCode { get; set; }
@@ -20,5 +20,5 @@ public class TransXChangeStopPoint
     public NaptanStop? NaptanStop { get; set; }
     
     [UsedImplicitly]
-    public TravelineStop? TransXChangeStop { get; set; }
+    public TravelineStop? TravelineStop { get; set; }
 }

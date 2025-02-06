@@ -120,11 +120,11 @@ public static class GtfsStopTimeHelpers
                         stopId = value.StopPoints[i].NaptanStop?.AtcoCode ?? string.Empty;
                     }
                 }
-                else if (value.StopPoints[i].TransXChangeStop != null)
+                else if (value.StopPoints[i].TravelineStop != null)
                 {
-                    if (!string.IsNullOrEmpty(value.StopPoints[i].TransXChangeStop?.StopPointReference))
+                    if (!string.IsNullOrEmpty(value.StopPoints[i].TravelineStop?.StopPointReference))
                     {
-                        stopId = value.StopPoints[i].TransXChangeStop?.StopPointReference ?? string.Empty;
+                        stopId = value.StopPoints[i].TravelineStop?.StopPointReference ?? string.Empty;
                     }
                 }
 

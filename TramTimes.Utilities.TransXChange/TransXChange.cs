@@ -247,7 +247,7 @@ public abstract class TransXChange
                     {
                         case 0:
                         {
-                            var originPoint = TransXChangeStopPointHelpers.Build(stops,
+                            var originPoint = TravelineStopPointHelpers.Build(stops,
                                 stopPoints.FirstOrDefault(s =>
                                     s.StopPointRef == patternTimings[i].From?.StopPointRef) ??
                                 new TransXChangeAnnotatedStopPointRef
@@ -263,7 +263,7 @@ public abstract class TransXChange
                         }
                         case > 0:
                         {
-                            var callingPoint = TransXChangeStopPointHelpers.Build(stops,
+                            var callingPoint = TravelineStopPointHelpers.Build(stops,
                                 stopPoints.FirstOrDefault(s =>
                                     s.StopPointRef == patternTimings[i].From?.StopPointRef) ??
                                 new TransXChangeAnnotatedStopPointRef
@@ -281,7 +281,7 @@ public abstract class TransXChange
 
                     if (i != patternTimings.Count - 1) continue;
 
-                    var destinationPoint = TransXChangeStopPointHelpers.Build(stops,
+                    var destinationPoint = TravelineStopPointHelpers.Build(stops,
                         stopPoints.FirstOrDefault(s =>
                             s.StopPointRef == patternTimings[i].To?.StopPointRef) ??
                         new TransXChangeAnnotatedStopPointRef
@@ -309,12 +309,12 @@ public abstract class TransXChange
                     continue;
                 }
                     
-                if (schedule.StopPoints != null && !TransXChangeStopPointHelpers.ReturnModeMatch(mode, schedule))
+                if (schedule.StopPoints != null && !TravelineStopPointHelpers.ReturnModeMatch(mode, schedule))
                 {
                     continue;
                 }
 
-                if (schedule.StopPoints != null && !TransXChangeStopPointHelpers.ReturnFilterMatch(filters, schedule))
+                if (schedule.StopPoints != null && !TravelineStopPointHelpers.ReturnFilterMatch(filters, schedule))
                 {
                     continue;
                 }
@@ -555,7 +555,7 @@ public abstract class TransXChange
                     {
                         case 0:
                         {
-                            var originPoint = TransXChangeStopPointHelpers.Build(stops,
+                            var originPoint = TravelineStopPointHelpers.Build(stops,
                                 stopPoints.FirstOrDefault(s =>
                                     s.StopPointRef == patternTimings[i].From?.StopPointRef) ??
                                 new TransXChangeAnnotatedStopPointRef
@@ -571,7 +571,7 @@ public abstract class TransXChange
                         }
                         case > 0:
                         {
-                            var callingPoint = TransXChangeStopPointHelpers.Build(stops,
+                            var callingPoint = TravelineStopPointHelpers.Build(stops,
                                 stopPoints.FirstOrDefault(s =>
                                     s.StopPointRef == patternTimings[i].From?.StopPointRef) ??
                                 new TransXChangeAnnotatedStopPointRef
@@ -589,7 +589,7 @@ public abstract class TransXChange
 
                     if (i != patternTimings.Count - 1) continue;
 
-                    var destinationPoint = TransXChangeStopPointHelpers.Build(stops,
+                    var destinationPoint = TravelineStopPointHelpers.Build(stops,
                         stopPoints.FirstOrDefault(s =>
                             s.StopPointRef == patternTimings[i].To?.StopPointRef) ??
                         new TransXChangeAnnotatedStopPointRef
@@ -617,12 +617,12 @@ public abstract class TransXChange
                     continue;
                 }
                     
-                if (schedule.StopPoints != null && !TransXChangeStopPointHelpers.ReturnModeMatch(mode, schedule))
+                if (schedule.StopPoints != null && !TravelineStopPointHelpers.ReturnModeMatch(mode, schedule))
                 {
                     continue;
                 }
 
-                if (schedule.StopPoints != null && !TransXChangeStopPointHelpers.ReturnFilterMatch(filters, schedule))
+                if (schedule.StopPoints != null && !TravelineStopPointHelpers.ReturnFilterMatch(filters, schedule))
                 {
                     continue;
                 }

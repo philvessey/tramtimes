@@ -2,11 +2,11 @@ using TramTimes.Utilities.TransXChange.Models;
 
 namespace TramTimes.Utilities.TransXChange.Helpers;
 
-public static class TransXChangeStopPointHelpers
+public static class TravelineStopPointHelpers
 {
-    public static TransXChangeStopPoint Build(Dictionary<string, NaptanStop> stops, TransXChangeAnnotatedStopPointRef stopPoint)
+    public static TravelineStopPoint Build(Dictionary<string, NaptanStop> stops, TransXChangeAnnotatedStopPointRef stopPoint)
     {
-        return new TransXChangeStopPoint
+        return new TravelineStopPoint
         {
             AtcoCode = stopPoint.StopPointRef,
             
@@ -15,10 +15,10 @@ public static class TransXChangeStopPointHelpers
                 stopPoint.CommonName ?? "Unknown NaPTAN Stop",
                 stopPoint.LocalityName ?? "Unknown NaPTAN Locality"),
             
-            TransXChangeStop = TravelineStopHelpers.Build(
-                stopPoint.StopPointRef ?? "Unknown TransXChange Reference",
-                stopPoint.CommonName ?? "Unknown TransXChange Stop",
-                stopPoint.LocalityName ?? "Unknown TransXChange Locality")
+            TravelineStop = TravelineStopHelpers.Build(
+                stopPoint.StopPointRef ?? "Unknown Traveline Reference",
+                stopPoint.CommonName ?? "Unknown Traveline Stop",
+                stopPoint.LocalityName ?? "Unknown Traveline Locality")
         };
     }
 
@@ -62,26 +62,26 @@ public static class TransXChangeStopPointHelpers
                 }
             }
 
-            if (point.TransXChangeStop == null) continue;
+            if (point.TravelineStop == null) continue;
             
             if (!filters.Contains("all"))
             {
                 foreach (var filter in filters)
                 {
-                    if (!string.IsNullOrEmpty(point.TransXChangeStop.StopPointReference) &&
-                        point.TransXChangeStop.StopPointReference.Contains(filter, StringComparison.CurrentCultureIgnoreCase))
+                    if (!string.IsNullOrEmpty(point.TravelineStop.StopPointReference) &&
+                        point.TravelineStop.StopPointReference.Contains(filter, StringComparison.CurrentCultureIgnoreCase))
                     {
                         return true;
                     }
 
-                    if (!string.IsNullOrEmpty(point.TransXChangeStop.CommonName) &&
-                        point.TransXChangeStop.CommonName.Contains(filter, StringComparison.CurrentCultureIgnoreCase))
+                    if (!string.IsNullOrEmpty(point.TravelineStop.CommonName) &&
+                        point.TravelineStop.CommonName.Contains(filter, StringComparison.CurrentCultureIgnoreCase))
                     {
                         return true;
                     }
 
-                    if (!string.IsNullOrEmpty(point.TransXChangeStop.LocalityName) &&
-                        point.TransXChangeStop.LocalityName.Contains(filter, StringComparison.CurrentCultureIgnoreCase))
+                    if (!string.IsNullOrEmpty(point.TravelineStop.LocalityName) &&
+                        point.TravelineStop.LocalityName.Contains(filter, StringComparison.CurrentCultureIgnoreCase))
                     {
                         return true;
                     }

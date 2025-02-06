@@ -32,5 +32,5 @@ public class TravelineSchedule
     public TravelineCalendar? Calendar { get; set; }
     
     [UsedImplicitly]
-    public List<TransXChangeStopPoint>? StopPoints { get; set; }
+    public List<TravelineStopPoint>? StopPoints { get; set; }
 }

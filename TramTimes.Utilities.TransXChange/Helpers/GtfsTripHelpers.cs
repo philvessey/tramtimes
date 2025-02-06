@@ -82,11 +82,11 @@ public static class GtfsTripHelpers
                     tripHeadsign = value.StopPoints.LastOrDefault()?.NaptanStop?.CommonName ?? string.Empty;
                 }
             }
-            else if (value.StopPoints?.LastOrDefault()?.TransXChangeStop != null)
+            else if (value.StopPoints?.LastOrDefault()?.TravelineStop != null)
             {
-                if (!string.IsNullOrEmpty(value.StopPoints.LastOrDefault()?.TransXChangeStop?.CommonName))
+                if (!string.IsNullOrEmpty(value.StopPoints.LastOrDefault()?.TravelineStop?.CommonName))
                 {
-                    tripHeadsign = value.StopPoints.LastOrDefault()?.TransXChangeStop?.CommonName ?? string.Empty;
+                    tripHeadsign = value.StopPoints.LastOrDefault()?.TravelineStop?.CommonName ?? string.Empty;
                 }
             }
                     
