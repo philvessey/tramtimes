@@ -7,7 +7,7 @@ namespace TramTimes.Utilities.TransXChange.Helpers;
 
 public static class TransXChangeDaysOfOperationHelpers
 {
-    public static List<Holiday> Build(TransXChangeDaysOfOperation daysOfOperation, TransXChangeCalendar calendar, string subdivision, string? key)
+    public static List<Holiday> Build(TransXChangeDaysOfOperation daysOfOperation, TravelineCalendar calendar, string subdivision, string? key)
     {
         if (string.IsNullOrEmpty(HolidaySystem.LicenseKey)) { HolidaySystem.LicenseKey = key; }
 
@@ -16,7 +16,7 @@ public static class TransXChangeDaysOfOperationHelpers
             : ReturnScotlandHolidays(daysOfOperation, calendar);
     }
 
-    private static List<Holiday> ReturnEnglandHolidays(TransXChangeDaysOfOperation daysOfOperation, TransXChangeCalendar calendar)
+    private static List<Holiday> ReturnEnglandHolidays(TransXChangeDaysOfOperation daysOfOperation, TravelineCalendar calendar)
     {
         List<Holiday> results = [];
         
@@ -271,7 +271,7 @@ public static class TransXChangeDaysOfOperationHelpers
         return results;
     }
 
-    private static List<Holiday> ReturnScotlandHolidays(TransXChangeDaysOfOperation daysOfOperation, TransXChangeCalendar calendar)
+    private static List<Holiday> ReturnScotlandHolidays(TransXChangeDaysOfOperation daysOfOperation, TravelineCalendar calendar)
     {
         List<Holiday> results = [];
 

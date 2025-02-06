@@ -4,7 +4,7 @@ namespace TramTimes.Utilities.TransXChange.Helpers;
 
 public static class TransXChangeScheduleHelpers
 {
-    public static TransXChangeSchedule Build(TransXChangeOperator @operator, TransXChangeService service, TransXChangeJourneyPattern journeyPattern, TransXChangeCalendar calendar)
+    public static TransXChangeSchedule Build(TransXChangeOperator @operator, TransXChangeService service, TransXChangeJourneyPattern journeyPattern, TravelineCalendar calendar)
     {
         TransXChangeSchedule result = new()
         {

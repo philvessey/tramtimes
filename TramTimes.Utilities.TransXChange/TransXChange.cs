@@ -79,7 +79,7 @@ public abstract class TransXChange
                     continue;
                 }
 
-                var calendar = TransXChangeCalendarHelpers.Build(operatingProfile, startDate, endDate);
+                var calendar = TravelineCalendarHelpers.Build(operatingProfile, startDate, endDate);
 
                 if (operatingProfile.BankHolidayOperation != null)
                 {
@@ -387,7 +387,7 @@ public abstract class TransXChange
                     continue;
                 }
 
-                var calendar = TransXChangeCalendarHelpers.Build(operatingProfile, startDate, endDate);
+                var calendar = TravelineCalendarHelpers.Build(operatingProfile, startDate, endDate);
 
                 if (operatingProfile.BankHolidayOperation != null)
                 {

@@ -2,11 +2,11 @@ using TramTimes.Utilities.TransXChange.Models;
 
 namespace TramTimes.Utilities.TransXChange.Helpers;
 
-public static class TransXChangeCalendarHelpers
+public static class TravelineCalendarHelpers
 {
-    public static TransXChangeCalendar Build(TransXChangeOperatingProfile operatingProfile, DateTime startDate, DateTime endDate)
+    public static TravelineCalendar Build(TransXChangeOperatingProfile operatingProfile, DateTime startDate, DateTime endDate)
     {
-        TransXChangeCalendar result = new()
+        TravelineCalendar result = new()
         {
             Monday = false,
             Tuesday = false,

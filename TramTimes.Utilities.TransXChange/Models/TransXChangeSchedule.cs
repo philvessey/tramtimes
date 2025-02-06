@@ -29,7 +29,7 @@ public class TransXChangeSchedule
     public string? ServiceCode { get; set; }
     
     [UsedImplicitly]
-    public TransXChangeCalendar? Calendar { get; set; }
+    public TravelineCalendar? Calendar { get; set; }
     
     [UsedImplicitly]
     public List<TransXChangeStopPoint>? StopPoints { get; set; }

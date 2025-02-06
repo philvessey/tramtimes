@@ -2,7 +2,7 @@ using JetBrains.Annotations;
 
 namespace TramTimes.Utilities.TransXChange.Models;
 
-public class TransXChangeCalendar
+public class TravelineCalendar
 {
     [UsedImplicitly]
     public bool? Monday { get; set; }
