@@ -15,7 +15,7 @@ public static class TransXChangeStopPointHelpers
                 stopPoint.CommonName ?? "Unknown NaPTAN Stop",
                 stopPoint.LocalityName ?? "Unknown NaPTAN Locality"),
             
-            TransXChangeStop = TransXChangeStopHelpers.Build(
+            TransXChangeStop = TravelineStopHelpers.Build(
                 stopPoint.StopPointRef ?? "Unknown TransXChange Reference",
                 stopPoint.CommonName ?? "Unknown TransXChange Stop",
                 stopPoint.LocalityName ?? "Unknown TransXChange Locality")

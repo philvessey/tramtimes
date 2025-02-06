@@ -2,11 +2,11 @@ using TramTimes.Utilities.TransXChange.Models;
 
 namespace TramTimes.Utilities.TransXChange.Helpers;
 
-public static class TransXChangeStopHelpers
+public static class TravelineStopHelpers
 {
-    public static TransXChangeStop Build(string reference, string commonName, string localityName)
+    public static TravelineStop Build(string reference, string commonName, string localityName)
     {
-        return new TransXChangeStop
+        return new TravelineStop
         {
             StopPointReference = reference,
             CommonName = commonName,

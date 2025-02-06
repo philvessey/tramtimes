@@ -2,7 +2,7 @@ using JetBrains.Annotations;
 
 namespace TramTimes.Utilities.TransXChange.Models;
 
-public class TransXChangeStop
+public class TravelineStop
 {
     [UsedImplicitly]
     public string? StopPointReference { get; set; }

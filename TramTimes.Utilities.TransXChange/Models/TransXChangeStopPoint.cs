@@ -20,5 +20,5 @@ public class TransXChangeStopPoint
     public NaptanStop? NaptanStop { get; set; }
     
     [UsedImplicitly]
-    public TransXChangeStop? TransXChangeStop { get; set; }
+    public TravelineStop? TransXChangeStop { get; set; }
 }
