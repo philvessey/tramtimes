@@ -22,12 +22,12 @@ public class TransXChangeJourneyPatternTimingLink
     [UsedImplicitly]
     [XmlElement(ElementName = "RouteLinkRef")]
     public string? RouteLinkRef { get; set; }
+    
+    [UsedImplicitly]
+    [XmlElement(ElementName = "RunTime")]
+    public string? RunTime { get; set; }
 
     [UsedImplicitly]
     [XmlElement(ElementName = "Direction")]
     public string? Direction { get; set; }
-
-    [UsedImplicitly]
-    [XmlElement(ElementName = "RunTime")]
-    public string? RunTime { get; set; }
 }

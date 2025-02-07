@@ -10,6 +10,10 @@ public class TransXChangeService
     [UsedImplicitly]
     [XmlElement(ElementName = "ServiceCode")]
     public string? ServiceCode { get; set; }
+    
+    [UsedImplicitly]
+    [XmlElement(ElementName = "PrivateCode")]
+    public string? PrivateCode { get; set; }
 
     [UsedImplicitly]
     [XmlElement(ElementName = "Lines")]
@@ -22,7 +26,11 @@ public class TransXChangeService
     [UsedImplicitly]
     [XmlElement(ElementName = "OperatingProfile")]
     public TransXChangeOperatingProfile? OperatingProfile { get; set; }
-
+    
+    [UsedImplicitly]
+    [XmlElement(ElementName = "VehicleType")]
+    public TransXChangeVehicleType? VehicleType { get; set; }
+    
     [UsedImplicitly]
     [XmlElement(ElementName = "RegisteredOperatorRef")]
     public string? RegisteredOperatorRef { get; set; }
@@ -34,6 +42,10 @@ public class TransXChangeService
     [UsedImplicitly]
     [XmlElement(ElementName = "Mode")]
     public string? Mode { get; set; }
+    
+    [UsedImplicitly]
+    [XmlElement(ElementName = "PublicUse")]
+    public string? PublicUse { get; set; }
 
     [UsedImplicitly]
     [XmlElement(ElementName = "Description")]

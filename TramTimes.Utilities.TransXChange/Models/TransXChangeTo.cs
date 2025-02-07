@@ -8,13 +8,9 @@ namespace TramTimes.Utilities.TransXChange.Models;
 public class TransXChangeTo
 {
     [UsedImplicitly]
-    [XmlElement(ElementName = "WaitTime")]
-    public string? WaitTime { get; set; }
-
-    [UsedImplicitly]
-    [XmlElement(ElementName = "Activity")]
-    public string? Activity { get; set; }
-
+    [XmlAttribute(AttributeName = "SequenceNumber")]
+    public string? SequenceNumber { get; set; }
+    
     [UsedImplicitly]
     [XmlElement(ElementName = "StopPointRef")]
     public string? StopPointRef { get; set; }
@@ -22,4 +18,16 @@ public class TransXChangeTo
     [UsedImplicitly]
     [XmlElement(ElementName = "TimingStatus")]
     public string? TimingStatus { get; set; }
+    
+    [UsedImplicitly]
+    [XmlElement(ElementName = "Activity")]
+    public string? Activity { get; set; }
+    
+    [UsedImplicitly]
+    [XmlElement(ElementName = "DynamicDestinationDisplay")] 
+    public string? DynamicDestinationDisplay { get; set; }
+    
+    [UsedImplicitly]
+    [XmlElement(ElementName = "WaitTime")]
+    public string? WaitTime { get; set; }
 }

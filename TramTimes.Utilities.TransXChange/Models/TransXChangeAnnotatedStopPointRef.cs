@@ -16,6 +16,14 @@ public class TransXChangeAnnotatedStopPointRef
     public string? CommonName { get; set; }
 
     [UsedImplicitly]
+    [XmlElement(ElementName = "Indicator")]
+    public string? Indicator { get; set; }
+    
+    [UsedImplicitly]
     [XmlElement(ElementName = "LocalityName")]
     public string? LocalityName { get; set; }
+
+    [UsedImplicitly]
+    [XmlElement(ElementName = "LocalityQualifier")]
+    public string? LocalityQualifier { get; set; }
 }

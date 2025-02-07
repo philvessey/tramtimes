@@ -14,4 +14,12 @@ public class TransXChangeLine
     [UsedImplicitly]
     [XmlElement(ElementName = "LineName")]
     public string? LineName { get; set; }
+    
+    [UsedImplicitly]
+    [XmlElement(ElementName = "OutboundDescription")] 
+    public TransXChangeOutboundDescription? OutboundDescription { get; set; } 
+    
+    [UsedImplicitly]
+    [XmlElement(ElementName = "InboundDescription")] 
+    public TransXChangeInboundDescription? InboundDescription { get; set; }
 }

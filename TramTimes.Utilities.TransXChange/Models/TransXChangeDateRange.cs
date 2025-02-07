@@ -14,4 +14,8 @@ public class TransXChangeDateRange
     [UsedImplicitly]
     [XmlElement(ElementName = "EndDate")]
     public string? EndDate { get; set; }
+    
+    [UsedImplicitly]
+    [XmlElement(ElementName = "Note")] 
+    public string? Note { get; set; }
 }

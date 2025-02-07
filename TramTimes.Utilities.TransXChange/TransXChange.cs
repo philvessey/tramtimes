@@ -201,7 +201,7 @@ public abstract class TransXChange
                 var departureTime = vehicleJourney.DepartureTime?.ToTime();
                 var stopPoints = xml.StopPoints?.AnnotatedStopPointRef ?? [];
 
-                var patternSection = xml.JourneyPatternSections?.JourneyPatternSection?.FirstOrDefault(s => s.Id == journeyPattern.JourneyPatternSectionRefs);
+                var patternSection = xml.JourneyPatternSections?.JourneyPatternSection?.FirstOrDefault(s => s.Id != null && journeyPattern.JourneyPatternSectionRefs?.Contains(s.Id) == true);
                 var patternTimings = patternSection?.JourneyPatternTimingLink;
 
                 for (var i = 0; i < patternTimings?.Count; i++)
@@ -509,7 +509,7 @@ public abstract class TransXChange
                 var departureTime = vehicleJourney.DepartureTime?.ToTime();
                 var stopPoints = xml.StopPoints?.AnnotatedStopPointRef ?? [];
 
-                var patternSection = xml.JourneyPatternSections?.JourneyPatternSection?.FirstOrDefault(s => s.Id == journeyPattern.JourneyPatternSectionRefs);
+                var patternSection = xml.JourneyPatternSections?.JourneyPatternSection?.FirstOrDefault(s => s.Id != null && journeyPattern.JourneyPatternSectionRefs?.Contains(s.Id) == true);
                 var patternTimings = patternSection?.JourneyPatternTimingLink;
 
                 for (var i = 0; i < patternTimings?.Count; i++)

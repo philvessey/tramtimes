@@ -18,6 +18,10 @@ public class TransXChangeRouteLink
     [UsedImplicitly]
     [XmlElement(ElementName = "To")]
     public TransXChangeTo? To { get; set; }
+    
+    [UsedImplicitly]
+    [XmlElement(ElementName = "Distance")]
+    public string? Distance { get; set; }
 
     [UsedImplicitly]
     [XmlElement(ElementName = "Direction")]

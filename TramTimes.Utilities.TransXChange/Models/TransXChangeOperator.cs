@@ -30,4 +30,20 @@ public class TransXChangeOperator
     [UsedImplicitly]
     [XmlElement(ElementName = "TradingName")]
     public string? TradingName { get; set; }
+    
+    [UsedImplicitly]
+    [XmlElement(ElementName = "LicenceNumber")]
+    public string? LicenceNumber { get; set; }
+    
+    [UsedImplicitly]
+    [XmlElement(ElementName = "LicenceClassification")]
+    public string? LicenceClassification { get; set; }
+    
+    [UsedImplicitly]
+    [XmlElement(ElementName = "EnquiryTelephoneNumber")]
+    public TransXChangeEnquiryTelephoneNumber? EnquiryTelephoneNumber { get; set; }
+    
+    [UsedImplicitly]
+    [XmlElement(ElementName = "ContactTelephoneNumber")]
+    public TransXChangeContactTelephoneNumber? ContactTelephoneNumber { get; set; }
 }

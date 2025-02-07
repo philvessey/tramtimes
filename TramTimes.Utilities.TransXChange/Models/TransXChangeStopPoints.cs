@@ -10,4 +10,8 @@ public class TransXChangeStopPoints
     [UsedImplicitly]
     [XmlElement(ElementName = "AnnotatedStopPointRef")]
     public List<TransXChangeAnnotatedStopPointRef>? AnnotatedStopPointRef { get; set; }
+    
+    [UsedImplicitly]
+    [XmlElement(ElementName = "StopPoint")] 
+    public List<TransXChangeStopPoint>? StopPoint { get; set; }
 }
