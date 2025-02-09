@@ -51,7 +51,22 @@ public class Stop(SouthYorkshireFixture fixture)
 
         try
         {
-            Assert.Contains("stop_id,stop_code,stop_name,stop_desc,stop_lat,stop_lon,zone_id,stop_url,location_type,parent_station,stop_timezone,wheelchair_boarding,level_id,platform_code", File.ReadAllLines(GtfsStopHelpers.Build(fixture.Schedules, storage.FullName)));
+            const string header = "stop_id," +
+                                  "stop_code," +
+                                  "stop_name," +
+                                  "stop_desc," +
+                                  "stop_lat," +
+                                  "stop_lon," +
+                                  "zone_id," +
+                                  "stop_url," +
+                                  "location_type," +
+                                  "parent_station," +
+                                  "stop_timezone," +
+                                  "wheelchair_boarding," +
+                                  "level_id," +
+                                  "platform_code";
+            
+            Assert.Contains(header, File.ReadAllLines(GtfsStopHelpers.Build(fixture.Schedules, storage.FullName)));
         }
         catch (Exception e)
         {

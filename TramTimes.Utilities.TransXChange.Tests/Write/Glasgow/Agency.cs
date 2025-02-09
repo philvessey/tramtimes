@@ -51,7 +51,16 @@ public class Agency(GlasgowFixture fixture)
 
         try
         {
-            Assert.Contains("agency_id,agency_name,agency_url,agency_timezone,agency_lang,agency_phone,agency_fare_url,agency_email", File.ReadAllLines(GtfsAgencyHelpers.Build(fixture.Schedules, storage.FullName)));
+            const string header = "agency_id," +
+                                  "agency_name," +
+                                  "agency_url," +
+                                  "agency_timezone," +
+                                  "agency_lang," +
+                                  "agency_phone," +
+                                  "agency_fare_url," +
+                                  "agency_email";
+            
+            Assert.Contains(header, File.ReadAllLines(GtfsAgencyHelpers.Build(fixture.Schedules, storage.FullName)));
         }
         catch (Exception e)
         {

@@ -51,7 +51,18 @@ public class Route(NottinghamFixture fixture)
 
         try
         {
-            Assert.Contains("route_id,agency_id,route_short_name,route_long_name,route_desc,route_type,route_url,route_color,route_text_color,route_sort_order", File.ReadAllLines(GtfsRouteHelpers.Build(fixture.Schedules, storage.FullName)));            
+            const string header = "route_id," +
+                                  "agency_id," +
+                                  "route_short_name," +
+                                  "route_long_name," +
+                                  "route_desc," +
+                                  "route_type," +
+                                  "route_url," +
+                                  "route_color," +
+                                  "route_text_color," +
+                                  "route_sort_order";
+            
+            Assert.Contains(header, File.ReadAllLines(GtfsRouteHelpers.Build(fixture.Schedules, storage.FullName)));            
         }
         catch (Exception e)
         {

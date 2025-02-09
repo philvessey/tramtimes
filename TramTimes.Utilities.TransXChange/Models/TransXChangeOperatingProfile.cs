@@ -3,7 +3,6 @@ using JetBrains.Annotations;
 
 namespace TramTimes.Utilities.TransXChange.Models;
 
-[UsedImplicitly]
 [XmlRoot(ElementName = "OperatingProfile", Namespace = "http://www.transxchange.org.uk/")]
 public class TransXChangeOperatingProfile
 {

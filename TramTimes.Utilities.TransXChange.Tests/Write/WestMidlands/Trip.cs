@@ -51,7 +51,18 @@ public class Trip(WestMidlandsFixture fixture)
 
         try
         {
-            Assert.Contains("route_id,service_id,trip_id,trip_headsign,trip_short_name,direction_id,block_id,shape_id,wheelchair_accessible,bikes_allowed", File.ReadAllLines(GtfsTripHelpers.Build(fixture.Schedules, storage.FullName)));
+            const string header = "route_id," +
+                                  "service_id," +
+                                  "trip_id," +
+                                  "trip_headsign," +
+                                  "trip_short_name," +
+                                  "direction_id," +
+                                  "block_id," +
+                                  "shape_id," +
+                                  "wheelchair_accessible," +
+                                  "bikes_allowed";
+
+            Assert.Contains(header, File.ReadAllLines(GtfsTripHelpers.Build(fixture.Schedules, storage.FullName)));
         }
         catch (Exception e)
         {

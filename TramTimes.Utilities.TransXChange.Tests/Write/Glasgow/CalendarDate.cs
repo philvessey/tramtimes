@@ -51,7 +51,11 @@ public class CalendarDate(GlasgowFixture fixture)
 
         try
         {
-            Assert.Contains("service_id,date,exception_type", File.ReadAllLines(GtfsCalendarDateHelpers.Build(fixture.Schedules, storage.FullName)));
+            const string header = "service_id," + 
+                                  "date," + 
+                                  "exception_type";
+            
+            Assert.Contains(header, File.ReadAllLines(GtfsCalendarDateHelpers.Build(fixture.Schedules, storage.FullName)));
         }
         catch (Exception e)
         {

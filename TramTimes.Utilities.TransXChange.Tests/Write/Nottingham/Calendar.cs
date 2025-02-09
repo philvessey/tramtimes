@@ -51,7 +51,18 @@ public class Calendar(NottinghamFixture fixture)
 
         try
         {
-            Assert.Contains("service_id,monday,tuesday,wednesday,thursday,friday,saturday,sunday,start_date,end_date", File.ReadAllLines(GtfsCalendarHelpers.Build(fixture.Schedules, storage.FullName)));
+            const string header = "service_id," + 
+                                  "monday," + 
+                                  "tuesday," + 
+                                  "wednesday," + 
+                                  "thursday," + 
+                                  "friday," + 
+                                  "saturday," + 
+                                  "sunday," + 
+                                  "start_date," + 
+                                  "end_date";
+            
+            Assert.Contains(header, File.ReadAllLines(GtfsCalendarHelpers.Build(fixture.Schedules, storage.FullName)));
         }
         catch (Exception e)
         {
