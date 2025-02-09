@@ -7,10 +7,8 @@ public static class HolidayTools
 {
     public static List<Holiday> GetNewYearsDay(DateTime? startDate, DateTime? endDate)
     {
-        if (!startDate.HasValue || !endDate.HasValue)
-        {
-            return [];
-        }
+        if (!startDate.HasValue) return [];
+        if (!endDate.HasValue) return [];
         
         List<Holiday> results =
         [
@@ -29,10 +27,8 @@ public static class HolidayTools
 
     public static List<Holiday> GetNewYearsDayHoliday(DateTime? startDate, DateTime? endDate)
     {
-        if (!startDate.HasValue || !endDate.HasValue)
-        {
-            return [];
-        }
+        if (!startDate.HasValue) return [];
+        if (!endDate.HasValue) return [];
         
         List<Holiday> results = [];
 
@@ -49,10 +45,8 @@ public static class HolidayTools
 
     public static List<Holiday> GetJanSecondScotland(DateTime? startDate, DateTime? endDate)
     {
-        if (!startDate.HasValue || !endDate.HasValue)
-        {
-            return [];
-        }
+        if (!startDate.HasValue) return [];
+        if (!endDate.HasValue) return [];
         
         List<Holiday> results =
         [
@@ -71,10 +65,8 @@ public static class HolidayTools
 
     public static List<Holiday> GetJanSecondScotlandHoliday(DateTime? startDate, DateTime? endDate)
     {
-        if (!startDate.HasValue || !endDate.HasValue)
-        {
-            return [];
-        }
+        if (!startDate.HasValue) return [];
+        if (!endDate.HasValue) return [];
         
         List<Holiday> results = [];
 
@@ -91,10 +83,8 @@ public static class HolidayTools
 
     public static List<Holiday> GetGoodFriday(DateTime? startDate, DateTime? endDate)
     {
-        if (!startDate.HasValue || !endDate.HasValue)
-        {
-            return [];
-        }
+        if (!startDate.HasValue) return [];
+        if (!endDate.HasValue) return [];
         
         List<Holiday> results = [];
 
@@ -111,10 +101,8 @@ public static class HolidayTools
 
     public static List<Holiday> GetEasterMonday(DateTime? startDate, DateTime? endDate)
     {
-        if (!startDate.HasValue || !endDate.HasValue)
-        {
-            return [];
-        }
+        if (!startDate.HasValue) return [];
+        if (!endDate.HasValue) return [];
         
         List<Holiday> results = [];
 
@@ -131,10 +119,8 @@ public static class HolidayTools
 
     public static List<Holiday> GetMayDay(DateTime? startDate, DateTime? endDate)
     {
-        if (!startDate.HasValue || !endDate.HasValue)
-        {
-            return [];
-        }
+        if (!startDate.HasValue) return [];
+        if (!endDate.HasValue) return [];
         
         List<Holiday> results = [];
 
@@ -151,10 +137,8 @@ public static class HolidayTools
 
     public static List<Holiday> GetSpringBank(DateTime? startDate, DateTime? endDate)
     {
-        if (!startDate.HasValue || !endDate.HasValue)
-        {
-            return [];
-        }
+        if (!startDate.HasValue) return [];
+        if (!endDate.HasValue) return [];
         
         List<Holiday> results = [];
 
@@ -171,10 +155,8 @@ public static class HolidayTools
 
     public static List<Holiday> GetAugustBankHolidayScotland(DateTime? startDate, DateTime? endDate)
     {
-        if (!startDate.HasValue || !endDate.HasValue)
-        {
-            return [];
-        }
+        if (!startDate.HasValue) return [];
+        if (!endDate.HasValue) return [];
         
         List<Holiday> results = [];
 
@@ -191,10 +173,8 @@ public static class HolidayTools
 
     public static List<Holiday> GetLateSummerBankHolidayNotScotland(DateTime? startDate, DateTime? endDate)
     {
-        if (!startDate.HasValue || !endDate.HasValue)
-        {
-            return [];
-        }
+        if (!startDate.HasValue) return [];
+        if (!endDate.HasValue) return [];
         
         List<Holiday> results = [];
 
@@ -211,10 +191,8 @@ public static class HolidayTools
 
     public static List<Holiday> GetStAndrewsDay(DateTime? startDate, DateTime? endDate)
     {
-        if (!startDate.HasValue || !endDate.HasValue)
-        {
-            return [];
-        }
+        if (!startDate.HasValue) return [];
+        if (!endDate.HasValue) return [];
         
         List<Holiday> results =
         [
@@ -233,10 +211,8 @@ public static class HolidayTools
 
     public static List<Holiday> GetStAndrewsDayHoliday(DateTime? startDate, DateTime? endDate)
     {
-        if (!startDate.HasValue || !endDate.HasValue)
-        {
-            return [];
-        }
+        if (!startDate.HasValue) return [];
+        if (!endDate.HasValue) return [];
         
         List<Holiday> results = [];
 
@@ -253,10 +229,8 @@ public static class HolidayTools
 
     public static List<Holiday> GetChristmasEve(DateTime? startDate, DateTime? endDate)
     {
-        if (!startDate.HasValue || !endDate.HasValue)
-        {
-            return [];
-        }
+        if (!startDate.HasValue) return [];
+        if (!endDate.HasValue) return [];
         
         List<Holiday> results =
         [
@@ -275,10 +249,8 @@ public static class HolidayTools
 
     public static List<Holiday> GetChristmasDay(DateTime? startDate, DateTime? endDate)
     {
-        if (!startDate.HasValue || !endDate.HasValue)
-        {
-            return [];
-        }
+        if (!startDate.HasValue) return [];
+        if (!endDate.HasValue) return [];
         
         List<Holiday> results =
         [
@@ -297,10 +269,8 @@ public static class HolidayTools
 
     public static List<Holiday> GetChristmasDayHoliday(DateTime? startDate, DateTime? endDate)
     {
-        if (!startDate.HasValue || !endDate.HasValue)
-        {
-            return [];
-        }
+        if (!startDate.HasValue) return [];
+        if (!endDate.HasValue) return [];
         
         List<Holiday> results = [];
 
@@ -317,10 +287,8 @@ public static class HolidayTools
 
     public static List<Holiday> GetBoxingDay(DateTime? startDate, DateTime? endDate)
     {
-        if (!startDate.HasValue || !endDate.HasValue)
-        {
-            return [];
-        }
+        if (!startDate.HasValue) return [];
+        if (!endDate.HasValue) return [];
         
         List<Holiday> results =
         [
@@ -339,10 +307,8 @@ public static class HolidayTools
 
     public static List<Holiday> GetBoxingDayHoliday(DateTime? startDate, DateTime? endDate)
     {
-        if (!startDate.HasValue || !endDate.HasValue)
-        {
-            return [];
-        }
+        if (!startDate.HasValue) return [];
+        if (!endDate.HasValue) return [];
         
         List<Holiday> results = [];
 
@@ -359,10 +325,8 @@ public static class HolidayTools
 
     public static List<Holiday> GetNewYearsEve(DateTime? startDate, DateTime? endDate)
     {
-        if (!startDate.HasValue || !endDate.HasValue)
-        {
-            return [];
-        }
+        if (!startDate.HasValue) return [];
+        if (!endDate.HasValue) return [];
         
         List<Holiday> results =
         [

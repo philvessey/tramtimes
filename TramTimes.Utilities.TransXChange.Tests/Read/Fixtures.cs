@@ -13,7 +13,7 @@ public class BlackpoolFixture
     
     [UsedImplicitly]
     public Dictionary<string, TravelineSchedule> Schedules { get; } = TransXChange.Build("Read/Blackpool/Data/feed.zip", 
-        Naptan.Build("Read/Blackpool/Data/feed.zip"), "GB-ENG", "all", ["all"], 7, "28/01/2025", 
+        Naptan.Build("Read/Blackpool/Data/feed.zip"), "GB-ENG", "all", ["all"], "28/01/2025", 
         Configuration["key"]);
 }
 
@@ -25,7 +25,7 @@ public class DocklandsFixture
     
     [UsedImplicitly]
     public Dictionary<string, TravelineSchedule> Schedules { get; } = TransXChange.Build("Read/Docklands/Data/feed.zip", 
-        Naptan.Build("Read/Docklands/Data/feed.zip"), "GB-ENG", "all", ["all"], 7, "28/01/2025", 
+        Naptan.Build("Read/Docklands/Data/feed.zip"), "GB-ENG", "all", ["all"], "28/01/2025", 
         Configuration["key"]);
 }
 
@@ -37,7 +37,7 @@ public class EdinburghFixture
     
     [UsedImplicitly]
     public Dictionary<string, TravelineSchedule> Schedules { get; } = TransXChange.Build("Read/Edinburgh/Data/feed.zip", 
-        Naptan.Build("Read/Edinburgh/Data/feed.zip"), "GB-SCT", "all", ["all"], 7, "28/01/2025", 
+        Naptan.Build("Read/Edinburgh/Data/feed.zip"), "GB-SCT", "all", ["all"], "28/01/2025", 
         Configuration["key"]);
 }
 
@@ -49,7 +49,7 @@ public class GlasgowFixture
     
     [UsedImplicitly]
     public Dictionary<string, TravelineSchedule> Schedules { get; } = TransXChange.Build("Read/Glasgow/Data/feed.zip", 
-        Naptan.Build("Read/Glasgow/Data/feed.zip"), "GB-SCT", "all", ["all"], 7, "28/01/2025", 
+        Naptan.Build("Read/Glasgow/Data/feed.zip"), "GB-SCT", "all", ["all"], "28/01/2025", 
         Configuration["key"]);
 }
 
@@ -61,7 +61,7 @@ public class LondonFixture
     
     [UsedImplicitly]
     public Dictionary<string, TravelineSchedule> Schedules { get; } = TransXChange.Build("Read/London/Data/feed.zip", 
-        Naptan.Build("Read/London/Data/feed.zip"), "GB-ENG", "all", ["all"], 7, "28/01/2025", 
+        Naptan.Build("Read/London/Data/feed.zip"), "GB-ENG", "all", ["all"], "28/01/2025", 
         Configuration["key"]);
 }
 
@@ -73,7 +73,7 @@ public class ManchesterFixture
     
     [UsedImplicitly]
     public Dictionary<string, TravelineSchedule> Schedules { get; } = TransXChange.Build("Read/Manchester/Data/feed.zip", 
-        Naptan.Build("Read/Manchester/Data/feed.zip"), "GB-ENG", "all", ["all"], 7, "28/01/2025", 
+        Naptan.Build("Read/Manchester/Data/feed.zip"), "GB-ENG", "all", ["all"], "28/01/2025", 
         Configuration["key"]);
 }
 
@@ -85,7 +85,7 @@ public class NottinghamFixture
     
     [UsedImplicitly]
     public Dictionary<string, TravelineSchedule> Schedules { get; } = TransXChange.Build("Read/Nottingham/Data/feed.zip", 
-        Naptan.Build("Read/Nottingham/Data/feed.zip"), "GB-ENG", "all", ["all"], 7, "28/01/2025", 
+        Naptan.Build("Read/Nottingham/Data/feed.zip"), "GB-ENG", "all", ["all"], "28/01/2025", 
         Configuration["key"]);
 }
 
@@ -97,7 +97,7 @@ public class SouthYorkshireFixture
     
     [UsedImplicitly]
     public Dictionary<string, TravelineSchedule> Schedules { get; } = TransXChange.Build("Read/SouthYorkshire/Data/feed.zip", 
-        Naptan.Build("Read/SouthYorkshire/Data/feed.zip"), "GB-ENG", "all", ["all"], 7, "28/01/2025", 
+        Naptan.Build("Read/SouthYorkshire/Data/feed.zip"), "GB-ENG", "all", ["all"], "28/01/2025", 
         Configuration["key"]);
 }
 
@@ -109,7 +109,7 @@ public class TyneWearFixture
 
     [UsedImplicitly]
     public Dictionary<string, TravelineSchedule> Schedules { get; } = TransXChange.Build("Read/TyneWear/Data/feed.zip", 
-        Naptan.Build("Read/TyneWear/Data/feed.zip"), "GB-ENG", "all", ["all"], 7, "28/01/2025", 
+        Naptan.Build("Read/TyneWear/Data/feed.zip"), "GB-ENG", "all", ["all"], "28/01/2025", 
         Configuration["key"]);
 }
 
@@ -121,6 +121,6 @@ public class WestMidlandsFixture
 
     [UsedImplicitly]
     public Dictionary<string, TravelineSchedule> Schedules { get; } = TransXChange.Build("Read/WestMidlands/Data/feed.zip", 
-        Naptan.Build("Read/WestMidlands/Data/feed.zip"), "GB-ENG", "all", ["all"], 7, "28/01/2025", 
+        Naptan.Build("Read/WestMidlands/Data/feed.zip"), "GB-ENG", "all", ["all"], "28/01/2025", 
         Configuration["key"]);
 }

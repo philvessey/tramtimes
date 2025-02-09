@@ -1,3 +1,4 @@
+using System.Globalization;
 using System.IO.Compression;
 using System.Xml;
 using System.Xml.Serialization;
@@ -10,18 +11,16 @@ namespace TramTimes.Utilities.TransXChange;
 
 public abstract class TransXChange
 {
-    public static Dictionary<string, TravelineSchedule> Build(string path, Dictionary<string, NaptanStop> stops, string subdivision, string mode, IList<string> filters, int days, string date, string? key)
+    public static Dictionary<string, TravelineSchedule> Build(string path, Dictionary<string, NaptanStop> stops, string subdivision, string mode, IList<string> filters, string date, string? key)
     {
-        DateTime? today = DateTime.Today;
-
         return path.EndsWith(".zip")
-            ? ReturnSchedulesFromArchive(path, stops, subdivision, mode, filters, days,
-                DateTimeTools.GetScheduleDate(today.ToZonedDate("Europe/London").Date, date), key ?? string.Empty)
-            : ReturnSchedulesFromDirectory(path, stops, subdivision, mode, filters, days,
-                DateTimeTools.GetScheduleDate(today.ToZonedDate("Europe/London").Date, date), key ?? string.Empty);
+            ? ReturnSchedulesFromArchive(path, stops, subdivision, mode, filters, 
+                DateTime.ParseExact(date, "dd/MM/yyyy", CultureInfo.CurrentCulture).Date, key ?? string.Empty)
+            : ReturnSchedulesFromDirectory(path, stops, subdivision, mode, filters, 
+                DateTime.ParseExact(date, "dd/MM/yyyy", CultureInfo.CurrentCulture).Date, key ?? string.Empty);
     }
 
-    private static Dictionary<string, TravelineSchedule> ReturnSchedulesFromArchive(string path, Dictionary<string, NaptanStop> stops, string subdivision, string mode, IList<string> filters, int days, DateTime scheduleDate, string? key)
+    private static Dictionary<string, TravelineSchedule> ReturnSchedulesFromArchive(string path, Dictionary<string, NaptanStop> stops, string subdivision, string mode, IList<string> filters, DateTime scheduleDate, string? key)
     {
         Dictionary<string, TravelineSchedule> results = [];
         using var archive = ZipFile.Open(path, ZipArchiveMode.Read);
@@ -43,13 +42,11 @@ public abstract class TransXChange
             {
                 var startDate = DateTimeTools.GetStartDate(
                     xml.Services?.Service?.OperatingPeriod?.StartDate.ToDate(),
-                    scheduleDate,
-                    days);
+                    scheduleDate);
 
                 var endDate = DateTimeTools.GetEndDate(
                     xml.Services?.Service?.OperatingPeriod?.EndDate.ToDate(),
-                    scheduleDate,
-                    days);
+                    scheduleDate);
 
                 if (startDate > endDate)
                 {
@@ -122,13 +119,11 @@ public abstract class TransXChange
                     {
                         startDate = DateTimeTools.GetStartDate(
                             operatingProfile.SpecialDaysOperation.DaysOfOperation.DateRange.StartDate.ToDate(),
-                            scheduleDate,
-                            days);
+                            scheduleDate);
 
                         endDate = DateTimeTools.GetEndDate(
                             operatingProfile.SpecialDaysOperation.DaysOfOperation.DateRange.EndDate.ToDate(),
-                            scheduleDate,
-                            days);
+                            scheduleDate);
 
                         while (startDate <= endDate)
                         {
@@ -148,13 +143,11 @@ public abstract class TransXChange
                     {
                         startDate = DateTimeTools.GetStartDate(
                             operatingProfile.SpecialDaysOperation.DaysOfNonOperation.DateRange.StartDate.ToDate(),
-                            scheduleDate,
-                            days);
+                            scheduleDate);
 
                         endDate = DateTimeTools.GetEndDate(
                             operatingProfile.SpecialDaysOperation.DaysOfNonOperation.DateRange.EndDate.ToDate(),
-                            scheduleDate,
-                            days);
+                            scheduleDate);
 
                         while (startDate <= endDate)
                         {
@@ -329,7 +322,7 @@ public abstract class TransXChange
         return results;
     }
     
-    private static Dictionary<string, TravelineSchedule> ReturnSchedulesFromDirectory(string path, Dictionary<string, NaptanStop> stops, string subdivision, string mode, IList<string> filters, int days, DateTime scheduleDate, string? key)
+    private static Dictionary<string, TravelineSchedule> ReturnSchedulesFromDirectory(string path, Dictionary<string, NaptanStop> stops, string subdivision, string mode, IList<string> filters, DateTime scheduleDate, string? key)
     {
         Dictionary<string, TravelineSchedule> results = [];
         var entries = Directory.GetFiles(path);
@@ -351,13 +344,11 @@ public abstract class TransXChange
             {
                 var startDate = DateTimeTools.GetStartDate(
                     xml.Services?.Service?.OperatingPeriod?.StartDate.ToDate(),
-                    scheduleDate,
-                    days);
+                    scheduleDate);
 
                 var endDate = DateTimeTools.GetEndDate(
                     xml.Services?.Service?.OperatingPeriod?.EndDate.ToDate(),
-                    scheduleDate,
-                    days);
+                    scheduleDate);
 
                 if (startDate > endDate)
                 {
@@ -430,13 +421,11 @@ public abstract class TransXChange
                     {
                         startDate = DateTimeTools.GetStartDate(
                             operatingProfile.SpecialDaysOperation.DaysOfOperation.DateRange.StartDate.ToDate(),
-                            scheduleDate,
-                            days);
+                            scheduleDate);
 
                         endDate = DateTimeTools.GetEndDate(
                             operatingProfile.SpecialDaysOperation.DaysOfOperation.DateRange.EndDate.ToDate(),
-                            scheduleDate,
-                            days);
+                            scheduleDate);
 
                         while (startDate <= endDate)
                         {
@@ -456,13 +445,11 @@ public abstract class TransXChange
                     {
                         startDate = DateTimeTools.GetStartDate(
                             operatingProfile.SpecialDaysOperation.DaysOfNonOperation.DateRange.StartDate.ToDate(),
-                            scheduleDate,
-                            days);
+                            scheduleDate);
 
                         endDate = DateTimeTools.GetEndDate(
                             operatingProfile.SpecialDaysOperation.DaysOfNonOperation.DateRange.EndDate.ToDate(),
-                            scheduleDate,
-                            days);
+                            scheduleDate);
 
                         while (startDate <= endDate)
                         {
