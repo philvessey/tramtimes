@@ -83,9 +83,9 @@ public static class GtfsStopHelpers
                 }
                 else if (value.StopPoints[i].TravelineStop != null)
                 {
-                    if (!string.IsNullOrEmpty(value.StopPoints[i].TravelineStop?.StopPointReference))
+                    if (!string.IsNullOrEmpty(value.StopPoints[i].TravelineStop?.AtcoCode))
                     {
-                        stopId = value.StopPoints[i].TravelineStop?.StopPointReference ?? string.Empty;
+                        stopId = value.StopPoints[i].TravelineStop?.AtcoCode ?? string.Empty;
                     }
                 }
 

@@ -3,23 +3,21 @@ using System.IO.Compression;
 using CsvHelper;
 using TramTimes.Utilities.TransXChange.Models;
 
-namespace TramTimes.Utilities.TransXChange;
+namespace TramTimes.Utilities.TransXChange.Tools;
 
-public abstract class Naptan
+public static class NaptanStopTools
 {
-    public static Dictionary<string, NaptanStop> Build(string path)
-    {
-        return path.EndsWith(".zip") ? ReturnStopsFromArchive(path) : ReturnStopsFromDirectory(path);
-    }
-    
-    private static Dictionary<string, NaptanStop> ReturnStopsFromArchive(string path)
+    public static Dictionary<string, NaptanStop> GetFromArchive(string path)
     {
         Dictionary<string, NaptanStop> results = [];
         using var archive = ZipFile.Open(path, ZipArchiveMode.Read);
 
         foreach (var entry in archive.Entries)
         {
-            if (!entry.Name.EndsWith("csv", StringComparison.CurrentCultureIgnoreCase)) continue;
+            if (!entry.Name.Contains("stops.csv", StringComparison.CurrentCultureIgnoreCase))
+            {
+                continue;
+            }
                 
             using StreamReader reader = new(entry.Open());
             var records = new CsvReader(reader, CultureInfo.InvariantCulture).GetRecords<NaptanStop>();
@@ -36,14 +34,17 @@ public abstract class Naptan
         return results;
     }
     
-    private static Dictionary<string, NaptanStop> ReturnStopsFromDirectory(string path)
+    public static Dictionary<string, NaptanStop> GetFromDirectory(string path)
     {
         Dictionary<string, NaptanStop> results = [];
         var entries = Directory.GetFiles(path);
 
         foreach (var entry in entries)
         {
-            if (!entry.EndsWith("csv", StringComparison.CurrentCultureIgnoreCase)) continue;
+            if (!entry.Contains("stops.csv", StringComparison.CurrentCultureIgnoreCase))
+            {
+                continue;
+            }
                 
             using StreamReader reader = new(entry);
             var records = new CsvReader(reader, CultureInfo.InvariantCulture).GetRecords<NaptanStop>();
