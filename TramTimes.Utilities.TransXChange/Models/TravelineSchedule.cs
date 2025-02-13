@@ -26,6 +26,9 @@ public class TravelineSchedule
     public string? OperatorName { get; set; }
     
     [UsedImplicitly]
+    public string? OperatorPhone { get; set; }
+    
+    [UsedImplicitly]
     public string? ServiceCode { get; set; }
     
     [UsedImplicitly]

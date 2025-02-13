@@ -12,7 +12,7 @@ public static class TransXChangeDaysOfOperationTools
         
         List<Holiday> results = [];
         
-        if (!string.IsNullOrEmpty(daysOfOperation?.AllBankHolidays))
+        if (daysOfOperation?.AllBankHolidays != null)
         {
             results.Add(HolidayTools.GetNewYearsDay(startDate.Value, endDate.Value));
             results.Add(HolidayTools.GetNewYearsDayHoliday(startDate.Value, endDate.Value));
@@ -27,7 +27,7 @@ public static class TransXChangeDaysOfOperationTools
             results.Add(HolidayTools.GetBoxingDayHoliday(startDate.Value, endDate.Value));
         }
 
-        if (!string.IsNullOrEmpty(daysOfOperation?.AllHolidaysExceptChristmas))
+        if (daysOfOperation?.AllHolidaysExceptChristmas != null)
         {
             results.Add(HolidayTools.GetNewYearsDay(startDate.Value, endDate.Value));
             results.Add(HolidayTools.GetGoodFriday(startDate.Value, endDate.Value));
@@ -37,26 +37,26 @@ public static class TransXChangeDaysOfOperationTools
             results.Add(HolidayTools.GetLateSummerBankHolidayNotScotland(startDate.Value, endDate.Value));
         }
 
-        if (!string.IsNullOrEmpty(daysOfOperation?.Christmas))
+        if (daysOfOperation?.Christmas != null)
         {
             results.Add(HolidayTools.GetChristmasDay(startDate.Value, endDate.Value));
             results.Add(HolidayTools.GetBoxingDay(startDate.Value, endDate.Value));
         }
 
-        if (!string.IsNullOrEmpty(daysOfOperation?.DisplacementHolidays))
+        if (daysOfOperation?.DisplacementHolidays != null)
         {
             results.Add(HolidayTools.GetNewYearsDayHoliday(startDate.Value, endDate.Value));
             results.Add(HolidayTools.GetChristmasDayHoliday(startDate.Value, endDate.Value));
             results.Add(HolidayTools.GetBoxingDayHoliday(startDate.Value, endDate.Value));
         }
 
-        if (!string.IsNullOrEmpty(daysOfOperation?.EarlyRunOff))
+        if (daysOfOperation?.EarlyRunOff != null)
         {
             results.Add(HolidayTools.GetChristmasEve(startDate.Value, endDate.Value));
             results.Add(HolidayTools.GetNewYearsEve(startDate.Value, endDate.Value));
         }
 
-        if (!string.IsNullOrEmpty(daysOfOperation?.HolidayMondays))
+        if (daysOfOperation?.HolidayMondays != null)
         {
             results.Add(HolidayTools.GetEasterMonday(startDate.Value, endDate.Value));
             results.Add(HolidayTools.GetMayDay(startDate.Value, endDate.Value));
@@ -64,73 +64,73 @@ public static class TransXChangeDaysOfOperationTools
             results.Add(HolidayTools.GetLateSummerBankHolidayNotScotland(startDate.Value, endDate.Value));
         }
 
-        if (!string.IsNullOrEmpty(daysOfOperation?.Holidays))
+        if (daysOfOperation?.Holidays != null)
         {
             results.Add(HolidayTools.GetNewYearsDay(startDate.Value, endDate.Value));
             results.Add(HolidayTools.GetGoodFriday(startDate.Value, endDate.Value));
         }
         
-        if (!string.IsNullOrEmpty(daysOfOperation?.NewYearsDay))
+        if (daysOfOperation?.NewYearsDay != null)
         {
             results.Add(HolidayTools.GetNewYearsDay(startDate.Value, endDate.Value));
         }
         
-        if (!string.IsNullOrEmpty(daysOfOperation?.NewYearsDayHoliday))
+        if (daysOfOperation?.NewYearsDayHoliday != null)
         {
             results.Add(HolidayTools.GetNewYearsDayHoliday(startDate.Value, endDate.Value));
         }
         
-        if (!string.IsNullOrEmpty(daysOfOperation?.GoodFriday))
+        if (daysOfOperation?.GoodFriday != null)
         {
             results.Add(HolidayTools.GetGoodFriday(startDate.Value, endDate.Value));
         }
         
-        if (!string.IsNullOrEmpty(daysOfOperation?.EasterMonday))
+        if (daysOfOperation?.EasterMonday != null)
         {
             results.Add(HolidayTools.GetEasterMonday(startDate.Value, endDate.Value));
         }
         
-        if (!string.IsNullOrEmpty(daysOfOperation?.MayDay))
+        if (daysOfOperation?.MayDay != null)
         {
             results.Add(HolidayTools.GetMayDay(startDate.Value, endDate.Value));
         }
         
-        if (!string.IsNullOrEmpty(daysOfOperation?.SpringBank))
+        if (daysOfOperation?.SpringBank != null)
         {
             results.Add(HolidayTools.GetSpringBank(startDate.Value, endDate.Value));
         }
         
-        if (!string.IsNullOrEmpty(daysOfOperation?.LateSummerBankHolidayNotScotland))
+        if (daysOfOperation?.LateSummerBankHolidayNotScotland != null)
         {
             results.Add(HolidayTools.GetLateSummerBankHolidayNotScotland(startDate.Value, endDate.Value));
         }
         
-        if (!string.IsNullOrEmpty(daysOfOperation?.ChristmasEve))
+        if (daysOfOperation?.ChristmasEve != null)
         {
             results.Add(HolidayTools.GetChristmasEve(startDate.Value, endDate.Value));
         }
         
-        if (!string.IsNullOrEmpty(daysOfOperation?.ChristmasDay))
+        if (daysOfOperation?.ChristmasDay != null)
         {
             results.Add(HolidayTools.GetChristmasDay(startDate.Value, endDate.Value));
         }
         
-        if (!string.IsNullOrEmpty(daysOfOperation?.ChristmasDayHoliday))
+        if (daysOfOperation?.ChristmasDayHoliday != null)
         {
             results.Add(HolidayTools.GetChristmasDayHoliday(startDate.Value, endDate.Value));
         }
         
-        if (!string.IsNullOrEmpty(daysOfOperation?.BoxingDay))
+        if (daysOfOperation?.BoxingDay != null)
         {
             results.Add(HolidayTools.GetBoxingDay(startDate.Value, endDate.Value));
         }
         
-        if (!string.IsNullOrEmpty(daysOfOperation?.BoxingDayHoliday))
+        if (daysOfOperation?.BoxingDayHoliday != null)
         {
             results.Add(HolidayTools.GetBoxingDayHoliday(startDate.Value, endDate.Value));
         }
         
-        if (!string.IsNullOrEmpty(daysOfOperation?.NewYearsEve))
+        if (daysOfOperation?.NewYearsEve != null)
         {
             results.Add(HolidayTools.GetNewYearsEve(startDate.Value, endDate.Value));
         }
@@ -145,7 +145,7 @@ public static class TransXChangeDaysOfOperationTools
         
         List<Holiday> results = [];
         
-        if (!string.IsNullOrEmpty(daysOfOperation?.AllBankHolidays))
+        if (daysOfOperation?.AllBankHolidays != null)
         {
             results.Add(HolidayTools.GetNewYearsDay(startDate.Value, endDate.Value));
             results.Add(HolidayTools.GetNewYearsDayHoliday(startDate.Value, endDate.Value));
@@ -164,7 +164,7 @@ public static class TransXChangeDaysOfOperationTools
             results.Add(HolidayTools.GetBoxingDayHoliday(startDate.Value, endDate.Value));
         }
 
-        if (!string.IsNullOrEmpty(daysOfOperation?.AllHolidaysExceptChristmas))
+        if (daysOfOperation?.AllHolidaysExceptChristmas != null)
         {
             results.Add(HolidayTools.GetNewYearsDay(startDate.Value, endDate.Value));
             results.Add(HolidayTools.GetJanSecondScotland(startDate.Value, endDate.Value));
@@ -176,13 +176,13 @@ public static class TransXChangeDaysOfOperationTools
             results.Add(HolidayTools.GetStAndrewsDay(startDate.Value, endDate.Value));
         }
 
-        if (!string.IsNullOrEmpty(daysOfOperation?.Christmas))
+        if (daysOfOperation?.Christmas != null)
         {
             results.Add(HolidayTools.GetChristmasDay(startDate.Value, endDate.Value));
             results.Add(HolidayTools.GetBoxingDay(startDate.Value, endDate.Value));
         }
 
-        if (!string.IsNullOrEmpty(daysOfOperation?.DisplacementHolidays))
+        if (daysOfOperation?.DisplacementHolidays != null)
         {
             results.Add(HolidayTools.GetNewYearsDayHoliday(startDate.Value, endDate.Value));
             results.Add(HolidayTools.GetJanSecondScotlandHoliday(startDate.Value, endDate.Value));
@@ -191,13 +191,13 @@ public static class TransXChangeDaysOfOperationTools
             results.Add(HolidayTools.GetBoxingDayHoliday(startDate.Value, endDate.Value));
         }
 
-        if (!string.IsNullOrEmpty(daysOfOperation?.EarlyRunOff))
+        if (daysOfOperation?.EarlyRunOff != null)
         {
             results.Add(HolidayTools.GetChristmasEve(startDate.Value, endDate.Value));
             results.Add(HolidayTools.GetNewYearsEve(startDate.Value, endDate.Value));
         }
 
-        if (!string.IsNullOrEmpty(daysOfOperation?.HolidayMondays))
+        if (daysOfOperation?.HolidayMondays != null)
         {
             results.Add(HolidayTools.GetEasterMonday(startDate.Value, endDate.Value));
             results.Add(HolidayTools.GetMayDay(startDate.Value, endDate.Value));
@@ -205,7 +205,7 @@ public static class TransXChangeDaysOfOperationTools
             results.Add(HolidayTools.GetAugustBankHolidayScotland(startDate.Value, endDate.Value));
         }
 
-        if (!string.IsNullOrEmpty(daysOfOperation?.Holidays))
+        if (daysOfOperation?.Holidays != null)
         {
             results.Add(HolidayTools.GetNewYearsDay(startDate.Value, endDate.Value));
             results.Add(HolidayTools.GetJanSecondScotland(startDate.Value, endDate.Value));
@@ -213,87 +213,87 @@ public static class TransXChangeDaysOfOperationTools
             results.Add(HolidayTools.GetStAndrewsDay(startDate.Value, endDate.Value));
         }
 
-        if (!string.IsNullOrEmpty(daysOfOperation?.NewYearsDay))
+        if (daysOfOperation?.NewYearsDay != null)
         {
             results.Add(HolidayTools.GetNewYearsDay(startDate.Value, endDate.Value));
         }
         
-        if (!string.IsNullOrEmpty(daysOfOperation?.NewYearsDayHoliday))
+        if (daysOfOperation?.NewYearsDayHoliday != null)
         {
             results.Add(HolidayTools.GetNewYearsDayHoliday(startDate.Value, endDate.Value));
         }
         
-        if (!string.IsNullOrEmpty(daysOfOperation?.JanSecondScotland))
+        if (daysOfOperation?.JanSecondScotland != null)
         {
             results.Add(HolidayTools.GetJanSecondScotland(startDate.Value, endDate.Value));
         }
         
-        if (!string.IsNullOrEmpty(daysOfOperation?.JanSecondScotlandHoliday))
+        if (daysOfOperation?.JanSecondScotlandHoliday != null)
         {
             results.Add(HolidayTools.GetJanSecondScotlandHoliday(startDate.Value, endDate.Value));
         }
         
-        if (!string.IsNullOrEmpty(daysOfOperation?.GoodFriday))
+        if (daysOfOperation?.GoodFriday != null)
         {
             results.Add(HolidayTools.GetGoodFriday(startDate.Value, endDate.Value));
         }
         
-        if (!string.IsNullOrEmpty(daysOfOperation?.EasterMonday))
+        if (daysOfOperation?.EasterMonday != null)
         {
             results.Add(HolidayTools.GetEasterMonday(startDate.Value, endDate.Value));
         }
         
-        if (!string.IsNullOrEmpty(daysOfOperation?.MayDay))
+        if (daysOfOperation?.MayDay != null)
         {
             results.Add(HolidayTools.GetMayDay(startDate.Value, endDate.Value));
         }
         
-        if (!string.IsNullOrEmpty(daysOfOperation?.SpringBank))
+        if (daysOfOperation?.SpringBank != null)
         {
             results.Add(HolidayTools.GetSpringBank(startDate.Value, endDate.Value));
         }
         
-        if (!string.IsNullOrEmpty(daysOfOperation?.AugustBankHolidayScotland))
+        if (daysOfOperation?.AugustBankHolidayScotland != null)
         {
             results.Add(HolidayTools.GetAugustBankHolidayScotland(startDate.Value, endDate.Value));
         }
         
-        if (!string.IsNullOrEmpty(daysOfOperation?.StAndrewsDay))
+        if (daysOfOperation?.StAndrewsDay != null)
         {
             results.Add(HolidayTools.GetStAndrewsDay(startDate.Value, endDate.Value));
         }
         
-        if (!string.IsNullOrEmpty(daysOfOperation?.StAndrewsDayHoliday))
+        if (daysOfOperation?.StAndrewsDayHoliday != null)
         {
             results.Add(HolidayTools.GetStAndrewsDayHoliday(startDate.Value, endDate.Value));
         }
         
-        if (!string.IsNullOrEmpty(daysOfOperation?.ChristmasEve))
+        if (daysOfOperation?.ChristmasEve != null)
         {
             results.Add(HolidayTools.GetChristmasEve(startDate.Value, endDate.Value));
         }
         
-        if (!string.IsNullOrEmpty(daysOfOperation?.ChristmasDay))
+        if (daysOfOperation?.ChristmasDay != null)
         {
             results.Add(HolidayTools.GetChristmasDay(startDate.Value, endDate.Value));
         }
         
-        if (!string.IsNullOrEmpty(daysOfOperation?.ChristmasDayHoliday))
+        if (daysOfOperation?.ChristmasDayHoliday != null)
         {
             results.Add(HolidayTools.GetChristmasDayHoliday(startDate.Value, endDate.Value));
         }
         
-        if (!string.IsNullOrEmpty(daysOfOperation?.BoxingDay))
+        if (daysOfOperation?.BoxingDay != null)
         {
             results.Add(HolidayTools.GetBoxingDay(startDate.Value, endDate.Value));
         }
         
-        if (!string.IsNullOrEmpty(daysOfOperation?.BoxingDayHoliday))
+        if (daysOfOperation?.BoxingDayHoliday != null)
         {
             results.Add(HolidayTools.GetBoxingDayHoliday(startDate.Value, endDate.Value));
         }
         
-        if (!string.IsNullOrEmpty(daysOfOperation?.NewYearsEve))
+        if (daysOfOperation?.NewYearsEve != null)
         {
             results.Add(HolidayTools.GetNewYearsEve(startDate.Value, endDate.Value));
         }

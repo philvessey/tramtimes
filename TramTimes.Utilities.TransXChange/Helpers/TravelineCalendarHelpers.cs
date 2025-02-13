@@ -20,7 +20,7 @@ public static class TravelineCalendarHelpers
             Sunday = false,
         };
         
-        if (operatingProfile?.RegularDayType?.DaysOfWeek?.MondayToFriday == string.Empty)
+        if (operatingProfile?.RegularDayType?.DaysOfWeek?.MondayToFriday != null)
         {
             value.Monday = true;
             value.Tuesday = true;
@@ -29,134 +29,7 @@ public static class TravelineCalendarHelpers
             value.Friday = true;
         }
         
-        if (operatingProfile?.RegularDayType?.DaysOfWeek?.MondayToSaturday == string.Empty)
-        {
-            value.Monday = true;
-            value.Tuesday = true;
-            value.Wednesday = true;
-            value.Thursday = true;
-            value.Friday = true;
-            value.Saturday = true;
-        }
-        
-        if (operatingProfile?.RegularDayType?.DaysOfWeek?.MondayToSunday == string.Empty)
-        {
-            value.Monday = true;
-            value.Tuesday = true;
-            value.Wednesday = true;
-            value.Thursday = true;
-            value.Friday = true;
-            value.Saturday = true;
-            value.Sunday = true;
-        }
-        
-        if (operatingProfile?.RegularDayType?.DaysOfWeek?.Weekend == string.Empty)
-        {
-            value.Saturday = true;
-            value.Sunday = true;
-        }
-        
-        if (operatingProfile?.RegularDayType?.DaysOfWeek?.NotMonday == string.Empty)
-        {
-            value.Tuesday = true;
-            value.Wednesday = true;
-            value.Thursday = true;
-            value.Friday = true;
-            value.Saturday = true;
-            value.Sunday = true;
-        }
-        
-        if (operatingProfile?.RegularDayType?.DaysOfWeek?.NotTuesday == string.Empty)
-        {
-            value.Monday = true;
-            value.Wednesday = true;
-            value.Thursday = true;
-            value.Friday = true;
-            value.Saturday = true;
-            value.Sunday = true;
-        }
-        
-        if (operatingProfile?.RegularDayType?.DaysOfWeek?.NotTuesday == string.Empty)
-        {
-            value.Monday = true;
-            value.Wednesday = true;
-            value.Thursday = true;
-            value.Friday = true;
-            value.Saturday = true;
-            value.Sunday = true;
-        }
-        
-        if (operatingProfile?.RegularDayType?.DaysOfWeek?.NotWednesday == string.Empty)
-        {
-            value.Monday = true;
-            value.Tuesday = true;
-            value.Thursday = true;
-            value.Friday = true;
-            value.Saturday = true;
-            value.Sunday = true;
-        }
-        
-        if (operatingProfile?.RegularDayType?.DaysOfWeek?.NotWednesday == string.Empty)
-        {
-            value.Monday = true;
-            value.Tuesday = true;
-            value.Thursday = true;
-            value.Friday = true;
-            value.Saturday = true;
-            value.Sunday = true;
-        }
-        
-        if (operatingProfile?.RegularDayType?.DaysOfWeek?.NotWednesday == string.Empty)
-        {
-            value.Monday = true;
-            value.Tuesday = true;
-            value.Thursday = true;
-            value.Friday = true;
-            value.Saturday = true;
-            value.Sunday = true;
-        }
-        
-        if (operatingProfile?.RegularDayType?.DaysOfWeek?.NotWednesday == string.Empty)
-        {
-            value.Monday = true;
-            value.Tuesday = true;
-            value.Thursday = true;
-            value.Friday = true;
-            value.Saturday = true;
-            value.Sunday = true;
-        }
-        
-        if (operatingProfile?.RegularDayType?.DaysOfWeek?.NotThursday == string.Empty)
-        {
-            value.Monday = true;
-            value.Tuesday = true;
-            value.Wednesday = true;
-            value.Friday = true;
-            value.Saturday = true;
-            value.Sunday = true;
-        }
-        
-        if (operatingProfile?.RegularDayType?.DaysOfWeek?.NotFriday == string.Empty)
-        {
-            value.Monday = true;
-            value.Tuesday = true;
-            value.Wednesday = true;
-            value.Thursday = true;
-            value.Saturday = true;
-            value.Sunday = true;
-        }
-        
-        if (operatingProfile?.RegularDayType?.DaysOfWeek?.NotSaturday == string.Empty)
-        {
-            value.Monday = true;
-            value.Tuesday = true;
-            value.Wednesday = true;
-            value.Thursday = true;
-            value.Friday = true;
-            value.Sunday = true;
-        }
-        
-        if (operatingProfile?.RegularDayType?.DaysOfWeek?.NotSunday == string.Empty)
+        if (operatingProfile?.RegularDayType?.DaysOfWeek?.MondayToSaturday != null)
         {
             value.Monday = true;
             value.Tuesday = true;
@@ -166,37 +39,164 @@ public static class TravelineCalendarHelpers
             value.Saturday = true;
         }
         
-        if (operatingProfile?.RegularDayType?.DaysOfWeek?.Monday == string.Empty)
+        if (operatingProfile?.RegularDayType?.DaysOfWeek?.MondayToSunday != null)
+        {
+            value.Monday = true;
+            value.Tuesday = true;
+            value.Wednesday = true;
+            value.Thursday = true;
+            value.Friday = true;
+            value.Saturday = true;
+            value.Sunday = true;
+        }
+        
+        if (operatingProfile?.RegularDayType?.DaysOfWeek?.Weekend != null)
+        {
+            value.Saturday = true;
+            value.Sunday = true;
+        }
+        
+        if (operatingProfile?.RegularDayType?.DaysOfWeek?.NotMonday != null)
+        {
+            value.Tuesday = true;
+            value.Wednesday = true;
+            value.Thursday = true;
+            value.Friday = true;
+            value.Saturday = true;
+            value.Sunday = true;
+        }
+        
+        if (operatingProfile?.RegularDayType?.DaysOfWeek?.NotTuesday != null)
+        {
+            value.Monday = true;
+            value.Wednesday = true;
+            value.Thursday = true;
+            value.Friday = true;
+            value.Saturday = true;
+            value.Sunday = true;
+        }
+        
+        if (operatingProfile?.RegularDayType?.DaysOfWeek?.NotTuesday != null)
+        {
+            value.Monday = true;
+            value.Wednesday = true;
+            value.Thursday = true;
+            value.Friday = true;
+            value.Saturday = true;
+            value.Sunday = true;
+        }
+        
+        if (operatingProfile?.RegularDayType?.DaysOfWeek?.NotWednesday != null)
+        {
+            value.Monday = true;
+            value.Tuesday = true;
+            value.Thursday = true;
+            value.Friday = true;
+            value.Saturday = true;
+            value.Sunday = true;
+        }
+        
+        if (operatingProfile?.RegularDayType?.DaysOfWeek?.NotWednesday != null)
+        {
+            value.Monday = true;
+            value.Tuesday = true;
+            value.Thursday = true;
+            value.Friday = true;
+            value.Saturday = true;
+            value.Sunday = true;
+        }
+        
+        if (operatingProfile?.RegularDayType?.DaysOfWeek?.NotWednesday != null)
+        {
+            value.Monday = true;
+            value.Tuesday = true;
+            value.Thursday = true;
+            value.Friday = true;
+            value.Saturday = true;
+            value.Sunday = true;
+        }
+        
+        if (operatingProfile?.RegularDayType?.DaysOfWeek?.NotWednesday != null)
+        {
+            value.Monday = true;
+            value.Tuesday = true;
+            value.Thursday = true;
+            value.Friday = true;
+            value.Saturday = true;
+            value.Sunday = true;
+        }
+        
+        if (operatingProfile?.RegularDayType?.DaysOfWeek?.NotThursday != null)
+        {
+            value.Monday = true;
+            value.Tuesday = true;
+            value.Wednesday = true;
+            value.Friday = true;
+            value.Saturday = true;
+            value.Sunday = true;
+        }
+        
+        if (operatingProfile?.RegularDayType?.DaysOfWeek?.NotFriday != null)
+        {
+            value.Monday = true;
+            value.Tuesday = true;
+            value.Wednesday = true;
+            value.Thursday = true;
+            value.Saturday = true;
+            value.Sunday = true;
+        }
+        
+        if (operatingProfile?.RegularDayType?.DaysOfWeek?.NotSaturday != null)
+        {
+            value.Monday = true;
+            value.Tuesday = true;
+            value.Wednesday = true;
+            value.Thursday = true;
+            value.Friday = true;
+            value.Sunday = true;
+        }
+        
+        if (operatingProfile?.RegularDayType?.DaysOfWeek?.NotSunday != null)
+        {
+            value.Monday = true;
+            value.Tuesday = true;
+            value.Wednesday = true;
+            value.Thursday = true;
+            value.Friday = true;
+            value.Saturday = true;
+        }
+        
+        if (operatingProfile?.RegularDayType?.DaysOfWeek?.Monday != null)
         {
             value.Monday = true;
         }
 
-        if (operatingProfile?.RegularDayType?.DaysOfWeek?.Tuesday == string.Empty)
+        if (operatingProfile?.RegularDayType?.DaysOfWeek?.Tuesday != null)
         {
             value.Tuesday = true;
         }
 
-        if (operatingProfile?.RegularDayType?.DaysOfWeek?.Wednesday == string.Empty)
+        if (operatingProfile?.RegularDayType?.DaysOfWeek?.Wednesday != null)
         {
             value.Wednesday = true;
         }
 
-        if (operatingProfile?.RegularDayType?.DaysOfWeek?.Thursday == string.Empty)
+        if (operatingProfile?.RegularDayType?.DaysOfWeek?.Thursday != null)
         {
             value.Thursday = true;
         }
 
-        if (operatingProfile?.RegularDayType?.DaysOfWeek?.Friday == string.Empty)
+        if (operatingProfile?.RegularDayType?.DaysOfWeek?.Friday != null)
         {
             value.Friday = true;
         }
 
-        if (operatingProfile?.RegularDayType?.DaysOfWeek?.Saturday == string.Empty)
+        if (operatingProfile?.RegularDayType?.DaysOfWeek?.Saturday != null)
         {
             value.Saturday = true;
         }
 
-        if (operatingProfile?.RegularDayType?.DaysOfWeek?.Sunday == string.Empty)
+        if (operatingProfile?.RegularDayType?.DaysOfWeek?.Sunday != null)
         {
             value.Sunday = true;
         }

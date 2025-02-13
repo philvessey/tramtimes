@@ -24,7 +24,7 @@ public static class NaptanStopTools
 
             foreach (var record in records)
             {
-                if (!string.IsNullOrEmpty(record.AtcoCode))
+                if (record.AtcoCode != null)
                 {
                     _ = results.TryAdd(record.AtcoCode, record);
                 }
@@ -51,7 +51,7 @@ public static class NaptanStopTools
 
             foreach (var record in records)
             {
-                if (!string.IsNullOrEmpty(record.AtcoCode))
+                if (record.AtcoCode != null)
                 {
                     _ = results.TryAdd(record.AtcoCode, record);
                 }

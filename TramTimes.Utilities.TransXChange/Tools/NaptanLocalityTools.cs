@@ -24,7 +24,7 @@ public static class NaptanLocalityTools
 
             foreach (var record in records)
             {
-                if (!string.IsNullOrEmpty(record.NptgLocalityCode))
+                if (record.NptgLocalityCode != null)
                 {
                     _ = results.TryAdd(record.NptgLocalityCode, record);
                 }
@@ -51,7 +51,7 @@ public static class NaptanLocalityTools
 
             foreach (var record in records)
             {
-                if (!string.IsNullOrEmpty(record.NptgLocalityCode))
+                if (record.NptgLocalityCode != null)
                 {
                     _ = results.TryAdd(record.NptgLocalityCode, record);
                 }

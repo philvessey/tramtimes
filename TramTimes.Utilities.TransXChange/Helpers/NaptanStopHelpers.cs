@@ -19,8 +19,8 @@ public static class NaptanStopHelpers
             };
         }
 
-        if (string.IsNullOrEmpty(value.Easting)) return value;
-        if (string.IsNullOrEmpty(value.Northing)) return value;
+        if (value.Easting == null) return value;
+        if (value.Northing == null) return value;
         
         var eastingNorthing = new EastingNorthing(double.Parse(value.Easting), double.Parse(value.Northing));
         var cartesian = GeoUK.Convert.ToCartesian(new Airy1830(), new BritishNationalGrid(), eastingNorthing);
