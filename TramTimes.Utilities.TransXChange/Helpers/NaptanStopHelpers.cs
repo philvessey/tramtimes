@@ -11,7 +11,7 @@ public static class NaptanStopHelpers
 {
     public static NaptanStop Build(Dictionary<string, NaptanStop> stops, string? reference)
     {
-        if (!stops.TryGetValue(reference ?? string.Empty, out var value))
+        if (!stops.TryGetValue(reference ?? "unknown", out var value))
         {
             return new NaptanStop
             {

@@ -13,7 +13,7 @@ public static class TravelineStopHelpers
     {
         var stopPoint = stopPoints?.StopPoint?.FirstOrDefault(p => p.AtcoCode == reference);
         
-        if (!localities.TryGetValue(stopPoint?.Place?.NptgLocalityRef ?? string.Empty, out var locality))
+        if (!localities.TryGetValue(stopPoint?.Place?.NptgLocalityRef ?? "unknown", out var locality))
         {
             return new TravelineStop
             {

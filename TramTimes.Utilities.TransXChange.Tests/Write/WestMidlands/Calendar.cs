@@ -51,16 +51,16 @@ public class Calendar(WestMidlandsFixture fixture)
 
         try
         {
-            const string header = "service_id," + 
-                                  "monday," + 
-                                  "tuesday," + 
-                                  "wednesday," + 
-                                  "thursday," + 
-                                  "friday," + 
-                                  "saturday," + 
-                                  "sunday," + 
-                                  "start_date," + 
-                                  "end_date";
+            const string header = "service_id," +
+                                  "monday," +
+                                  "tuesday," +
+                                  "wednesday," +
+                                  "thursday," +
+                                  "friday," +
+                                  "saturday," +
+                                  "sunday," +
+                                  "start_date," +
+                                  "end_date";    
             
             Assert.Contains(header, File.ReadAllLines(GtfsCalendarHelpers.Build(fixture.Schedules, storage.FullName)));
         }

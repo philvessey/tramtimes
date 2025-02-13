@@ -51,8 +51,8 @@ public class CalendarDate(TyneWearFixture fixture)
 
         try
         {
-            const string header = "service_id," + 
-                                  "date," + 
+            const string header = "service_id," +
+                                  "date," +
                                   "exception_type";
             
             Assert.Contains(header, File.ReadAllLines(GtfsCalendarDateHelpers.Build(fixture.Schedules, storage.FullName)));

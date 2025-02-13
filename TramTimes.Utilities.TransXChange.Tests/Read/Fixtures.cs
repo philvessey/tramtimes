@@ -16,7 +16,7 @@ public class BlackpoolFixture
         .AddUserSecrets(Assembly.GetExecutingAssembly(), true).Build();
     
     [UsedImplicitly]
-    public Dictionary<string, TravelineSchedule> Schedules { get; } = TransXChange.Build(Path, NaptanLocalityTools.GetFromArchive(Path), 
+    public Dictionary<string, TravelineSchedule> Schedules { get; } = TransXChange.RunArchive(Path, NaptanLocalityTools.GetFromArchive(Path), 
         NaptanStopTools.GetFromArchive(Path), "GB-ENG", "28/01/2025", Configuration["key"]);
 }
 
@@ -30,7 +30,7 @@ public class DocklandsFixture
         .AddUserSecrets(Assembly.GetExecutingAssembly(), true).Build();
     
     [UsedImplicitly]
-    public Dictionary<string, TravelineSchedule> Schedules { get; } = TransXChange.Build(Path, NaptanLocalityTools.GetFromArchive(Path), 
+    public Dictionary<string, TravelineSchedule> Schedules { get; } = TransXChange.RunArchive(Path, NaptanLocalityTools.GetFromArchive(Path), 
         NaptanStopTools.GetFromArchive(Path), "GB-ENG", "28/01/2025", Configuration["key"]);
 }
 
@@ -44,7 +44,7 @@ public class EdinburghFixture
         .AddUserSecrets(Assembly.GetExecutingAssembly(), true).Build();
     
     [UsedImplicitly]
-    public Dictionary<string, TravelineSchedule> Schedules { get; } = TransXChange.Build(Path, NaptanLocalityTools.GetFromArchive(Path), 
+    public Dictionary<string, TravelineSchedule> Schedules { get; } = TransXChange.RunArchive(Path, NaptanLocalityTools.GetFromArchive(Path), 
         NaptanStopTools.GetFromArchive(Path), "GB-SCT", "28/01/2025", Configuration["key"]);
 }
 
@@ -58,7 +58,7 @@ public class GlasgowFixture
         .AddUserSecrets(Assembly.GetExecutingAssembly(), true).Build();
     
     [UsedImplicitly]
-    public Dictionary<string, TravelineSchedule> Schedules { get; } = TransXChange.Build(Path, NaptanLocalityTools.GetFromArchive(Path), 
+    public Dictionary<string, TravelineSchedule> Schedules { get; } = TransXChange.RunArchive(Path, NaptanLocalityTools.GetFromArchive(Path), 
         NaptanStopTools.GetFromArchive(Path), "GB-SCT", "28/01/2025", Configuration["key"]);
 }
 
@@ -72,7 +72,7 @@ public class LondonFixture
         .AddUserSecrets(Assembly.GetExecutingAssembly(), true).Build();
     
     [UsedImplicitly]
-    public Dictionary<string, TravelineSchedule> Schedules { get; } = TransXChange.Build(Path, NaptanLocalityTools.GetFromArchive(Path), 
+    public Dictionary<string, TravelineSchedule> Schedules { get; } = TransXChange.RunArchive(Path, NaptanLocalityTools.GetFromArchive(Path), 
         NaptanStopTools.GetFromArchive(Path), "GB-ENG", "28/01/2025", Configuration["key"]);
 }
 
@@ -86,7 +86,7 @@ public class ManchesterFixture
         .AddUserSecrets(Assembly.GetExecutingAssembly(), true).Build();
     
     [UsedImplicitly]
-    public Dictionary<string, TravelineSchedule> Schedules { get; } = TransXChange.Build(Path, NaptanLocalityTools.GetFromArchive(Path), 
+    public Dictionary<string, TravelineSchedule> Schedules { get; } = TransXChange.RunArchive(Path, NaptanLocalityTools.GetFromArchive(Path), 
         NaptanStopTools.GetFromArchive(Path), "GB-ENG", "28/01/2025", Configuration["key"]);
 }
 
@@ -100,7 +100,7 @@ public class NottinghamFixture
         .AddUserSecrets(Assembly.GetExecutingAssembly(), true).Build();
     
     [UsedImplicitly]
-    public Dictionary<string, TravelineSchedule> Schedules { get; } = TransXChange.Build(Path, NaptanLocalityTools.GetFromArchive(Path), 
+    public Dictionary<string, TravelineSchedule> Schedules { get; } = TransXChange.RunArchive(Path, NaptanLocalityTools.GetFromArchive(Path), 
         NaptanStopTools.GetFromArchive(Path), "GB-ENG", "28/01/2025", Configuration["key"]);
 }
 
@@ -114,7 +114,7 @@ public class SouthYorkshireFixture
         .AddUserSecrets(Assembly.GetExecutingAssembly(), true).Build();
     
     [UsedImplicitly]
-    public Dictionary<string, TravelineSchedule> Schedules { get; } = TransXChange.Build(Path, NaptanLocalityTools.GetFromArchive(Path), 
+    public Dictionary<string, TravelineSchedule> Schedules { get; } = TransXChange.RunArchive(Path, NaptanLocalityTools.GetFromArchive(Path), 
         NaptanStopTools.GetFromArchive(Path), "GB-ENG", "28/01/2025", Configuration["key"]);
 }
 
@@ -128,7 +128,7 @@ public class TyneWearFixture
         .AddUserSecrets(Assembly.GetExecutingAssembly(), true).Build();
 
     [UsedImplicitly]
-    public Dictionary<string, TravelineSchedule> Schedules { get; } = TransXChange.Build(Path, NaptanLocalityTools.GetFromArchive(Path), 
+    public Dictionary<string, TravelineSchedule> Schedules { get; } = TransXChange.RunArchive(Path, NaptanLocalityTools.GetFromArchive(Path), 
         NaptanStopTools.GetFromArchive(Path), "GB-ENG", "28/01/2025", Configuration["key"]);
 }
 
@@ -142,6 +142,6 @@ public class WestMidlandsFixture
         .AddUserSecrets(Assembly.GetExecutingAssembly(), true).Build();
 
     [UsedImplicitly]
-    public Dictionary<string, TravelineSchedule> Schedules { get; } = TransXChange.Build(Path, NaptanLocalityTools.GetFromArchive(Path), 
+    public Dictionary<string, TravelineSchedule> Schedules { get; } = TransXChange.RunArchive(Path, NaptanLocalityTools.GetFromArchive(Path), 
         NaptanStopTools.GetFromArchive(Path), "GB-ENG", "28/01/2025", Configuration["key"]);
 }
