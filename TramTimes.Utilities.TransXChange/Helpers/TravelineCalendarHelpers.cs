@@ -204,19 +204,19 @@ public static class TravelineCalendarHelpers
         value.StartDate = startDate;
         value.EndDate = endDate;
         
-        value.RunningDates = TravelineCalendarRunningDateTools.GetAllDates(value.StartDate, value.EndDate, value.Monday, value.Tuesday,
+        value.RunningDates = TravelineRunningDateTools.GetAllDates(value.StartDate, value.EndDate, value.Monday, value.Tuesday,
             value.Wednesday, value.Thursday, value.Friday, value.Saturday, value.Sunday);
         
         value.SupplementRunningDates = subdivision == "GB-ENG"
-            ? TravelineCalendarSupplementRunningDateTools.GetEnglandDates(scheduleDate, operatingProfile, value.StartDate, value.EndDate,
+            ? TravelineSupplementRunningDateTools.GetEnglandDates(scheduleDate, operatingProfile, value.StartDate, value.EndDate,
                 value.Monday, value.Tuesday, value.Wednesday, value.Thursday, value.Friday, value.Saturday, value.Sunday, value.RunningDates)
-            : TravelineCalendarSupplementRunningDateTools.GetScotlandDates(scheduleDate, operatingProfile, value.StartDate, value.EndDate,
+            : TravelineSupplementRunningDateTools.GetScotlandDates(scheduleDate, operatingProfile, value.StartDate, value.EndDate,
                 value.Monday, value.Tuesday, value.Wednesday, value.Thursday, value.Friday, value.Saturday, value.Sunday, value.RunningDates);
         
         value.SupplementNonRunningDates = subdivision == "GB-ENG"
-            ? TravelineCalendarSupplementNonRunningDateTools.GetEnglandDates(scheduleDate, operatingProfile, value.StartDate, value.EndDate,
+            ? TravelineSupplementNonRunningDateTools.GetEnglandDates(scheduleDate, operatingProfile, value.StartDate, value.EndDate,
                 value.Monday, value.Tuesday, value.Wednesday, value.Thursday, value.Friday, value.Saturday, value.Sunday, value.RunningDates)
-            : TravelineCalendarSupplementNonRunningDateTools.GetScotlandDates(scheduleDate, operatingProfile, value.StartDate, value.EndDate,
+            : TravelineSupplementNonRunningDateTools.GetScotlandDates(scheduleDate, operatingProfile, value.StartDate, value.EndDate,
                 value.Monday, value.Tuesday, value.Wednesday, value.Thursday, value.Friday, value.Saturday, value.Sunday, value.RunningDates);
 
         return value;

@@ -124,9 +124,9 @@ public static class GtfsCalendarDateTools
             }
         }
         
-        return results.OrderBy(d =>
-            d.Value.ServiceId).ToDictionary(d =>
-            d.Key, d =>
-            d.Value);
+        return results.OrderBy(date =>
+            date.Value.ServiceId).ToDictionary(date =>
+            date.Key, date =>
+            date.Value);
     }
 }

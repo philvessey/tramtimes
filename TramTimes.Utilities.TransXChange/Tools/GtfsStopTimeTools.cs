@@ -119,9 +119,9 @@ public static class GtfsStopTimeTools
             }
         }
         
-        return results.OrderBy(s =>
-            s.Value.TripId).ToDictionary(s =>
-            s.Key, s =>
-            s.Value);
+        return results.OrderBy(time =>
+            time.Value.TripId).ToDictionary(time =>
+            time.Key, time =>
+            time.Value);
     }
 }

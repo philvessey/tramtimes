@@ -57,9 +57,9 @@ public static class GtfsCalendarTools
             }
         }
         
-        return results.OrderBy(c =>
-            c.Value.ServiceId).ToDictionary(c =>
-            c.Key, c =>
-            c.Value);
+        return results.OrderBy(calendar =>
+            calendar.Value.ServiceId).ToDictionary(calendar =>
+            calendar.Key, calendar =>
+            calendar.Value);
     }
 }

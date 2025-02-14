@@ -2,7 +2,7 @@ using TramTimes.Utilities.TransXChange.Models;
 
 namespace TramTimes.Utilities.TransXChange.Tools;
 
-public static class TravelineCalendarRunningDateTools
+public static class TravelineRunningDateTools
 {
     public static List<DateTime> GetAllDates(DateTime? startDate, DateTime? endDate, bool? monday, bool? tuesday, bool? wednesday, bool? thursday, bool? friday, bool? saturday, bool? sunday)
     {
@@ -92,19 +92,19 @@ public static class TravelineCalendarRunningDateTools
             startDate = startDate.Value.AddDays(1);
         }
 
-        return results.Distinct().OrderBy(d => d).ToList();
+        return results.Distinct().OrderBy(date => date).ToList();
     }
     
     public static bool GetDuplicateDates(Dictionary<string, TravelineSchedule> schedules, List<TravelineStopPoint>? stopPoints, List<DateTime>? dates, string? direction, string? line)
     {
-        var results = schedules.Values.Where(s =>
-            s.Calendar is { RunningDates: not null } && dates != null && direction != null && line != null &&
-            s.Calendar.RunningDates.Intersect(dates).Any() && s.Direction == direction && s.Line == line).ToList();
+        var results = schedules.Values.Where(schedule =>
+            schedule.Calendar is { RunningDates: not null } && dates != null && direction != null && line != null &&
+            schedule.Calendar.RunningDates.Intersect(dates).Any() && schedule.Direction == direction && schedule.Line == line).ToList();
         
-        return results.Where(s =>
-            s.StopPoints?.FirstOrDefault()?.AtcoCode == stopPoints?.FirstOrDefault()?.AtcoCode &&
-            s.StopPoints?.FirstOrDefault()?.DepartureTime == stopPoints?.FirstOrDefault()?.DepartureTime).Any(s =>
-            s.StopPoints?.LastOrDefault()?.AtcoCode == stopPoints?.LastOrDefault()?.AtcoCode &&
-            s.StopPoints?.LastOrDefault()?.ArrivalTime == stopPoints?.LastOrDefault()?.ArrivalTime);
+        return results.Where(schedule =>
+            schedule.StopPoints?.FirstOrDefault()?.AtcoCode == stopPoints?.FirstOrDefault()?.AtcoCode &&
+            schedule.StopPoints?.FirstOrDefault()?.DepartureTime == stopPoints?.FirstOrDefault()?.DepartureTime).Any(schedule =>
+            schedule.StopPoints?.LastOrDefault()?.AtcoCode == stopPoints?.LastOrDefault()?.AtcoCode &&
+            schedule.StopPoints?.LastOrDefault()?.ArrivalTime == stopPoints?.LastOrDefault()?.ArrivalTime);
     }
 }

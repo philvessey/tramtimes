@@ -67,9 +67,9 @@ public static class GtfsAgencyTools
             }
         }
 
-        return results.OrderBy(a =>
-            a.Value.AgencyId).ToDictionary(a =>
-            a.Key, a =>
-            a.Value);
+        return results.OrderBy(agency =>
+            agency.Value.AgencyId).ToDictionary(agency =>
+            agency.Key, agency =>
+            agency.Value);
     }
 }

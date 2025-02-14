@@ -3,19 +3,19 @@ using TramTimes.Utilities.TransXChange.Models;
 
 namespace TramTimes.Utilities.TransXChange.Tools;
 
-public static class TravelineCalendarSupplementRunningDateTools
+public static class TravelineSupplementNonRunningDateTools
 {
     public static bool GetDuplicateDates(Dictionary<string, TravelineSchedule> schedules, List<TravelineStopPoint>? stopPoints, List<DateTime>? dates, string? direction, string? line)
     {
-        var results = schedules.Values.Where(s =>
-            s.Calendar is { SupplementRunningDates: not null } && dates != null && direction != null && line != null &&
-            s.Calendar.SupplementRunningDates.Intersect(dates).Any() && s.Direction == direction && s.Line == line).ToList();
+        var results = schedules.Values.Where(schedule =>
+            schedule.Calendar is { SupplementNonRunningDates: not null } && dates != null && direction != null && line != null &&
+            schedule.Calendar.SupplementNonRunningDates.Intersect(dates).Any() && schedule.Direction == direction && schedule.Line == line).ToList();
         
-        return results.Where(s =>
-            s.StopPoints?.FirstOrDefault()?.AtcoCode == stopPoints?.FirstOrDefault()?.AtcoCode &&
-            s.StopPoints?.FirstOrDefault()?.DepartureTime == stopPoints?.FirstOrDefault()?.DepartureTime).Any(s =>
-            s.StopPoints?.LastOrDefault()?.AtcoCode == stopPoints?.LastOrDefault()?.AtcoCode &&
-            s.StopPoints?.LastOrDefault()?.ArrivalTime == stopPoints?.LastOrDefault()?.ArrivalTime);
+        return results.Where(schedule =>
+            schedule.StopPoints?.FirstOrDefault()?.AtcoCode == stopPoints?.FirstOrDefault()?.AtcoCode &&
+            schedule.StopPoints?.FirstOrDefault()?.DepartureTime == stopPoints?.FirstOrDefault()?.DepartureTime).Any(schedule =>
+            schedule.StopPoints?.LastOrDefault()?.AtcoCode == stopPoints?.LastOrDefault()?.AtcoCode &&
+            schedule.StopPoints?.LastOrDefault()?.ArrivalTime == stopPoints?.LastOrDefault()?.ArrivalTime);
     }
     
     public static List<DateTime> GetEnglandDates(DateTime scheduleDate, TransXChangeOperatingProfile? operatingProfile, DateTime? startDate, DateTime? endDate, bool? monday, bool? tuesday, bool? wednesday, bool? thursday, bool? friday, bool? saturday, bool? sunday, List<DateTime>? dates)
@@ -25,19 +25,19 @@ public static class TravelineCalendarSupplementRunningDateTools
         
         var results = new List<DateTime>();
         
-        results.AddRange(TransXChangeDaysOfOperationTools.GetEnglandHolidays(operatingProfile?.BankHolidayOperation?.DaysOfOperation, 
-            startDate.Value, endDate.Value).Where(h => h.Date >= startDate.Value && h.Date <= endDate.Value).Select(h => h.Date));
+        results.AddRange(TransXChangeDaysOfNonOperationTools.GetEnglandHolidays(operatingProfile?.BankHolidayOperation?.DaysOfNonOperation, 
+            startDate.Value, endDate.Value).Where(holiday => holiday.Date >= startDate.Value && holiday.Date <= endDate.Value).Select(holiday => holiday.Date));
         
-        startDate = DateTimeTools.GetProfileStartDate(scheduleDate, operatingProfile?.SpecialDaysOperation?.DaysOfOperation?.DateRange?.StartDate.ToDate());
-        endDate = DateTimeTools.GetProfileEndDate(scheduleDate, operatingProfile?.SpecialDaysOperation?.DaysOfOperation?.DateRange?.EndDate.ToDate());
-        
+        startDate = DateTimeTools.GetProfileStartDate(scheduleDate, operatingProfile?.SpecialDaysOperation?.DaysOfNonOperation?.DateRange?.StartDate.ToDate());
+        endDate = DateTimeTools.GetProfileEndDate(scheduleDate, operatingProfile?.SpecialDaysOperation?.DaysOfNonOperation?.DateRange?.EndDate.ToDate());
+
         while (startDate.Value <= endDate.Value)
         {
             switch (startDate.Value.DayOfWeek)
             {
                 case DayOfWeek.Monday:
                 {
-                    if (monday.HasValue && dates?.Contains(startDate.Value) == false)
+                    if (monday.HasValue && dates?.Contains(startDate.Value) == true)
                     {
                         results.Add(startDate.Value);
                     }
@@ -46,7 +46,7 @@ public static class TravelineCalendarSupplementRunningDateTools
                 }
                 case DayOfWeek.Tuesday:
                 {
-                    if (tuesday.HasValue && dates?.Contains(startDate.Value) == false)
+                    if (tuesday.HasValue && dates?.Contains(startDate.Value) == true)
                     {
                         results.Add(startDate.Value);
                     }
@@ -55,7 +55,7 @@ public static class TravelineCalendarSupplementRunningDateTools
                 }
                 case DayOfWeek.Wednesday:
                 {
-                    if (wednesday.HasValue && dates?.Contains(startDate.Value) == false)
+                    if (wednesday.HasValue && dates?.Contains(startDate.Value) == true)
                     {
                         results.Add(startDate.Value);
                     }
@@ -64,7 +64,7 @@ public static class TravelineCalendarSupplementRunningDateTools
                 }
                 case DayOfWeek.Thursday:
                 {
-                    if (thursday.HasValue && dates?.Contains(startDate.Value) == false)
+                    if (thursday.HasValue && dates?.Contains(startDate.Value) == true)
                     {
                         results.Add(startDate.Value);
                     }
@@ -73,7 +73,7 @@ public static class TravelineCalendarSupplementRunningDateTools
                 }
                 case DayOfWeek.Friday:
                 {
-                    if (friday.HasValue && dates?.Contains(startDate.Value) == false)
+                    if (friday.HasValue && dates?.Contains(startDate.Value) == true)
                     {
                         results.Add(startDate.Value);
                     }
@@ -82,7 +82,7 @@ public static class TravelineCalendarSupplementRunningDateTools
                 }
                 case DayOfWeek.Saturday:
                 {
-                    if (saturday.HasValue && dates?.Contains(startDate.Value) == false)
+                    if (saturday.HasValue && dates?.Contains(startDate.Value) == true)
                     {
                         results.Add(startDate.Value);
                     }
@@ -91,7 +91,7 @@ public static class TravelineCalendarSupplementRunningDateTools
                 }
                 case DayOfWeek.Sunday:
                 {
-                    if (sunday.HasValue && dates?.Contains(startDate.Value) == false)
+                    if (sunday.HasValue && dates?.Contains(startDate.Value) == true)
                     {
                         results.Add(startDate.Value);
                     }
@@ -112,7 +112,7 @@ public static class TravelineCalendarSupplementRunningDateTools
             startDate = startDate.Value.AddDays(1);
         }
 
-        return results.Distinct().OrderBy(d => d).ToList();
+        return results.Distinct().OrderBy(date => date).ToList();
     }
     
     public static List<DateTime> GetScotlandDates(DateTime scheduleDate, TransXChangeOperatingProfile? operatingProfile, DateTime? startDate, DateTime? endDate, bool? monday, bool? tuesday, bool? wednesday, bool? thursday, bool? friday, bool? saturday, bool? sunday, List<DateTime>? dates)
@@ -122,11 +122,11 @@ public static class TravelineCalendarSupplementRunningDateTools
         
         var results = new List<DateTime>();
         
-        results.AddRange(TransXChangeDaysOfOperationTools.GetScotlandHolidays(operatingProfile?.BankHolidayOperation?.DaysOfOperation, 
-            startDate.Value, endDate.Value).Where(h => h.Date >= startDate.Value && h.Date <= endDate.Value).Select(h => h.Date));
+        results.AddRange(TransXChangeDaysOfNonOperationTools.GetScotlandHolidays(operatingProfile?.BankHolidayOperation?.DaysOfNonOperation, 
+            startDate.Value, endDate.Value).Where(holiday => holiday.Date >= startDate.Value && holiday.Date <= endDate.Value).Select(holiday => holiday.Date));
 
-        startDate = DateTimeTools.GetProfileStartDate(scheduleDate, operatingProfile?.SpecialDaysOperation?.DaysOfOperation?.DateRange?.StartDate.ToDate());
-        endDate = DateTimeTools.GetProfileEndDate(scheduleDate, operatingProfile?.SpecialDaysOperation?.DaysOfOperation?.DateRange?.EndDate.ToDate());
+        startDate = DateTimeTools.GetProfileStartDate(scheduleDate, operatingProfile?.SpecialDaysOperation?.DaysOfNonOperation?.DateRange?.StartDate.ToDate());
+        endDate = DateTimeTools.GetProfileEndDate(scheduleDate, operatingProfile?.SpecialDaysOperation?.DaysOfNonOperation?.DateRange?.EndDate.ToDate());
 
         while (startDate.Value <= endDate.Value)
         {
@@ -134,7 +134,7 @@ public static class TravelineCalendarSupplementRunningDateTools
             {
                 case DayOfWeek.Monday:
                 {
-                    if (monday.HasValue && dates?.Contains(startDate.Value) == false)
+                    if (monday.HasValue && dates?.Contains(startDate.Value) == true)
                     {
                         results.Add(startDate.Value);
                     }
@@ -143,7 +143,7 @@ public static class TravelineCalendarSupplementRunningDateTools
                 }
                 case DayOfWeek.Tuesday:
                 {
-                    if (tuesday.HasValue && dates?.Contains(startDate.Value) == false)
+                    if (tuesday.HasValue && dates?.Contains(startDate.Value) == true)
                     {
                         results.Add(startDate.Value);
                     }
@@ -152,7 +152,7 @@ public static class TravelineCalendarSupplementRunningDateTools
                 }
                 case DayOfWeek.Wednesday:
                 {
-                    if (wednesday.HasValue && dates?.Contains(startDate.Value) == false)
+                    if (wednesday.HasValue && dates?.Contains(startDate.Value) == true)
                     {
                         results.Add(startDate.Value);
                     }
@@ -161,7 +161,7 @@ public static class TravelineCalendarSupplementRunningDateTools
                 }
                 case DayOfWeek.Thursday:
                 {
-                    if (thursday.HasValue && dates?.Contains(startDate.Value) == false)
+                    if (thursday.HasValue && dates?.Contains(startDate.Value) == true)
                     {
                         results.Add(startDate.Value);
                     }
@@ -170,7 +170,7 @@ public static class TravelineCalendarSupplementRunningDateTools
                 }
                 case DayOfWeek.Friday:
                 {
-                    if (friday.HasValue && dates?.Contains(startDate.Value) == false)
+                    if (friday.HasValue && dates?.Contains(startDate.Value) == true)
                     {
                         results.Add(startDate.Value);
                     }
@@ -179,7 +179,7 @@ public static class TravelineCalendarSupplementRunningDateTools
                 }
                 case DayOfWeek.Saturday:
                 {
-                    if (saturday.HasValue && dates?.Contains(startDate.Value) == false)
+                    if (saturday.HasValue && dates?.Contains(startDate.Value) == true)
                     {
                         results.Add(startDate.Value);
                     }
@@ -188,7 +188,7 @@ public static class TravelineCalendarSupplementRunningDateTools
                 }
                 case DayOfWeek.Sunday:
                 {
-                    if (sunday.HasValue && dates?.Contains(startDate.Value) == false)
+                    if (sunday.HasValue && dates?.Contains(startDate.Value) == true)
                     {
                         results.Add(startDate.Value);
                     }
@@ -209,6 +209,6 @@ public static class TravelineCalendarSupplementRunningDateTools
             startDate = startDate.Value.AddDays(1);
         }
 
-        return results.Distinct().OrderBy(d => d).ToList();
+        return results.Distinct().OrderBy(date => date).ToList();
     }
 }

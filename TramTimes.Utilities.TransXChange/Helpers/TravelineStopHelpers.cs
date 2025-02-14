@@ -11,7 +11,7 @@ public static class TravelineStopHelpers
 {
     public static TravelineStop Build(Dictionary<string, NaptanLocality> localities, TransXChangeStopPoints? stopPoints, string? reference)
     {
-        var stopPoint = stopPoints?.StopPoint?.FirstOrDefault(p => p.AtcoCode == reference);
+        var stopPoint = stopPoints?.StopPoint?.FirstOrDefault(point => point.AtcoCode == reference);
         
         if (!localities.TryGetValue(stopPoint?.Place?.NptgLocalityRef ?? "unknown", out var locality))
         {

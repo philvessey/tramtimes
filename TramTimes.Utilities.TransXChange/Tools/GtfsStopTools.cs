@@ -74,9 +74,9 @@ public static class GtfsStopTools
             }
         }
         
-        return results.OrderBy(s =>
-            s.Value.StopId).ToDictionary(s =>
-            s.Key, s =>
-            s.Value);
+        return results.OrderBy(stop =>
+            stop.Value.StopId).ToDictionary(stop =>
+            stop.Key, stop =>
+            stop.Value);
     }
 }

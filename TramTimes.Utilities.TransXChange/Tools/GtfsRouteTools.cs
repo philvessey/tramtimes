@@ -66,9 +66,9 @@ public static class GtfsRouteTools
             }
         }
         
-        return results.OrderBy(r =>
-            r.Value.RouteId).ToDictionary(r =>
-            r.Key, r =>
-            r.Value);
+        return results.OrderBy(route =>
+            route.Value.RouteId).ToDictionary(route =>
+            route.Key, route =>
+            route.Value);
     }
 }

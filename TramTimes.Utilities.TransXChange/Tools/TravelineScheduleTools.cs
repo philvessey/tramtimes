@@ -6,14 +6,14 @@ public static class TravelineScheduleTools
 {
     public static bool GetDuplicateMatch(Dictionary<string, TravelineSchedule> schedules, List<TravelineStopPoint>? stopPoints, List<DateTime>? runningDates, List<DateTime>? supplementRunningDates, List<DateTime>? supplementNonRunningDates, string? direction, string? line)
     {
-        return TravelineCalendarRunningDateTools.GetDuplicateDates(schedules, stopPoints, runningDates, direction, line) ||
-               TravelineCalendarRunningDateTools.GetDuplicateDates(schedules, stopPoints, supplementRunningDates, direction, line) ||
-               TravelineCalendarRunningDateTools.GetDuplicateDates(schedules, stopPoints, supplementNonRunningDates, direction, line) ||
-               TravelineCalendarSupplementRunningDateTools.GetDuplicateDates(schedules, stopPoints, runningDates, direction, line) ||
-               TravelineCalendarSupplementRunningDateTools.GetDuplicateDates(schedules, stopPoints, supplementRunningDates, direction, line) ||
-               TravelineCalendarSupplementRunningDateTools.GetDuplicateDates(schedules, stopPoints, supplementNonRunningDates, direction, line) ||
-               TravelineCalendarSupplementNonRunningDateTools.GetDuplicateDates(schedules, stopPoints, runningDates, direction, line) ||
-               TravelineCalendarSupplementNonRunningDateTools.GetDuplicateDates(schedules, stopPoints, supplementRunningDates, direction, line) ||
-               TravelineCalendarSupplementNonRunningDateTools.GetDuplicateDates(schedules, stopPoints, supplementNonRunningDates, direction, line);
+        return TravelineRunningDateTools.GetDuplicateDates(schedules, stopPoints, runningDates, direction, line) ||
+               TravelineRunningDateTools.GetDuplicateDates(schedules, stopPoints, supplementRunningDates, direction, line) ||
+               TravelineRunningDateTools.GetDuplicateDates(schedules, stopPoints, supplementNonRunningDates, direction, line) ||
+               TravelineSupplementRunningDateTools.GetDuplicateDates(schedules, stopPoints, runningDates, direction, line) ||
+               TravelineSupplementRunningDateTools.GetDuplicateDates(schedules, stopPoints, supplementRunningDates, direction, line) ||
+               TravelineSupplementRunningDateTools.GetDuplicateDates(schedules, stopPoints, supplementNonRunningDates, direction, line) ||
+               TravelineSupplementNonRunningDateTools.GetDuplicateDates(schedules, stopPoints, runningDates, direction, line) ||
+               TravelineSupplementNonRunningDateTools.GetDuplicateDates(schedules, stopPoints, supplementRunningDates, direction, line) ||
+               TravelineSupplementNonRunningDateTools.GetDuplicateDates(schedules, stopPoints, supplementNonRunningDates, direction, line);
     }
 }

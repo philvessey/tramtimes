@@ -63,9 +63,9 @@ public static class GtfsTripTools
             _ = results.TryAdd(Guid.NewGuid().ToString(), trip);
         }
         
-        return results.OrderBy(t =>
-            t.Value.TripId).ToDictionary(t =>
-            t.Key, t =>
-            t.Value);
+        return results.OrderBy(trip =>
+            trip.Value.TripId).ToDictionary(trip =>
+            trip.Key, trip =>
+            trip.Value);
     }
 }
