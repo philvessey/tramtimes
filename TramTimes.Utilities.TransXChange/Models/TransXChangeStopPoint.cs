@@ -1,24 +1,32 @@
+using System.Xml.Serialization;
 using JetBrains.Annotations;
 
 namespace TramTimes.Utilities.TransXChange.Models;
 
+[XmlRoot(ElementName = "StopPoint", Namespace = "http://www.transxchange.org.uk/")]
 public class TransXChangeStopPoint
 {
     [UsedImplicitly]
+    [XmlElement(ElementName = "AtcoCode")]
     public string? AtcoCode { get; set; }
     
     [UsedImplicitly]
-    public string? Activity { get; set; }
+    [XmlElement(ElementName = "Descriptor")]
+    public TransXChangeDescriptor? Descriptor { get; set; }
     
     [UsedImplicitly]
-    public TimeSpan? ArrivalTime { get; set; }
+    [XmlElement(ElementName = "Place")]
+    public TransXChangePlace? Place { get; set; }
     
     [UsedImplicitly]
-    public TimeSpan? DepartureTime { get; set; }
+    [XmlElement(ElementName = "StopClassification")]
+    public TransXChangeStopClassification? StopClassification { get; set; }
     
     [UsedImplicitly]
-    public NaptanStop? NaptanStop { get; set; }
+    [XmlElement(ElementName = "AdministrativeAreaRef")] 
+    public string? AdministrativeAreaRef { get; set; }
     
     [UsedImplicitly]
-    public TransXChangeStop? TransXChangeStop { get; set; }
+    [XmlElement(ElementName = "Notes")] 
+    public string? Notes { get; set; }
 }

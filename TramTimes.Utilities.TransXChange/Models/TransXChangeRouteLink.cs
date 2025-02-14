@@ -3,8 +3,7 @@ using JetBrains.Annotations;
 
 namespace TramTimes.Utilities.TransXChange.Models;
 
-[UsedImplicitly]
-[XmlRoot(ElementName = "RouteLink")]
+[XmlRoot(ElementName = "RouteLink", Namespace = "http://www.transxchange.org.uk/")]
 public class TransXChangeRouteLink
 {
     [UsedImplicitly]
@@ -18,6 +17,10 @@ public class TransXChangeRouteLink
     [UsedImplicitly]
     [XmlElement(ElementName = "To")]
     public TransXChangeTo? To { get; set; }
+    
+    [UsedImplicitly]
+    [XmlElement(ElementName = "Distance")]
+    public string? Distance { get; set; }
 
     [UsedImplicitly]
     [XmlElement(ElementName = "Direction")]

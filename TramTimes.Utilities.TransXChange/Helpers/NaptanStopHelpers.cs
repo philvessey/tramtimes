@@ -9,29 +9,26 @@ namespace TramTimes.Utilities.TransXChange.Helpers;
 
 public static class NaptanStopHelpers
 {
-    public static NaptanStop Build(Dictionary<string, NaptanStop> stops, string reference, string commonName, string localityName)
+    public static NaptanStop Build(Dictionary<string, NaptanStop> stops, string? reference)
     {
-        NaptanStop result = new()
+        if (!stops.TryGetValue(reference ?? "unknown", out var value))
         {
-            AtcoCode = reference,
-            CommonName = commonName,
-            LocalityName = localityName
-        };
+            return new NaptanStop
+            {
+                AtcoCode = reference ?? "unknown"
+            };
+        }
 
-        if (!stops.TryGetValue(reference, out var value)) return result;
+        if (value.Easting == null) return value;
+        if (value.Northing == null) return value;
         
-        result = value;
+        var eastingNorthing = new EastingNorthing(double.Parse(value.Easting), double.Parse(value.Northing));
+        var cartesian = GeoUK.Convert.ToCartesian(new Airy1830(), new BritishNationalGrid(), eastingNorthing);
+        var coordinates = GeoUK.Convert.ToLatitudeLongitude(new Wgs84(), Transform.Osgb36ToEtrs89(cartesian));
+        
+        value.Longitude = coordinates.Longitude.ToString(CultureInfo.CurrentCulture);
+        value.Latitude = coordinates.Latitude.ToString(CultureInfo.CurrentCulture);
 
-        if (string.IsNullOrEmpty(result.Easting) || string.IsNullOrEmpty(result.Northing)) return result;
-        
-        var coordinates = GeoUK.Convert.ToLatitudeLongitude(new Wgs84(),
-            Transform.Osgb36ToEtrs89(GeoUK.Convert.ToCartesian(new Airy1830(),
-                new BritishNationalGrid(),
-                new EastingNorthing(double.Parse(result.Easting), double.Parse(result.Northing)))));
-        
-        result.Longitude = coordinates.Longitude.ToString(CultureInfo.InvariantCulture);
-        result.Latitude = coordinates.Latitude.ToString(CultureInfo.InvariantCulture);
-
-        return result;
+        return value;
     }
 }

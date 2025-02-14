@@ -1,60 +1,48 @@
-using System.Globalization;
-
 namespace TramTimes.Utilities.TransXChange.Tools;
 
 public static class DateTimeTools
 {
-    public static DateTime GetScheduleDate(DateTime result, string date)
+    public static DateTime GetPeriodStartDate(DateTime scheduleDate, DateTime? startDate)
     {
-        if (DateTime.TryParse(date, CultureInfo.CreateSpecificCulture("en-GB"), out var value))
-        {
-            result = value;
-        }
+        if (!startDate.HasValue) return scheduleDate;
+        if (startDate.Value == DateTime.MinValue) return scheduleDate;
+        
+        if (startDate.Value < scheduleDate) return scheduleDate;
+        if (startDate.Value == scheduleDate) return scheduleDate;
 
-        result = date switch
-        {
-            "yesterday" => result.AddDays(-1),
-            "today" => result.AddDays(0),
-            "tomorrow" => result.AddDays(1),
-            _ => result
-        };
-
-        return result;
+        return startDate.Value.Subtract(scheduleDate).TotalDays < 6 ? startDate.Value : DateTime.MaxValue;
     }
     
-    public static DateTime GetStartDate(DateTime result, DateTime now, int days)
+    public static DateTime GetPeriodEndDate(DateTime scheduleDate, DateTime? endDate)
     {
-        days = days switch
-        {
-            < 1 => 0,
-            > 28 => 27,
-            _ => days - 1
-        };
-
-        return result;
+        if (!endDate.HasValue) return scheduleDate.AddDays(6);
+        if (endDate.Value == DateTime.MinValue) return scheduleDate.AddDays(6);
+        
+        if (endDate.Value < scheduleDate) return DateTime.MinValue;
+        if (endDate.Value == scheduleDate) return scheduleDate;
+        
+        return endDate.Value.Subtract(scheduleDate).TotalDays > 6 ? scheduleDate.AddDays(6) : endDate.Value;
     }
     
-    public static DateTime GetEndDate(DateTime result, DateTime now, int days)
+    public static DateTime GetProfileStartDate(DateTime scheduleDate, DateTime? startDate)
     {
-        days = days switch
-        {
-            < 1 => 0,
-            > 28 => 27,
-            _ => days - 1
-        };
+        if (!startDate.HasValue) return DateTime.MaxValue;
+        if (startDate.Value == DateTime.MinValue) return DateTime.MaxValue;
+        
+        if (startDate.Value < scheduleDate) return DateTime.MaxValue;
+        if (startDate.Value == scheduleDate) return startDate.Value;
 
-        return result;
+        return startDate.Value.Subtract(scheduleDate).TotalDays < 6 ? startDate.Value : DateTime.MaxValue;
     }
     
-    public static DateTime GetHolidayDate(DateTime result, DateTime now, int days)
+    public static DateTime GetProfileEndDate(DateTime scheduleDate, DateTime? endDate)
     {
-        days = days switch
-        {
-            < 1 => 0,
-            > 28 => 27,
-            _ => days - 1
-        };
-
-        return result;
+        if (!endDate.HasValue) return DateTime.MinValue;
+        if (endDate.Value == DateTime.MinValue) return DateTime.MinValue;
+        
+        if (endDate.Value < scheduleDate) return DateTime.MinValue;
+        if (endDate.Value == scheduleDate) return endDate.Value;
+        
+        return endDate.Value.Subtract(scheduleDate).TotalDays < 6 ? endDate.Value : DateTime.MinValue;
     }
 }

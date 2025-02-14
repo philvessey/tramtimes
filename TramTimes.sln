@@ -2,7 +2,11 @@
 
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TramTimes.AppHost", "TramTimes.AppHost\TramTimes.AppHost.csproj", "{B2616C3A-1C36-41F1-8811-1D4C1E284043}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TramTimes.ServiceDefaults", "TramTimes.ServiceDefaults\TramTimes.ServiceDefaults.csproj", "{6A2D84E7-1D21-4DDA-8E5D-03DFAB2FF484}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TramTimes.Utilities.TransXChange", "TramTimes.Utilities.TransXChange\TramTimes.Utilities.TransXChange.csproj", "{257141C6-50E7-4222-A74F-39B376983798}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TramTimes.Utilities.TransXChange.Tests", "TramTimes.Utilities.TransXChange.Tests\TramTimes.Utilities.TransXChange.Tests.csproj", "{CC2A3C3F-3C53-4EF3-A73F-2EFF3BEE178B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionItems", "{07B03DDD-B84F-47DF-9F66-05FEC5382D09}"
     ProjectSection(SolutionItems) = preProject
@@ -21,9 +25,17 @@ Global
 		{B2616C3A-1C36-41F1-8811-1D4C1E284043}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B2616C3A-1C36-41F1-8811-1D4C1E284043}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B2616C3A-1C36-41F1-8811-1D4C1E284043}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6A2D84E7-1D21-4DDA-8E5D-03DFAB2FF484}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+        {6A2D84E7-1D21-4DDA-8E5D-03DFAB2FF484}.Debug|Any CPU.Build.0 = Debug|Any CPU
+        {6A2D84E7-1D21-4DDA-8E5D-03DFAB2FF484}.Release|Any CPU.ActiveCfg = Release|Any CPU
+        {6A2D84E7-1D21-4DDA-8E5D-03DFAB2FF484}.Release|Any CPU.Build.0 = Release|Any CPU
 		{257141C6-50E7-4222-A74F-39B376983798}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{257141C6-50E7-4222-A74F-39B376983798}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{257141C6-50E7-4222-A74F-39B376983798}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{257141C6-50E7-4222-A74F-39B376983798}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CC2A3C3F-3C53-4EF3-A73F-2EFF3BEE178B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC2A3C3F-3C53-4EF3-A73F-2EFF3BEE178B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC2A3C3F-3C53-4EF3-A73F-2EFF3BEE178B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC2A3C3F-3C53-4EF3-A73F-2EFF3BEE178B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

@@ -3,8 +3,7 @@ using JetBrains.Annotations;
 
 namespace TramTimes.Utilities.TransXChange.Models;
 
-[UsedImplicitly]
-[XmlRoot(ElementName = "JourneyPatternTimingLink")]
+[XmlRoot(ElementName = "JourneyPatternTimingLink", Namespace = "http://www.transxchange.org.uk/")]
 public class TransXChangeJourneyPatternTimingLink
 {
     [UsedImplicitly]
@@ -22,12 +21,12 @@ public class TransXChangeJourneyPatternTimingLink
     [UsedImplicitly]
     [XmlElement(ElementName = "RouteLinkRef")]
     public string? RouteLinkRef { get; set; }
+    
+    [UsedImplicitly]
+    [XmlElement(ElementName = "RunTime")]
+    public string? RunTime { get; set; }
 
     [UsedImplicitly]
     [XmlElement(ElementName = "Direction")]
     public string? Direction { get; set; }
-
-    [UsedImplicitly]
-    [XmlElement(ElementName = "RunTime")]
-    public string? RunTime { get; set; }
 }
