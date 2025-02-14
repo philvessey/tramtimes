@@ -58,7 +58,7 @@ public class Stop(WestMidlandsFixture fixture)
     [InlineData("9400ZZWMWB", true)]
     [InlineData("9400ZZWMWI", true)]
     [InlineData("9400ZZWMWP", true)]
-    [InlineData("9400ZZWMWS", true)]
+    [InlineData("9400ZZWMRO", true)]
     [InlineData("9400ZZWMWW", true)]
     public async Task Search_Feed_Pass(string id, bool expected)
     {

@@ -56,27 +56,35 @@ public abstract class TransXChange
                     continue;
                 }
                 
-                var journeyPattern = TransXChangeJourneyPatternTools.GetJourneyPattern(xml.Services, vehicleJourney);
-                var timingLinks = TransXChangeJourneyPatternTools.GetTimingLinks(xml.JourneyPatternSections, journeyPattern);
+                var journeyPattern = TransXChangeJourneyPatternTools.GetJourneyPattern(xml.Services, 
+                    vehicleJourney.JourneyPatternRef);
+                
+                var timingLinks = TransXChangeJourneyPatternTools.GetTimingLinks(xml.JourneyPatternSections, 
+                    journeyPattern.JourneyPatternSectionRefs);
 
                 var calendar = TravelineCalendarHelpers.Build(subdivision, scheduleDate, xml.Services, vehicleJourney, startDate, endDate);
                 var schedule = TravelineScheduleHelpers.Build(xml.Operators, xml.Services, journeyPattern, calendar);
                 
                 for (var i = 0; i < timingLinks.Count; i++)
                 {
-                    var arrivalTime = departureTime?.Add(TravelineStopPointTools.GetRunTime(i > 0 ? timingLinks[i - 1] : new TransXChangeJourneyPatternTimingLink()));
-                    departureTime = arrivalTime?.Add(TravelineStopPointTools.GetWaitTime(i > 0 ? timingLinks[i - 1].To : new TransXChangeTo(), timingLinks[i].From));
+                    var arrivalTime = departureTime?.Add(TravelineStopPointTools.GetRunTime(i > 0 ? 
+                        timingLinks[i - 1] : new TransXChangeJourneyPatternTimingLink()));
                     
-                    if (schedule.StopPoints?.Count > 0) schedule.StopPoints?.RemoveAt(schedule.StopPoints.Count - 1);
+                    departureTime = arrivalTime?.Add(TravelineStopPointTools.GetWaitTime(i > 0 ? 
+                        timingLinks[i - 1].To : new TransXChangeTo(), timingLinks[i].From));
                     
-                    schedule.StopPoints?.Add(TravelineStopPointHelpers.Build(localities, stops, xml.StopPoints, timingLinks[i].From?.StopPointRef, i > 0 ? "pickUpAndSetDown" : "pickUp", arrivalTime, departureTime));
-                    schedule.StopPoints?.Add(TravelineStopPointHelpers.Build(localities, stops, xml.StopPoints, timingLinks[i].To?.StopPointRef, i < timingLinks.Count - 1 ? "pickUpAndSetDown" : "setDown", arrivalTime, departureTime));
+                    if (i > 0) schedule.StopPoints?.RemoveAt(schedule.StopPoints.Count - 1);
+                    
+                    schedule.StopPoints?.Add(TravelineStopPointHelpers.Build(localities, stops, xml.StopPoints, timingLinks[i].From?.StopPointRef, 
+                        i > 0 ? "pickUpAndSetDown" : "pickUp", arrivalTime, departureTime));
+                    
+                    schedule.StopPoints?.Add(TravelineStopPointHelpers.Build(localities, stops, xml.StopPoints, timingLinks[i].To?.StopPointRef, 
+                        i < timingLinks.Count - 1 ? "pickUpAndSetDown" : "setDown", arrivalTime, departureTime));
                 }
                                 
-                if (!TravelineScheduleTools.GetDuplicateMatch(results, schedule.StopPoints, schedule.Calendar?.RunningDates, schedule.Calendar?.SupplementRunningDates, schedule.Calendar?.SupplementNonRunningDates))
-                {
-                    _ = results.TryAdd(schedule.Id ?? "unknown", schedule);
-                }
+                if (!TravelineScheduleTools.GetDuplicateMatch(results, schedule.StopPoints, schedule.Calendar?.RunningDates,
+                        schedule.Calendar?.SupplementRunningDates, schedule.Calendar?.SupplementNonRunningDates, schedule.Direction, 
+                        schedule.Line)) _ = results.TryAdd(schedule.Id ?? "unknown", schedule);
             }
         }
 
@@ -128,27 +136,35 @@ public abstract class TransXChange
                     continue;
                 }
                 
-                var journeyPattern = TransXChangeJourneyPatternTools.GetJourneyPattern(xml.Services, vehicleJourney);
-                var timingLinks = TransXChangeJourneyPatternTools.GetTimingLinks(xml.JourneyPatternSections, journeyPattern);
+                var journeyPattern = TransXChangeJourneyPatternTools.GetJourneyPattern(xml.Services, 
+                    vehicleJourney.JourneyPatternRef);
+                
+                var timingLinks = TransXChangeJourneyPatternTools.GetTimingLinks(xml.JourneyPatternSections, 
+                    journeyPattern.JourneyPatternSectionRefs);
 
                 var calendar = TravelineCalendarHelpers.Build(subdivision, scheduleDate, xml.Services, vehicleJourney, startDate, endDate);
                 var schedule = TravelineScheduleHelpers.Build(xml.Operators, xml.Services, journeyPattern, calendar);
                 
                 for (var i = 0; i < timingLinks.Count; i++)
                 {
-                    var arrivalTime = departureTime?.Add(TravelineStopPointTools.GetRunTime(i > 0 ? timingLinks[i - 1] : new TransXChangeJourneyPatternTimingLink()));
-                    departureTime = arrivalTime?.Add(TravelineStopPointTools.GetWaitTime(i > 0 ? timingLinks[i - 1].To : new TransXChangeTo(), timingLinks[i].From));
+                    var arrivalTime = departureTime?.Add(TravelineStopPointTools.GetRunTime(i > 0 ? 
+                        timingLinks[i - 1] : new TransXChangeJourneyPatternTimingLink()));
                     
-                    if (schedule.StopPoints?.Count > 0) schedule.StopPoints?.RemoveAt(schedule.StopPoints.Count - 1);
+                    departureTime = arrivalTime?.Add(TravelineStopPointTools.GetWaitTime(i > 0 ? 
+                        timingLinks[i - 1].To : new TransXChangeTo(), timingLinks[i].From));
                     
-                    schedule.StopPoints?.Add(TravelineStopPointHelpers.Build(localities, stops, xml.StopPoints, timingLinks[i].From?.StopPointRef, i > 0 ? "pickUpAndSetDown" : "pickUp", arrivalTime, departureTime));
-                    schedule.StopPoints?.Add(TravelineStopPointHelpers.Build(localities, stops, xml.StopPoints, timingLinks[i].To?.StopPointRef, i < timingLinks.Count - 1 ? "pickUpAndSetDown" : "setDown", arrivalTime, departureTime));
+                    if (i > 0) schedule.StopPoints?.RemoveAt(schedule.StopPoints.Count - 1);
+                    
+                    schedule.StopPoints?.Add(TravelineStopPointHelpers.Build(localities, stops, xml.StopPoints, timingLinks[i].From?.StopPointRef, 
+                        i > 0 ? "pickUpAndSetDown" : "pickUp", arrivalTime, departureTime));
+                    
+                    schedule.StopPoints?.Add(TravelineStopPointHelpers.Build(localities, stops, xml.StopPoints, timingLinks[i].To?.StopPointRef, 
+                        i < timingLinks.Count - 1 ? "pickUpAndSetDown" : "setDown", arrivalTime, departureTime));
                 }
                                 
-                if (!TravelineScheduleTools.GetDuplicateMatch(results, schedule.StopPoints, schedule.Calendar?.RunningDates, schedule.Calendar?.SupplementRunningDates, schedule.Calendar?.SupplementNonRunningDates))
-                {
-                    _ = results.TryAdd(schedule.Id ?? "unknown", schedule);
-                }
+                if (!TravelineScheduleTools.GetDuplicateMatch(results, schedule.StopPoints, schedule.Calendar?.RunningDates,
+                        schedule.Calendar?.SupplementRunningDates, schedule.Calendar?.SupplementNonRunningDates, schedule.Direction, 
+                        schedule.Line)) _ = results.TryAdd(schedule.Id ?? "unknown", schedule);
             }
         }
 

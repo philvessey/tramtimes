@@ -3,13 +3,13 @@ using TramTimes.Utilities.TransXChange.Models;
 
 namespace TramTimes.Utilities.TransXChange.Tools;
 
-public static class TravelineSupplementNonRunningDateTools
+public static class TravelineCalendarSupplementNonRunningDateTools
 {
-    public static bool GetDuplicateDates(Dictionary<string, TravelineSchedule> schedules, List<TravelineStopPoint>? stopPoints, List<DateTime>? dates)
+    public static bool GetDuplicateDates(Dictionary<string, TravelineSchedule> schedules, List<TravelineStopPoint>? stopPoints, List<DateTime>? dates, string? direction, string? line)
     {
         var results = schedules.Values.Where(s =>
-            s.Calendar is { SupplementNonRunningDates: not null } && dates != null &&
-            s.Calendar.SupplementNonRunningDates.Intersect(dates).Any()).ToList();
+            s.Calendar is { SupplementNonRunningDates: not null } && dates != null && direction != null && line != null &&
+            s.Calendar.SupplementNonRunningDates.Intersect(dates).Any() && s.Direction == direction && s.Line == line).ToList();
         
         return results.Where(s =>
             s.StopPoints?.FirstOrDefault()?.AtcoCode == stopPoints?.FirstOrDefault()?.AtcoCode &&
@@ -25,8 +25,8 @@ public static class TravelineSupplementNonRunningDateTools
         
         var results = new List<DateTime>();
         
-        var holidays = TransXChangeDaysOfNonOperationTools.GetEnglandHolidays(operatingProfile?.BankHolidayOperation?.DaysOfNonOperation, startDate.Value, endDate.Value);
-        results.AddRange(holidays.Where(h => h.Date >= startDate.Value && h.Date <= endDate.Value).Select(h => h.Date));
+        results.AddRange(TransXChangeDaysOfNonOperationTools.GetEnglandHolidays(operatingProfile?.BankHolidayOperation?.DaysOfNonOperation, 
+            startDate.Value, endDate.Value).Where(h => h.Date >= startDate.Value && h.Date <= endDate.Value).Select(h => h.Date));
         
         startDate = DateTimeTools.GetProfileStartDate(scheduleDate, operatingProfile?.SpecialDaysOperation?.DaysOfNonOperation?.DateRange?.StartDate.ToDate());
         endDate = DateTimeTools.GetProfileEndDate(scheduleDate, operatingProfile?.SpecialDaysOperation?.DaysOfNonOperation?.DateRange?.EndDate.ToDate());
@@ -122,8 +122,8 @@ public static class TravelineSupplementNonRunningDateTools
         
         var results = new List<DateTime>();
         
-        var holidays = TransXChangeDaysOfNonOperationTools.GetScotlandHolidays(operatingProfile?.BankHolidayOperation?.DaysOfNonOperation, startDate.Value, endDate.Value);
-        results.AddRange(holidays.Where(h => h.Date >= startDate.Value && h.Date <= endDate.Value).Select(h => h.Date));
+        results.AddRange(TransXChangeDaysOfNonOperationTools.GetScotlandHolidays(operatingProfile?.BankHolidayOperation?.DaysOfNonOperation, 
+            startDate.Value, endDate.Value).Where(h => h.Date >= startDate.Value && h.Date <= endDate.Value).Select(h => h.Date));
 
         startDate = DateTimeTools.GetProfileStartDate(scheduleDate, operatingProfile?.SpecialDaysOperation?.DaysOfNonOperation?.DateRange?.StartDate.ToDate());
         endDate = DateTimeTools.GetProfileEndDate(scheduleDate, operatingProfile?.SpecialDaysOperation?.DaysOfNonOperation?.DateRange?.EndDate.ToDate());

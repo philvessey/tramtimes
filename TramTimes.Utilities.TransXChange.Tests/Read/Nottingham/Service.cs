@@ -55,13 +55,13 @@ public class Service(NottinghamFixture fixture)
     }
     
     [Theory]
-    [InlineData("9400ZZNOBCF", "28/01/2025 09:00", new[] { "28/01/2025 09:00", "28/01/2025 09:10", "28/01/2025 09:20" })]
-    [InlineData("9400ZZNOBLV", "29/01/2025 11:00", new[] { "29/01/2025 11:00", "29/01/2025 11:10", "29/01/2025 11:20" })]
-    [InlineData("9400ZZNODVL", "30/01/2025 13:00", new[] { "30/01/2025 13:00", "30/01/2025 13:10", "30/01/2025 13:20" })]
-    [InlineData("9400ZZNOHBV", "31/01/2025 15:00", new[] { "31/01/2025 15:00", "31/01/2025 15:10", "31/01/2025 15:20" })]
-    [InlineData("9400ZZNOMDW", "01/02/2025 17:00", new[] { "01/02/2025 17:00", "01/02/2025 17:10", "01/02/2025 17:20" })]
-    [InlineData("9400ZZNOMLS", "02/02/2025 19:00", new[] { "02/02/2025 19:00", "02/02/2025 19:10", "02/02/2025 19:20" })]
-    [InlineData("9400ZZNORDF", "03/02/2025 21:00", new[] { "03/02/2025 21:00", "03/02/2025 21:10", "03/02/2025 21:20" })]
+    [InlineData("9400ZZNOBCF", "28/01/2025 07:00", new[] { "28/01/2025 07:00:00", "28/01/2025 07:06:00", "28/01/2025 07:15:00" })]
+    [InlineData("9400ZZNOBLV", "29/01/2025 09:00", new[] { "29/01/2025 09:01:00", "29/01/2025 09:01:00", "29/01/2025 09:09:00" })]
+    [InlineData("9400ZZNODVL", "30/01/2025 11:00", new[] { "30/01/2025 11:00:00", "30/01/2025 11:02:00", "30/01/2025 11:06:00" })]
+    [InlineData("9400ZZNOHBV", "31/01/2025 13:00", new[] { "31/01/2025 13:04:00", "31/01/2025 13:04:00", "31/01/2025 13:08:00" })]
+    [InlineData("9400ZZNOMDW", "01/02/2025 15:00", new[] { "01/02/2025 15:05:00", "01/02/2025 15:05:00", "01/02/2025 15:12:00" })]
+    [InlineData("9400ZZNOOMS", "02/02/2025 17:00", new[] { "02/02/2025 17:03:00", "02/02/2025 17:05:00", "02/02/2025 17:08:00" })]
+    [InlineData("9400ZZNORDF", "03/02/2025 19:00", new[] { "03/02/2025 19:02:00", "03/02/2025 19:05:00", "03/02/2025 19:09:00" })]
     public async Task Search_Feed_Pass(string id, string target, string[] expected)
     {
         var storage = Directory.CreateDirectory(Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString()));
@@ -79,9 +79,9 @@ public class Service(NottinghamFixture fixture)
             var feed = await Feed.Load(GtfsStorage.Load(storage.FullName));
             var results = await feed.GetServicesByStopAsync(id, DateTime.ParseExact(target, "dd/MM/yyyy HH:mm", CultureInfo.CurrentCulture), TimeSpan.Zero, ComparisonType.Partial);
             
-            Assert.Equal(DateTime.ParseExact(expected.ElementAt(0), "dd/MM/yyyy HH:mm", CultureInfo.CurrentCulture), results.ElementAt(0).DepartureDateTime);
-            Assert.Equal(DateTime.ParseExact(expected.ElementAt(1), "dd/MM/yyyy HH:mm", CultureInfo.CurrentCulture), results.ElementAt(1).DepartureDateTime);
-            Assert.Equal(DateTime.ParseExact(expected.ElementAt(2), "dd/MM/yyyy HH:mm", CultureInfo.CurrentCulture), results.ElementAt(2).DepartureDateTime);
+            Assert.Equal(DateTime.ParseExact(expected.ElementAt(0), "dd/MM/yyyy HH:mm:ss", CultureInfo.CurrentCulture), results.ElementAt(0).DepartureDateTime);
+            Assert.Equal(DateTime.ParseExact(expected.ElementAt(1), "dd/MM/yyyy HH:mm:ss", CultureInfo.CurrentCulture), results.ElementAt(1).DepartureDateTime);
+            Assert.Equal(DateTime.ParseExact(expected.ElementAt(2), "dd/MM/yyyy HH:mm:ss", CultureInfo.CurrentCulture), results.ElementAt(2).DepartureDateTime);
         }
         catch (Exception e)
         {

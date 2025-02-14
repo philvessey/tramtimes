@@ -14,8 +14,14 @@ public static class GtfsStopTimeTools
         {
             GtfsCalendar calendar = new()
             {
-                StartDate = $"{value.Calendar?.StartDate?.ToString("yyyy")}{value.Calendar?.StartDate?.ToString("MM")}{value.Calendar?.StartDate?.ToString("dd")}",
-                EndDate = $"{value.Calendar?.EndDate?.ToString("yyyy")}{value.Calendar?.EndDate?.ToString("MM")}{value.Calendar?.EndDate?.ToString("dd")}",
+                StartDate = $"{value.Calendar?.StartDate?.ToString("yyyy")}" +
+                            $"{value.Calendar?.StartDate?.ToString("MM")}" +
+                            $"{value.Calendar?.StartDate?.ToString("dd")}",
+                
+                EndDate = $"{value.Calendar?.EndDate?.ToString("yyyy")}" +
+                          $"{value.Calendar?.EndDate?.ToString("MM")}" +
+                          $"{value.Calendar?.EndDate?.ToString("dd")}",
+                
                 Monday = value.Calendar is { Monday: not null } ? value.Calendar.Monday.ToInt().ToString() : "0",
                 Tuesday = value.Calendar is { Tuesday: not null } ? value.Calendar.Tuesday.ToInt().ToString() : "0",
                 Wednesday = value.Calendar is { Wednesday: not null } ? value.Calendar.Wednesday.ToInt().ToString() : "0",
@@ -59,8 +65,13 @@ public static class GtfsStopTimeTools
 
                 if (value.StopPoints[i].DepartureTime < timeSpan)
                 {
-                    stopTime.ArrivalTime = string.Concat(Math.Round(Convert.ToDecimal(value.StopPoints[i].ArrivalTime?.Add(new TimeSpan(24, 0, 0)).TotalHours), 0).ToString(CultureInfo.CurrentCulture), value.StopPoints[i].ArrivalTime?.Add(new TimeSpan(24, 0, 0)).ToString(@"hh\:mm\:ss").Substring(2, 6));
-                    stopTime.DepartureTime = string.Concat(Math.Round(Convert.ToDecimal(value.StopPoints[i].DepartureTime?.Add(new TimeSpan(24, 0, 0)).TotalHours), 0).ToString(CultureInfo.CurrentCulture), value.StopPoints[i].DepartureTime?.Add(new TimeSpan(24, 0, 0)).ToString(@"hh\:mm\:ss").Substring(2, 6));
+                    stopTime.ArrivalTime = string.Concat(Math.Round(Convert.ToDecimal(
+                        value.StopPoints[i].ArrivalTime?.Add(new TimeSpan(24, 0, 0)).TotalHours), 0).ToString(CultureInfo.CurrentCulture), 
+                        value.StopPoints[i].ArrivalTime?.Add(new TimeSpan(24, 0, 0)).ToString(@"hh\:mm\:ss").Substring(2, 6));
+                    
+                    stopTime.DepartureTime = string.Concat(Math.Round(Convert.ToDecimal(
+                        value.StopPoints[i].DepartureTime?.Add(new TimeSpan(24, 0, 0)).TotalHours), 0).ToString(CultureInfo.CurrentCulture), 
+                        value.StopPoints[i].DepartureTime?.Add(new TimeSpan(24, 0, 0)).ToString(@"hh\:mm\:ss").Substring(2, 6));
                         
                     timeSpan = value.StopPoints[i].DepartureTime?.Add(new TimeSpan(24, 0, 0)) ?? TimeSpan.Zero;
                 }

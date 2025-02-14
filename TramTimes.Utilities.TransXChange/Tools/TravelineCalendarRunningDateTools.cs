@@ -2,7 +2,7 @@ using TramTimes.Utilities.TransXChange.Models;
 
 namespace TramTimes.Utilities.TransXChange.Tools;
 
-public static class TravelineRunningDateTools
+public static class TravelineCalendarRunningDateTools
 {
     public static List<DateTime> GetAllDates(DateTime? startDate, DateTime? endDate, bool? monday, bool? tuesday, bool? wednesday, bool? thursday, bool? friday, bool? saturday, bool? sunday)
     {
@@ -95,11 +95,11 @@ public static class TravelineRunningDateTools
         return results.Distinct().OrderBy(d => d).ToList();
     }
     
-    public static bool GetDuplicateDates(Dictionary<string, TravelineSchedule> schedules, List<TravelineStopPoint>? stopPoints, List<DateTime>? dates)
+    public static bool GetDuplicateDates(Dictionary<string, TravelineSchedule> schedules, List<TravelineStopPoint>? stopPoints, List<DateTime>? dates, string? direction, string? line)
     {
         var results = schedules.Values.Where(s =>
-            s.Calendar is { RunningDates: not null } && dates != null &&
-            s.Calendar.RunningDates.Intersect(dates).Any()).ToList();
+            s.Calendar is { RunningDates: not null } && dates != null && direction != null && line != null &&
+            s.Calendar.RunningDates.Intersect(dates).Any() && s.Direction == direction && s.Line == line).ToList();
         
         return results.Where(s =>
             s.StopPoints?.FirstOrDefault()?.AtcoCode == stopPoints?.FirstOrDefault()?.AtcoCode &&

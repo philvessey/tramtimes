@@ -4,15 +4,16 @@ namespace TramTimes.Utilities.TransXChange.Tools;
 
 public static class TransXChangeJourneyPatternTools
 {
-    public static TransXChangeJourneyPattern GetJourneyPattern(TransXChangeServices? services, TransXChangeVehicleJourney? vehicleJourney)
+    public static TransXChangeJourneyPattern GetJourneyPattern(TransXChangeServices? services, string? reference)
     {
         return services?.Service?.StandardService?.JourneyPattern?.FirstOrDefault(p =>
-            p.Id == vehicleJourney?.JourneyPatternRef) ?? services?.Service?.StandardService?.JourneyPattern?.FirstOrDefault() ?? new TransXChangeJourneyPattern();
+            p.Id == reference) ?? new TransXChangeJourneyPattern();
     }
     
-    public static List<TransXChangeJourneyPatternTimingLink> GetTimingLinks(TransXChangeJourneyPatternSections? patternSections, TransXChangeJourneyPattern? journeyPattern)
+    public static List<TransXChangeJourneyPatternTimingLink> GetTimingLinks(TransXChangeJourneyPatternSections? patternSections, List<string>? references)
     {
-        return patternSections?.JourneyPatternSection?.FirstOrDefault(p =>
-            journeyPattern?.JourneyPatternSectionRefs?.Contains(p.Id ?? "unknown") == true)?.JourneyPatternTimingLink ?? [];
+        return references?.SelectMany(reference =>
+            patternSections?.JourneyPatternSection?.FirstOrDefault(p =>
+                p.Id == reference)?.JourneyPatternTimingLink ?? []).ToList() ?? [];
     }
 }

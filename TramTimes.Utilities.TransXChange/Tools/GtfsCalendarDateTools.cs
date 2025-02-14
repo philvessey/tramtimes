@@ -15,8 +15,14 @@ public static class GtfsCalendarDateTools
             {
                 GtfsCalendar calendar = new()
                 {
-                    StartDate = $"{value.Calendar?.StartDate?.ToString("yyyy")}{value.Calendar?.StartDate?.ToString("MM")}{value.Calendar?.StartDate?.ToString("dd")}",
-                    EndDate = $"{value.Calendar?.EndDate?.ToString("yyyy")}{value.Calendar?.EndDate?.ToString("MM")}{value.Calendar?.EndDate?.ToString("dd")}",
+                    StartDate = $"{value.Calendar?.StartDate?.ToString("yyyy")}" +
+                                $"{value.Calendar?.StartDate?.ToString("MM")}" +
+                                $"{value.Calendar?.StartDate?.ToString("dd")}",
+                    
+                    EndDate = $"{value.Calendar?.EndDate?.ToString("yyyy")}" +
+                              $"{value.Calendar?.EndDate?.ToString("MM")}" +
+                              $"{value.Calendar?.EndDate?.ToString("dd")}",
+                    
                     Monday = value.Calendar is { Monday: not null } ? value.Calendar.Monday.ToInt().ToString() : "0",
                     Tuesday = value.Calendar is { Tuesday: not null } ? value.Calendar.Tuesday.ToInt().ToString() : "0",
                     Wednesday = value.Calendar is { Wednesday: not null } ? value.Calendar.Wednesday.ToInt().ToString() : "0",
@@ -50,7 +56,11 @@ public static class GtfsCalendarDateTools
                 GtfsCalendarDate calendarDate = new()
                 {
                     ServiceId = calendar.ServiceId,
-                    Date = $"{value.Calendar?.SupplementRunningDates[i]:yyyy}{value.Calendar?.SupplementRunningDates[i]:MM}{value.Calendar?.SupplementRunningDates[i]:dd}",
+                    
+                    Date = $"{value.Calendar?.SupplementRunningDates[i]:yyyy}" +
+                           $"{value.Calendar?.SupplementRunningDates[i]:MM}" +
+                           $"{value.Calendar?.SupplementRunningDates[i]:dd}",
+                    
                     ExceptionType = "1"
                 };
                 
@@ -61,8 +71,14 @@ public static class GtfsCalendarDateTools
             {
                 GtfsCalendar calendar = new()
                 {
-                    StartDate = $"{value.Calendar?.StartDate?.ToString("yyyy")}{value.Calendar?.StartDate?.ToString("MM")}{value.Calendar?.StartDate?.ToString("dd")}",
-                    EndDate = $"{value.Calendar?.EndDate?.ToString("yyyy")}{value.Calendar?.EndDate?.ToString("MM")}{value.Calendar?.EndDate?.ToString("dd")}",
+                    StartDate = $"{value.Calendar?.StartDate?.ToString("yyyy")}" +
+                                $"{value.Calendar?.StartDate?.ToString("MM")}" +
+                                $"{value.Calendar?.StartDate?.ToString("dd")}",
+                    
+                    EndDate = $"{value.Calendar?.EndDate?.ToString("yyyy")}" +
+                              $"{value.Calendar?.EndDate?.ToString("MM")}" +
+                              $"{value.Calendar?.EndDate?.ToString("dd")}",
+                    
                     Monday = value.Calendar is { Monday: not null } ? value.Calendar.Monday.ToInt().ToString() : "0",
                     Tuesday = value.Calendar is { Tuesday: not null } ? value.Calendar.Tuesday.ToInt().ToString() : "0",
                     Wednesday = value.Calendar is { Wednesday: not null } ? value.Calendar.Wednesday.ToInt().ToString() : "0",
@@ -96,7 +112,11 @@ public static class GtfsCalendarDateTools
                 GtfsCalendarDate calendarDate = new()
                 {
                     ServiceId = calendar.ServiceId,
-                    Date = $"{value.Calendar?.SupplementNonRunningDates[i]:yyyy}{value.Calendar?.SupplementNonRunningDates[i]:MM}{value.Calendar?.SupplementNonRunningDates[i]:dd}",
+                    
+                    Date = $"{value.Calendar?.SupplementNonRunningDates[i]:yyyy}" +
+                           $"{value.Calendar?.SupplementNonRunningDates[i]:MM}" +
+                           $"{value.Calendar?.SupplementNonRunningDates[i]:dd}",
+                    
                     ExceptionType = "2"
                 };
                 

@@ -58,7 +58,7 @@ public class Stop(NottinghamFixture fixture)
     [InlineData("9400ZZNODVL", true)]
     [InlineData("9400ZZNOHBV", true)]
     [InlineData("9400ZZNOMDW", true)]
-    [InlineData("9400ZZNOMLS", true)]
+    [InlineData("9400ZZNOOMS", true)]
     [InlineData("9400ZZNORDF", true)]
     public async Task Search_Feed_Pass(string id, bool expected)
     {
