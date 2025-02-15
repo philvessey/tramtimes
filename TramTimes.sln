@@ -1,18 +1,52 @@
 ﻿Microsoft Visual Studio Solution File, Format Version 12.00
 
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0. Solution Items", "0. Solution Items", "{07B03DDD-B84F-47DF-9F66-05FEC5382D09}"
+	ProjectSection(SolutionItems) = preProject
+		LICENSE = LICENSE
+		README.md = README.md
+	EndProjectSection
+EndProject
+
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1. Aspire Projects", "1. Aspire Projects", "{AEAACF8A-3C9D-40DE-974E-C2D0E8895193}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2. Backend Projects", "2. Backend Projects", "{51AF7AD7-2EAF-4EE7-89B1-F60B671D21A1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3. Database Projects", "3. Database Projects", "{AC56BBD7-A370-4929-9DF7-3D4734AA7F57}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4. Frontend Projects", "4. Frontend Projects", "{E1E84E93-105C-46AB-BB72-7229303929E2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5. Utilities Projects", "5. Utilities Projects", "{62038005-2C63-43BD-8043-7D444D00C55B}"
+EndProject
+
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TramTimes.AppHost", "TramTimes.AppHost\TramTimes.AppHost.csproj", "{B2616C3A-1C36-41F1-8811-1D4C1E284043}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TramTimes.Backend.Functions", "TramTimes.Backend.Functions\TramTimes.Backend.Functions.csproj", "{0A9D3A8F-EF19-4BB6-810B-39D06AC8D369}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TramTimes.Database.Blackpool", "TramTimes.Database.Blackpool\TramTimes.Database.Blackpool.csproj", "{1AF3F1D4-B899-4514-A36D-BA4AFED014FD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TramTimes.Database.Docklands", "TramTimes.Database.Docklands\TramTimes.Database.Docklands.csproj", "{580BB64E-426E-49FA-B52F-0D7E67F9C600}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TramTimes.Database.Edinburgh", "TramTimes.Database.Edinburgh\TramTimes.Database.Edinburgh.csproj", "{3D3DF2A3-C9EE-46C9-AD49-01AE344FF1BA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TramTimes.Database.Glasgow", "TramTimes.Database.Glasgow\TramTimes.Database.Glasgow.csproj", "{ECB6CC93-5F29-465E-A80E-17F8C652E38C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TramTimes.Database.London", "TramTimes.Database.London\TramTimes.Database.London.csproj", "{7481CF73-CE88-4515-8546-9551F5D82E8E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TramTimes.Database.Manchester", "TramTimes.Database.Manchester\TramTimes.Database.Manchester.csproj", "{2EB679AF-EEF4-4AC4-803E-571BD39B8494}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TramTimes.Database.Nottingham", "TramTimes.Database.Nottingham\TramTimes.Database.Nottingham.csproj", "{CEB8EF5E-C624-4F5B-89BE-B3FF9D14087C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TramTimes.Database.SouthYorkshire", "TramTimes.Database.SouthYorkshire\TramTimes.Database.SouthYorkshire.csproj", "{F58423DC-C60E-44D5-AAF9-27D92478FA0A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TramTimes.Database.TyneWear", "TramTimes.Database.TyneWear\TramTimes.Database.TyneWear.csproj", "{C944D902-AB07-4834-A4FA-A0005F7EC45D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TramTimes.Database.WestMidlands", "TramTimes.Database.WestMidlands\TramTimes.Database.WestMidlands.csproj", "{67939990-DD19-450E-9A08-2FA9C49AF039}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TramTimes.ServiceDefaults", "TramTimes.ServiceDefaults\TramTimes.ServiceDefaults.csproj", "{6A2D84E7-1D21-4DDA-8E5D-03DFAB2FF484}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TramTimes.Utilities.TransXChange", "TramTimes.Utilities.TransXChange\TramTimes.Utilities.TransXChange.csproj", "{257141C6-50E7-4222-A74F-39B376983798}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TramTimes.Utilities.TransXChange.Tests", "TramTimes.Utilities.TransXChange.Tests\TramTimes.Utilities.TransXChange.Tests.csproj", "{CC2A3C3F-3C53-4EF3-A73F-2EFF3BEE178B}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionItems", "{07B03DDD-B84F-47DF-9F66-05FEC5382D09}"
-    ProjectSection(SolutionItems) = preProject
-		LICENSE = LICENSE
-		README.md = README.md
-    EndProjectSection
 EndProject
 
 Global
@@ -25,6 +59,50 @@ Global
 		{B2616C3A-1C36-41F1-8811-1D4C1E284043}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B2616C3A-1C36-41F1-8811-1D4C1E284043}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B2616C3A-1C36-41F1-8811-1D4C1E284043}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0A9D3A8F-EF19-4BB6-810B-39D06AC8D369}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A9D3A8F-EF19-4BB6-810B-39D06AC8D369}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A9D3A8F-EF19-4BB6-810B-39D06AC8D369}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A9D3A8F-EF19-4BB6-810B-39D06AC8D369}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1AF3F1D4-B899-4514-A36D-BA4AFED014FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1AF3F1D4-B899-4514-A36D-BA4AFED014FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1AF3F1D4-B899-4514-A36D-BA4AFED014FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1AF3F1D4-B899-4514-A36D-BA4AFED014FD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{580BB64E-426E-49FA-B52F-0D7E67F9C600}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+        {580BB64E-426E-49FA-B52F-0D7E67F9C600}.Debug|Any CPU.Build.0 = Debug|Any CPU
+        {580BB64E-426E-49FA-B52F-0D7E67F9C600}.Release|Any CPU.ActiveCfg = Release|Any CPU
+        {580BB64E-426E-49FA-B52F-0D7E67F9C600}.Release|Any CPU.Build.0 = Release|Any CPU
+        {3D3DF2A3-C9EE-46C9-AD49-01AE344FF1BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+        {3D3DF2A3-C9EE-46C9-AD49-01AE344FF1BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+        {3D3DF2A3-C9EE-46C9-AD49-01AE344FF1BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+        {3D3DF2A3-C9EE-46C9-AD49-01AE344FF1BA}.Release|Any CPU.Build.0 = Release|Any CPU
+        {ECB6CC93-5F29-465E-A80E-17F8C652E38C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+        {ECB6CC93-5F29-465E-A80E-17F8C652E38C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+        {ECB6CC93-5F29-465E-A80E-17F8C652E38C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+        {ECB6CC93-5F29-465E-A80E-17F8C652E38C}.Release|Any CPU.Build.0 = Release|Any CPU
+        {7481CF73-CE88-4515-8546-9551F5D82E8E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+        {7481CF73-CE88-4515-8546-9551F5D82E8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+        {7481CF73-CE88-4515-8546-9551F5D82E8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+        {7481CF73-CE88-4515-8546-9551F5D82E8E}.Release|Any CPU.Build.0 = Release|Any CPU
+        {2EB679AF-EEF4-4AC4-803E-571BD39B8494}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+        {2EB679AF-EEF4-4AC4-803E-571BD39B8494}.Debug|Any CPU.Build.0 = Debug|Any CPU
+        {2EB679AF-EEF4-4AC4-803E-571BD39B8494}.Release|Any CPU.ActiveCfg = Release|Any CPU
+        {2EB679AF-EEF4-4AC4-803E-571BD39B8494}.Release|Any CPU.Build.0 = Release|Any CPU
+        {CEB8EF5E-C624-4F5B-89BE-B3FF9D14087C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+        {CEB8EF5E-C624-4F5B-89BE-B3FF9D14087C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+        {CEB8EF5E-C624-4F5B-89BE-B3FF9D14087C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+        {CEB8EF5E-C624-4F5B-89BE-B3FF9D14087C}.Release|Any CPU.Build.0 = Release|Any CPU
+        {F58423DC-C60E-44D5-AAF9-27D92478FA0A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+        {F58423DC-C60E-44D5-AAF9-27D92478FA0A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+        {F58423DC-C60E-44D5-AAF9-27D92478FA0A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+        {F58423DC-C60E-44D5-AAF9-27D92478FA0A}.Release|Any CPU.Build.0 = Release|Any CPU
+        {C944D902-AB07-4834-A4FA-A0005F7EC45D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+        {C944D902-AB07-4834-A4FA-A0005F7EC45D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+        {C944D902-AB07-4834-A4FA-A0005F7EC45D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+        {C944D902-AB07-4834-A4FA-A0005F7EC45D}.Release|Any CPU.Build.0 = Release|Any CPU
+        {67939990-DD19-450E-9A08-2FA9C49AF039}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+        {67939990-DD19-450E-9A08-2FA9C49AF039}.Debug|Any CPU.Build.0 = Debug|Any CPU
+        {67939990-DD19-450E-9A08-2FA9C49AF039}.Release|Any CPU.ActiveCfg = Release|Any CPU
+        {67939990-DD19-450E-9A08-2FA9C49AF039}.Release|Any CPU.Build.0 = Release|Any CPU
 		{6A2D84E7-1D21-4DDA-8E5D-03DFAB2FF484}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
         {6A2D84E7-1D21-4DDA-8E5D-03DFAB2FF484}.Debug|Any CPU.Build.0 = Debug|Any CPU
         {6A2D84E7-1D21-4DDA-8E5D-03DFAB2FF484}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -37,5 +115,22 @@ Global
 		{CC2A3C3F-3C53-4EF3-A73F-2EFF3BEE178B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CC2A3C3F-3C53-4EF3-A73F-2EFF3BEE178B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CC2A3C3F-3C53-4EF3-A73F-2EFF3BEE178B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{B2616C3A-1C36-41F1-8811-1D4C1E284043} = {AEAACF8A-3C9D-40DE-974E-C2D0E8895193}
+		{0A9D3A8F-EF19-4BB6-810B-39D06AC8D369} = {51AF7AD7-2EAF-4EE7-89B1-F60B671D21A1}
+		{1AF3F1D4-B899-4514-A36D-BA4AFED014FD} = {AC56BBD7-A370-4929-9DF7-3D4734AA7F57}
+		{580BB64E-426E-49FA-B52F-0D7E67F9C600} = {AC56BBD7-A370-4929-9DF7-3D4734AA7F57}
+        {3D3DF2A3-C9EE-46C9-AD49-01AE344FF1BA} = {AC56BBD7-A370-4929-9DF7-3D4734AA7F57}
+        {ECB6CC93-5F29-465E-A80E-17F8C652E38C} = {AC56BBD7-A370-4929-9DF7-3D4734AA7F57}
+        {7481CF73-CE88-4515-8546-9551F5D82E8E} = {AC56BBD7-A370-4929-9DF7-3D4734AA7F57}
+        {2EB679AF-EEF4-4AC4-803E-571BD39B8494} = {AC56BBD7-A370-4929-9DF7-3D4734AA7F57}
+        {CEB8EF5E-C624-4F5B-89BE-B3FF9D14087C} = {AC56BBD7-A370-4929-9DF7-3D4734AA7F57}
+        {F58423DC-C60E-44D5-AAF9-27D92478FA0A} = {AC56BBD7-A370-4929-9DF7-3D4734AA7F57}
+        {C944D902-AB07-4834-A4FA-A0005F7EC45D} = {AC56BBD7-A370-4929-9DF7-3D4734AA7F57}
+        {67939990-DD19-450E-9A08-2FA9C49AF039} = {AC56BBD7-A370-4929-9DF7-3D4734AA7F57}
+		{6A2D84E7-1D21-4DDA-8E5D-03DFAB2FF484} = {AEAACF8A-3C9D-40DE-974E-C2D0E8895193}
+		{257141C6-50E7-4222-A74F-39B376983798} = {62038005-2C63-43BD-8043-7D444D00C55B}
+		{CC2A3C3F-3C53-4EF3-A73F-2EFF3BEE178B} = {62038005-2C63-43BD-8043-7D444D00C55B}
 	EndGlobalSection
 EndGlobal
